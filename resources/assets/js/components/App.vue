@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="$auth.ready()">
         <!--NavHeader-->
         <nav-header/>
         <transition>

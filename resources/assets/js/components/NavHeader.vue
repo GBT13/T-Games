@@ -29,13 +29,14 @@
                 </li>
             </ul>
             <!--<form class="form-inline my-2 my-lg-0">-->
-                <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-                <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+            <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+            <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
             <!--</form>-->
 
             <ul class="navbar-nav">
-                <router-link to="/login" class="navbar-text nav-link" active-class="active">Login</router-link>
-                <router-link to="/register" class="navbar-text nav-link" active-class="active">Register</router-link>
+                <router-link v-if="!$auth.check()" to="/login" class="navbar-text nav-link" active-class="active">Login</router-link>
+                <router-link v-if="!$auth.check()" to="/register" class="navbar-text nav-link" active-class="active">Register</router-link>
+                <li v-if="$auth.check()" @click.prevent="logout" ><a href="/" class="nav-link">Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -43,7 +44,11 @@
 
 <script>
     export default {
-        name: "nav-header"
+        methods: {
+            logout(){
+                this.$auth.logout();
+            }
+        }
     }
 
 
