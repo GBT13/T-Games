@@ -1,8 +1,10 @@
 <template>
     <div v-if="$auth.ready()">
         <!--NavHeader-->
-        <nav-header/>
-        <transition>
+        <transition name="fade" mode="out-in" appear>
+            <nav-header/>
+        </transition>
+        <transition name="fade" mode="out-in" appear>
             <router-view/>
         </transition>
     </div>
@@ -21,5 +23,20 @@
 </script>
 
 <style scoped>
+    .fade-enter {
+        opacity: 0;
+    }
 
+    .fade-enter-active {
+        transition: opacity 200ms;
+    }
+
+    .fade-leave {
+
+    }
+
+    .fade-leave-active {
+        transition: opacity 200ms;
+        opacity: 0;
+    }
 </style>

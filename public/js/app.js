@@ -28380,7 +28380,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.fade-enter[data-v-117390fa] {\n    opacity: 0;\n}\n.fade-enter-active[data-v-117390fa] {\n    -webkit-transition: opacity 200ms;\n    transition: opacity 200ms;\n}\n.fade-leave[data-v-117390fa] {\n}\n.fade-leave-active[data-v-117390fa] {\n    -webkit-transition: opacity 200ms;\n    transition: opacity 200ms;\n    opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -28426,6 +28426,8 @@ module.exports = function listToStyles (parentId, list) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__NavHeader_vue__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__NavHeader_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__NavHeader_vue__);
+//
+//
 //
 //
 //
@@ -28837,9 +28839,19 @@ var render = function() {
     ? _c(
         "div",
         [
-          _c("nav-header"),
+          _c(
+            "transition",
+            { attrs: { name: "fade", mode: "out-in", appear: "" } },
+            [_c("nav-header")],
+            1
+          ),
           _vm._v(" "),
-          _c("transition", [_c("router-view")], 1)
+          _c(
+            "transition",
+            { attrs: { name: "fade", mode: "out-in", appear: "" } },
+            [_c("router-view")],
+            1
+          )
         ],
         1
       )
