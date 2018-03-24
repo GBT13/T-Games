@@ -5,6 +5,8 @@ import Home from './components/Home.vue'
 import Login from './components/user/login.vue'
 import Register from './components/user/Register.vue';
 import Dashboard from './components/Dashboard.vue';
+import UserProfile from './components/user/Profile.vue';
+import AccountSettings from './components/user/AccountSettings.vue';
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
@@ -31,6 +33,8 @@ const router = new VueRouter({
         {path: '/login', name: 'login', component: Login, meta: {auth: false}},
         {path: '/register', name: 'register', component: Register, meta: {auth: false}},
         {path: '/dashboard', name: 'dashboard', component: Dashboard, meta: {auth: true}},
+        {path: '/user/profile', name: 'userProfile', component: UserProfile, meta: {auth: true}},
+        {path: '/user/account', name: 'userDetails', component: AccountSettings, meta: {auth: true}},
 
     ]
 });

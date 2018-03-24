@@ -1,6 +1,6 @@
 <template>
 
-    <nav class="navbar navbar-custom navbar-expand-lg navbar-light bg-light ">
+    <nav class="navbar navbar-custom navbar-expand-lg navbar-light bg-light ml-3 mr-3">
         <router-link to="/" class="navbar-brand" active-class="active"><a>T-Games</a></router-link>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,18 +12,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Disabled</a>
                 </li>
@@ -34,9 +22,32 @@
             <!--</form>-->
 
             <ul class="navbar-nav">
-                <router-link v-if="!$auth.check()" to="/login" class="navbar-text nav-link" active-class="active">Login</router-link>
-                <router-link v-if="!$auth.check()" to="/register" class="navbar-text nav-link" active-class="active">Register</router-link>
-                <li v-if="$auth.check()" @click.prevent="logout" ><a href="/" class="nav-link">Logout</a></li>
+                <!--Elements that show when not logged in-->
+                <router-link v-if="!$auth.check()" to="/login" class="navbar-text nav-link" active-class="active">
+                    Login
+                </router-link>
+                <router-link v-if="!$auth.check()" to="/register" class="navbar-text nav-link" active-class="active">
+                    Register
+                </router-link>
+
+                <!--Elements that show when a user is logged in-->
+                <router-link v-if="$auth.check()" to="/dashboard" class="navbar-text nav-link" active-class="active"><i class="fas fa-fire"></i>
+                    Dashboard
+                </router-link>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i>
+                        {{$auth.user().name}}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <router-link class="dropdown-item" tag="a" to="/user/profile">Profile</router-link>
+                        <router-link class="dropdown-item" tag="a" to="/user/account">Account Settings</router-link>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li v-if="$auth.check()" @click.prevent="logout"><a href="/" class="nav-link"><i
+                        class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -45,7 +56,7 @@
 <script>
     export default {
         methods: {
-            logout(){
+            logout() {
                 this.$auth.logout();
             }
         }
