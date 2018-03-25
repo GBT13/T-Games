@@ -31,13 +31,14 @@
                 </router-link>
 
                 <!--Elements that show when a user is logged in-->
-                <router-link v-if="$auth.check()" to="/dashboard" class="navbar-text nav-link" active-class="active"><i class="fas fa-fire"></i>
+                <router-link v-if="$auth.check()" to="/dashboard" class="navbar-text nav-link" active-class="active">
+                    <i class="fas fa-fire"></i>
                     Dashboard
                 </router-link>
                 <li v-if="$auth.check()" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i>
-                        {{$auth.user().name}}
+                        {{$auth.user().firstname}}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <router-link class="dropdown-item" tag="a" to="/user/profile">Profile</router-link>

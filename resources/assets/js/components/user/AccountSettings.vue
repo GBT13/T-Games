@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col">
                 <h1>Account Settings</h1>
-                <h2>Welcome {{$auth.user().name}}</h2>
+                <h2>Welcome {{$auth.user().firstname}}</h2>
             </div>
         </div>
     </div>

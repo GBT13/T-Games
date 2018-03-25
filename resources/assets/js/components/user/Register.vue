@@ -76,6 +76,9 @@
                     <div class="form-group input" :class="{invalid: $v.birthdate.$error}">
                         <label for="birthdate">Date of Birth</label>
                         <input class="form-control" type="date" name="birthdate" id="birthdate" @blur="$v.birthdate.$touch()" v-model="birthdate">
+                        <p v-if="!$v.birthdate.required && $v.birthdate.$dirty">This field must not be empty</p>
+                        <p v-if="!$v.birthdate.maxValue && $v.birthdate.$dirty">You cannot be born in the future</p>
+
                         <!--<pre>{{$v.birthdate}}</pre>-->
                     </div>
 
@@ -171,7 +174,7 @@
             birthdate: {
                 required,
                 // minValue: minValue(),
-                // maxValue: maxValue(new Date())
+                maxValue: maxValue(Date.now())
             }
         }
     }

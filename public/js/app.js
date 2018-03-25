@@ -28691,7 +28691,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -28702,6 +28702,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -28860,7 +28861,7 @@ var render = function() {
                         _c("i", { staticClass: "fas fa-user" }),
                         _vm._v(
                           "\n                    " +
-                            _vm._s(_vm.$auth.user().name) +
+                            _vm._s(_vm.$auth.user().firstname) +
                             "\n                "
                         )
                       ]
@@ -30284,6 +30285,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -30366,9 +30370,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         gender: { required: __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["required"] },
         birthdate: {
-            required: __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["required"]
+            required: __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["required"],
             // minValue: minValue(),
-            // maxValue: maxValue(new Date())
+            maxValue: Object(__WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["maxValue"])(Date.now())
         }
     }
 });
@@ -32065,7 +32069,15 @@ var render = function() {
                           _vm.birthdate = $event.target.value
                         }
                       }
-                    })
+                    }),
+                    _vm._v(" "),
+                    !_vm.$v.birthdate.required && _vm.$v.birthdate.$dirty
+                      ? _c("p", [_vm._v("This field must not be empty")])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    !_vm.$v.birthdate.maxValue && _vm.$v.birthdate.$dirty
+                      ? _c("p", [_vm._v("You cannot be born in the future")])
+                      : _vm._e()
                   ]
                 ),
                 _vm._v(" "),
@@ -32478,7 +32490,7 @@ var render = function() {
       _c("div", { staticClass: "col" }, [
         _c("h1", [_vm._v("Account Settings")]),
         _vm._v(" "),
-        _c("h2", [_vm._v("Welcome " + _vm._s(_vm.$auth.user().name))])
+        _c("h2", [_vm._v("Welcome " + _vm._s(_vm.$auth.user().firstname))])
       ])
     ])
   ])
