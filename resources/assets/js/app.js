@@ -7,10 +7,12 @@ import Register from './components/user/Register.vue';
 import Dashboard from './components/Dashboard.vue';
 import UserProfile from './components/user/Profile.vue';
 import AccountSettings from './components/user/AccountSettings.vue';
+import Vuelidate from 'vuelidate';
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
 Vue.use(VueRouter);
+Vue.use(Vuelidate);
 Vue.use(VueAxios, axios);
 
 axios.defaults.baseURL="/api";

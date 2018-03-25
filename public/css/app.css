@@ -9994,6 +9994,37 @@ a.text-dark:focus {
   }
 }
 
+.btn {
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 300px;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/**
+Used for orange main buttons
+ */
+
+.btn-orange {
+  background-color: #F05F40;
+  border-color: #F05F40;
+  color: white;
+}
+
+.btn-orange:hover,
+.btn-orange:focus,
+.btn-orange:active {
+  color: #fff;
+  background-color: #ee4b28 !important;
+}
+
+.btn-orange:active,
+.btn-orange:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
+          box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
