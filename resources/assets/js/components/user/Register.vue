@@ -240,29 +240,6 @@
 </script>
 
 <style scoped>
-    .input.invalid label {
-        color: red;
-    }
-
-    .input.invalid input {
-        border: 1px solid red;
-        background-color: lightcoral;
-    }
-
-    .input.invalid select {
-        border: 1px solid red;
-        background-color: lightcoral;
-    }
-
-    .input.invalid option {
-        background-color: white;
-    }
-
-    .card-header {
-        background-color: #f05f40;
-        color: white;
-    }
-
     #registrationFormHeader {
         margin-bottom: 10px;
     }

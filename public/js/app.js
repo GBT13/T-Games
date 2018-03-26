@@ -30185,7 +30185,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.input.invalid label[data-v-7b7f37ed] {\n    color: red;\n}\n.input.invalid input[data-v-7b7f37ed] {\n    border: 1px solid red;\n    background-color: lightcoral;\n}\n.input.invalid select[data-v-7b7f37ed] {\n    border: 1px solid red;\n    background-color: lightcoral;\n}\n.input.invalid option[data-v-7b7f37ed] {\n    background-color: white;\n}\n.card-header[data-v-7b7f37ed] {\n    background-color: #f05f40;\n    color: white;\n}\n#registrationFormHeader[data-v-7b7f37ed] {\n    margin-bottom: 10px;\n}\n", ""]);
+exports.push([module.i, "\n#registrationFormHeader[data-v-7b7f37ed] {\n    margin-bottom: 10px;\n}\n", ""]);
 
 // exports
 
@@ -32546,7 +32546,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\nimg.preview[data-v-7d26114f] {\n    max-height: 300px;\n    max-width: 1000px;\n    background-color: white;\n    border: 1px solid #DDD;\n    padding: 5px;\n    margin-bottom: 15px;\n}\n", ""]);
 
 // exports
 
@@ -32567,8 +32567,223 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            steamid: '',
+            psnName: '',
+            xboxGamertag: '',
+            originName: '',
+            uplayName: '',
+            battletag: '',
+            discord: '',
+            epicName: '',
+            nintendoNetworkId: '',
+            bio: this.$auth.user().bio,
+            selectedFile: null,
+            imageData: "" // we will store base64 format of image in this string
+        };
+    },
+
+    methods: {
+        updateProfile: function updateProfile() {
+            var formData = {
+                steamid: this.steamid,
+                psnName: this.psnName,
+                xboxGamertag: this.xboxGamertag,
+                originName: this.originName,
+                uplayName: this.uplayName,
+                battletag: this.battletag,
+                discord: this.discord,
+                epicName: this.epicName,
+                nintendoNetworkId: this.nintendoNetworkId
+            };
+        },
+        onFileSelected: function onFileSelected(event) {
+            this.selectedFile = event.target.files[0];
+        },
+        onUpload: function onUpload() {},
+        updateBioAndImages: function updateBioAndImages() {},
+
+
+        previewImage: function previewImage(event) {
+            var _this = this;
+
+            // https://jsfiddle.net/mani04/5zyozvx8/
+            // Reference to the DOM input element
+            var input = event.target;
+            // Ensure that you have a file before attempting to read it
+            if (input.files && input.files[0]) {
+                // create a new FileReader to read this image and convert to base64 format
+                var reader = new FileReader();
+                // Define a callback function to run, when FileReader finishes its job
+                reader.onload = function (e) {
+                    // Note: arrow function used here, so that "this.imageData" refers to the imageData of Vue component
+                    // Read image as base64 and set to imageData
+                    _this.imageData = e.target.result;
+                };
+                // Start the reader job - read file as a data url (base64 format)
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    }
+});
 
 /***/ }),
 /* 95 */
@@ -32578,19 +32793,520 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container-fluid" }, [
+    _c("div", { staticClass: "row" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-7" }, [
+        _c(
+          "form",
+          {
+            staticClass: "card-body",
+            attrs: { autocomplete: "off", method: "post" },
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.updateBioAndImages($event)
+              }
+            }
+          },
+          [
+            _c("h2", [
+              _vm._v(
+                "Make sure to enter an appealing bio and upload some pictures!"
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group input" }, [
+              _vm._v(
+                "\n                    Upload a profile picture:\n                    "
+              ),
+              _c("input", {
+                attrs: { type: "file", accept: "image/*" },
+                on: { change: _vm.previewImage }
+              })
+            ]),
+            _vm._v(" "),
+            _vm.imageData.length > 0
+              ? _c("div", { staticClass: "image-preview" }, [
+                  _c("img", {
+                    staticClass: "preview",
+                    attrs: { src: _vm.imageData }
+                  })
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group input" }, [
+              _c("label", { attrs: { for: "bio" } }, [_vm._v("Personal Bio")]),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.bio,
+                    expression: "bio"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  placeholder:
+                    '"Don\'t tell me your life story" - A wise old man',
+                  id: "bio",
+                  rows: "5"
+                },
+                domProps: { value: _vm.bio },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.bio = $event.target.value
+                  }
+                }
+              })
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            staticClass: "card-body",
+            attrs: { autocomplete: "off", method: "post" },
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.updateProfile($event)
+              }
+            }
+          },
+          [
+            _c("h2", [
+              _vm._v("Make sure to enter all of your online nicknames here!")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group input" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.steamid,
+                    expression: "steamid"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "url",
+                  placeholder: "https://steamcommunity.com/id/youridhere",
+                  id: "steamid"
+                },
+                domProps: { value: _vm.steamid },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.steamid = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group input" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.psnName,
+                    expression: "psnName"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  placeholder: "PSN Name here",
+                  id: "psnName"
+                },
+                domProps: { value: _vm.psnName },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.psnName = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group input" }, [
+              _vm._m(3),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.xboxGamertag,
+                    expression: "xboxGamertag"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  placeholder: "Xbox Gamertag here",
+                  id: "xboxGamertag"
+                },
+                domProps: { value: _vm.xboxGamertag },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.xboxGamertag = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "form-group input col-lg-4" }, [
+                _vm._m(4),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.discord,
+                      expression: "discord"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "xxx_noobslayer_xxx#1337",
+                    id: "discord"
+                  },
+                  domProps: { value: _vm.discord },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.discord = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group input col-lg-4" }, [
+                _vm._m(5),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.epicName,
+                      expression: "epicName"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Epic Game Launcher Name here",
+                    id: "epicName"
+                  },
+                  domProps: { value: _vm.epicName },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.epicName = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group input col-lg-4" }, [
+                _vm._m(6),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.nintendoNetworkId,
+                      expression: "nintendoNetworkId"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Nintendo Network Id here",
+                    id: "nintendoNetworkId"
+                  },
+                  domProps: { value: _vm.nintendoNetworkId },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.nintendoNetworkId = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "form-group input col-lg-4" }, [
+                _vm._m(7),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.originName,
+                      expression: "originName"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "EA Origin name here",
+                    id: "originName"
+                  },
+                  domProps: { value: _vm.originName },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.originName = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group input col-lg-4" }, [
+                _vm._m(8),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.uplayName,
+                      expression: "uplayName"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Uplay Name here",
+                    id: "uplayName"
+                  },
+                  domProps: { value: _vm.uplayName },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.uplayName = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group input col-lg-4" }, [
+                _vm._m(9),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.battletag,
+                      expression: "battletag"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    placeholder: "HealerMercy#0451",
+                    id: "battletag"
+                  },
+                  domProps: { value: _vm.battletag },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.battletag = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ])
+          ]
+        )
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container-fluid" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col" }, [
-          _c("h1", [_vm._v("User Profile page")])
+    return _c("div", { staticClass: "col-lg-5" }, [
+      _c("div", { staticClass: "card", staticStyle: { width: "18rem" } }, [
+        _c("img", {
+          staticClass: "card-img-top",
+          attrs: { src: "", alt: "Card image cap" }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("h5", { staticClass: "card-title" }, [_vm._v("Card title")]),
+          _vm._v(" "),
+          _c("p", { staticClass: "card-text" }, [
+            _vm._v(
+              "Some quick example text to build on the card title and make up the bulk of\n                        the card's content."
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("ul", { staticClass: "list-group list-group-flush" }, [
+          _c("li", { staticClass: "list-group-item" }, [
+            _vm._v("Cras justo odio")
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "list-group-item" }, [
+            _vm._v("Dapibus ac facilisis in")
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "list-group-item" }, [
+            _vm._v("Vestibulum at eros")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
+            _vm._v("Card link")
+          ]),
+          _vm._v(" "),
+          _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
+            _vm._v("Another link")
+          ])
         ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "steamid" } }, [
+      _c("i", {
+        staticClass: "fab fa-steam fa-2x",
+        staticStyle: { color: "#000025" }
+      }),
+      _vm._v(" Steam Community\n                        URL")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "psnName" } }, [
+      _c("i", {
+        staticClass: "fab fa-playstation fa-2x",
+        staticStyle: { color: "blue" }
+      }),
+      _vm._v(" Playstation\n                        Network Name")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "xboxGamertag" } }, [
+      _c("i", {
+        staticClass: "fab fa-xbox fa-2x",
+        staticStyle: { color: "green" }
+      }),
+      _vm._v(" Xbox\n                        Gamertag")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "discord" } }, [
+      _c("i", {
+        staticClass: "fab fa-discord fa-2x",
+        staticStyle: { color: "mediumpurple" }
+      }),
+      _vm._v("\n                            Discord Name")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "epicName" } }, [
+      _c("i", { staticClass: "fas fa-desktop fa-2x" }),
+      _vm._v(" Epic Game Launcher Name")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "nintendoNetworkId" } }, [
+      _c("i", {
+        staticClass: "fab fa-nintendo-switch fa-2x",
+        staticStyle: { color: "red" }
+      }),
+      _vm._v(" Nintendo Network Id")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "originName" } }, [
+      _c("i", { staticClass: "fas fa-trash-alt fa-2x" }),
+      _vm._v(" EA Origin Name")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "uplayName" } }, [
+      _c("i", { staticClass: "fas fa-desktop fa-2x" }),
+      _vm._v(" Uplay Name")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "battletag" } }, [
+      _c("i", { staticClass: "fas fa-desktop fa-2x" }),
+      _vm._v(" Blizzard Battletag")
     ])
   }
 ]

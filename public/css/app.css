@@ -13591,6 +13591,23 @@ readers do not read off random characters that represent icons */
   font-weight: 900;
 }
 
+/*!
+ * Font Awesome Free 5.0.8 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+
+@font-face {
+  font-family: 'Font Awesome 5 Brands';
+  font-style: normal;
+  font-weight: normal;
+  src: url(/fonts/fa-brands-400.eot?13db00b7a34fee4d819ab7f9838cc428);
+  src: url(/fonts/fa-brands-400.eot?13db00b7a34fee4d819ab7f9838cc428) format("embedded-opentype"), url(/fonts/fa-brands-400.woff2?e8c322de9658cbeb8a774b6624167c2c) format("woff2"), url(/fonts/fa-brands-400.woff?a046592bac8f2fd96e994733faf3858c) format("woff"), url(/fonts/fa-brands-400.ttf?c5ebe0b32dc1b5cc449a76c4204d13bb) format("truetype"), url(/fonts/fa-brands-400.svg?a1a749e89f578a49306ec2b055c073da) format("svg");
+}
+
+.fab {
+  font-family: 'Font Awesome 5 Brands';
+}
+
 .btn {
   font-weight: 700;
   text-transform: uppercase;
@@ -13620,6 +13637,29 @@ Used for orange main buttons
 .btn-orange:focus {
   -webkit-box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
           box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
+}
+
+.input.invalid label {
+  color: red;
+}
+
+.input.invalid input {
+  border: 1px solid red;
+  background-color: lightcoral;
+}
+
+.input.invalid select {
+  border: 1px solid red;
+  background-color: lightcoral;
+}
+
+.input.invalid option {
+  background-color: white;
+}
+
+.card-header {
+  background-color: #f05f40;
+  color: white;
 }
 
 .navbar-laravel {

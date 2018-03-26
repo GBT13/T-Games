@@ -23,3 +23,26 @@ Used for orange main buttons
 .btn-orange:active, .btn-orange:focus {
   box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
 }
+
+.input.invalid label {
+  color: red;
+}
+
+.input.invalid input {
+  border: 1px solid red;
+  background-color: lightcoral;
+}
+
+.input.invalid select {
+  border: 1px solid red;
+  background-color: lightcoral;
+}
+
+.input.invalid option {
+  background-color: white;
+}
+
+.card-header {
+  background-color: #f05f40;
+  color: white;
+}
