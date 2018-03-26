@@ -1,6 +1,6 @@
 <template>
 
-    <nav class="navbar navbar-custom navbar-expand-lg navbar-light bg-light ml-3 mr-3">
+    <nav class="navbar navbar-custom navbar-expand-lg navbar-light bg-light ml-3 mr-3" id="navbarHeader">
         <router-link to="/" class="navbar-brand" active-class="active"><a>T-Games</a></router-link>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,7 +23,7 @@
 
             <ul class="navbar-nav">
                 <!--Elements that show when not logged in-->
-                <router-link v-if="!$auth.check()" to="/login" class="navbar-text nav-link" active-class="active">
+                <router-link v-if="!$auth.check()" to="/login" class="navbar-text nav-link" active-class="active"><i class="fas fa-sign-in-alt"></i>
                     Login
                 </router-link>
                 <router-link v-if="!$auth.check()" to="/register" class="navbar-text nav-link" active-class="active">
@@ -67,5 +67,8 @@
 </script>
 
 <style scoped>
+    #navbarHeader{
+        background: transparent;
+    }
 
 </style>
