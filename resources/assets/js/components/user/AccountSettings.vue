@@ -1,7 +1,8 @@
 <template>
     <div class="container-fluid">
         <div class="row card-header justify-content-center">
-            <h3>Welcome to your profile page {{$auth.user().firstname + ' ' + $auth.user().lastname | capitalize}}</h3>
+            <h3>Welcome to your account settings page {{$auth.user().firstname + ' ' + $auth.user().lastname |
+                capitalize}}</h3>
         </div>
         <div class="row">
             <div class="col-lg-3" style="padding: 0">
@@ -9,15 +10,12 @@
                     <img class="card-img-top" src="" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">{{$auth.user().firstname | capitalize}}'s Account Settings</h5>
-                        <p class="card-text">This if your Account Settings page. You'll find a lot of different opions
-                            to fill in
-                            your very own profile! From entering a detailed bio and uploading the perfect image of
-                            yourself to filling out all of your gamertags</p>
+                        <p class="card-text">This is your Account Settings page. You'll find all of the same data you've entered when registering your account.
+                            You're able to modify every field to make changes to your account at your own discretion.
+                            </p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><a href="#peronsalBio">Picture and Bio</a></li>
-                        <li class="list-group-item"><a href="#gamertags">Gamertags</a></li>
-                        <li class="list-group-item"><a href="#playedGames">Games you play</a></li>
+                        <li class="list-group-item"><a href="#accountDetails">Account details</a></li>
                     </ul>
                     <div class="card-body">
                         <a href="#" class="card-link">Card link</a>
@@ -28,9 +26,9 @@
 
             <!--Bio and Pictures form-->
             <div class="col-lg-9">
-                <form autocomplete="off" @submit.prevent="updateProfile" method="post" class="card-body">
-                    <div id="peronsalBio"></div>
-                    <h2>Enter an appealing bio and upload a profile picture!</h2>
+                <form autocomplete="off" @submit.prevent="updateAccount" method="post" class="card-body">
+                    <div id="accountDetails"></div>
+                    <h2>You can make changes to your account details here</h2>
 
 
                     <!--Name input fields-->
@@ -78,9 +76,9 @@
                                 type="password"
                                 id="password"
                                 class="form-control"
+                                placeholder="Leave empty for unchanged"
                                 v-model="password"
                                 @blur="$v.password.$touch()">
-                        <p v-if="!$v.password.required && $v.password.$dirty">This field must not be empty</p>
                         <p v-if="!$v.password.minLength && $v.password.$dirty">Your password must contain at least 6
                             characters</p>
                         <p v-if="!$v.password.maxLength && $v.password.$dirty">Your password may not contain more
@@ -94,11 +92,9 @@
                                 type="password"
                                 id="confirmedPassword"
                                 class="form-control"
+                                placeholder="Leave empty for unchanged"
                                 v-model="confirmedPassword"
                                 @blur="$v.confirmedPassword.$touch()">
-                        <p v-if="!$v.confirmedPassword.required && $v.confirmedPassword.$dirty">This field must not
-                            be
-                            empty</p>
                         <p v-if="!$v.confirmedPassword.sameAs && $v.confirmedPassword.$dirty">The passwords do not
                             match</p>
                         <p v-if="!$v.confirmedPassword.minLength && $v.confirmedPassword.$dirty">Your password must
@@ -136,7 +132,7 @@
 
                     <div class="row">
                         <div class="col text-center">
-                            <button type="submit" class="btn btn-orange">Save Settings</button>
+                            <button type="submit" class="btn btn-orange" :disabled="$v.$invalid">Save Settings</button>
                         </div>
                     </div>
 
@@ -152,19 +148,39 @@
     export default {
         data() {
             return {
-                firstname: '',
-                lastname: '',
-                email: '',
+                firstname: this.$auth.user().firstname,
+                lastname: this.$auth.user().lastname,
+                email: this.$auth.user().email,
                 password: '',
                 confirmedPassword: '',
-                birthdate: '',
-                gender: '',
+                birthdate: this.$auth.user().birthdate,
+                gender: this.$auth.user().gender,
                 error: false,
                 errors: {},
                 success: false,
                 pending: false
             }
         },
+        methods: {
+            updateAccount(){
+                this.pending = true;
+                let formData = {
+                    firstname: this.firstname,
+                    lastname: this.lastname,
+                    email: this.email,
+                    password: this.password,
+                    gender: this.gender,
+                    birthdate: this.birthdate
+                };
+                axios.patch('/user/updateaccount', formData).then(response => {
+                    this.pending = false;
+                    this.$auth.fetch();
+                }).catch(error => {
+                    this.pending = false;
+                })
+            },
+        },
+
         /**
          * Form validations through vuelidate
          */
@@ -186,13 +202,11 @@
             firstname: {required},
             lastname: {required},
             password: {
-                required,
                 minLength: minLength(6),
                 maxLength: maxLength(100)
             },
             confirmedPassword: {
                 sameAs: sameAs('password'),
-                required,
                 minLength: minLength(6),
                 maxLength: maxLength(100)
             },

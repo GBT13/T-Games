@@ -23,7 +23,7 @@ class ProfileController extends Controller {
             'status' => 'error',
             'error' => 'processing.error',
             'msg' => 'Internal server error occurred'
-        ], 400);
+        ], 500);
 
     }
 

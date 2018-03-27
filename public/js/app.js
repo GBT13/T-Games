@@ -32028,7 +32028,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.selectedFile = event.target.files[0];
         },
         onUpload: function onUpload() {},
-        updateBioAndImages: function updateBioAndImages() {},
 
 
         previewImage: function previewImage(event) {
@@ -32719,7 +32718,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -32876,28 +32875,46 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            firstname: '',
-            lastname: '',
-            email: '',
+            firstname: this.$auth.user().firstname,
+            lastname: this.$auth.user().lastname,
+            email: this.$auth.user().email,
             password: '',
             confirmedPassword: '',
-            birthdate: '',
-            gender: '',
+            birthdate: this.$auth.user().birthdate,
+            gender: this.$auth.user().gender,
             error: false,
             errors: {},
             success: false,
             pending: false
         };
+    },
+
+    methods: {
+        updateAccount: function updateAccount() {
+            var _this = this;
+
+            this.pending = true;
+            var formData = {
+                firstname: this.firstname,
+                lastname: this.lastname,
+                email: this.email,
+                password: this.password,
+                gender: this.gender,
+                birthdate: this.birthdate
+            };
+            axios.patch('/user/updateaccount', formData).then(function (response) {
+                _this.pending = false;
+                _this.$auth.fetch();
+            }).catch(function (error) {
+                _this.pending = false;
+            });
+        }
     },
 
     /**
@@ -32921,13 +32938,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         firstname: { required: __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["required"] },
         lastname: { required: __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["required"] },
         password: {
-            required: __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["required"],
             minLength: Object(__WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["minLength"])(6),
             maxLength: Object(__WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["maxLength"])(100)
         },
         confirmedPassword: {
             sameAs: Object(__WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["sameAs"])('password'),
-            required: __WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["required"],
             minLength: Object(__WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["minLength"])(6),
             maxLength: Object(__WEBPACK_IMPORTED_MODULE_0_vuelidate_lib_validators__["maxLength"])(100)
         },
@@ -32952,7 +32967,7 @@ var render = function() {
     _c("div", { staticClass: "row card-header justify-content-center" }, [
       _c("h3", [
         _vm._v(
-          "Welcome to your profile page " +
+          "Welcome to your account settings page " +
             _vm._s(
               _vm._f("capitalize")(
                 _vm.$auth.user().firstname + " " + _vm.$auth.user().lastname
@@ -32980,7 +32995,7 @@ var render = function() {
             _vm._v(" "),
             _c("p", { staticClass: "card-text" }, [
               _vm._v(
-                "This if your Account Settings page. You'll find a lot of different opions\n                        to fill in\n                        your very own profile! From entering a detailed bio and uploading the perfect image of\n                        yourself to filling out all of your gamertags"
+                "This is your Account Settings page. You'll find all of the same data you've entered when registering your account.\n                        You're able to modify every field to make changes to your account at your own discretion.\n                        "
               )
             ])
           ]),
@@ -33000,15 +33015,15 @@ var render = function() {
             on: {
               submit: function($event) {
                 $event.preventDefault()
-                return _vm.updateProfile($event)
+                return _vm.updateAccount($event)
               }
             }
           },
           [
-            _c("div", { attrs: { id: "peronsalBio" } }),
+            _c("div", { attrs: { id: "accountDetails" } }),
             _vm._v(" "),
             _c("h2", [
-              _vm._v("Enter an appealing bio and upload a profile picture!")
+              _vm._v("You can make changes to your account details here")
             ]),
             _vm._v(" "),
             _c(
@@ -33164,7 +33179,11 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "password", id: "password" },
+                  attrs: {
+                    type: "password",
+                    id: "password",
+                    placeholder: "Leave empty for unchanged"
+                  },
                   domProps: { value: _vm.password },
                   on: {
                     blur: function($event) {
@@ -33178,10 +33197,6 @@ var render = function() {
                     }
                   }
                 }),
-                _vm._v(" "),
-                !_vm.$v.password.required && _vm.$v.password.$dirty
-                  ? _c("p", [_vm._v("This field must not be empty")])
-                  : _vm._e(),
                 _vm._v(" "),
                 !_vm.$v.password.minLength && _vm.$v.password.$dirty
                   ? _c("p", [
@@ -33222,7 +33237,11 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "password", id: "confirmedPassword" },
+                  attrs: {
+                    type: "password",
+                    id: "confirmedPassword",
+                    placeholder: "Leave empty for unchanged"
+                  },
                   domProps: { value: _vm.confirmedPassword },
                   on: {
                     blur: function($event) {
@@ -33236,15 +33255,6 @@ var render = function() {
                     }
                   }
                 }),
-                _vm._v(" "),
-                !_vm.$v.confirmedPassword.required &&
-                _vm.$v.confirmedPassword.$dirty
-                  ? _c("p", [
-                      _vm._v(
-                        "This field must not\n                        be\n                        empty"
-                      )
-                    ])
-                  : _vm._e(),
                 _vm._v(" "),
                 !_vm.$v.confirmedPassword.sameAs &&
                 _vm.$v.confirmedPassword.$dirty
@@ -33379,7 +33389,18 @@ var render = function() {
               ]
             ),
             _vm._v(" "),
-            _vm._m(2)
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col text-center" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-orange",
+                    attrs: { type: "submit", disabled: _vm.$v.$invalid }
+                  },
+                  [_vm._v("Save Settings")]
+                )
+              ])
+            ])
           ]
         )
       ])
@@ -33393,17 +33414,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("ul", { staticClass: "list-group list-group-flush" }, [
       _c("li", { staticClass: "list-group-item" }, [
-        _c("a", { attrs: { href: "#peronsalBio" } }, [
-          _vm._v("Picture and Bio")
+        _c("a", { attrs: { href: "#accountDetails" } }, [
+          _vm._v("Account details")
         ])
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _c("a", { attrs: { href: "#gamertags" } }, [_vm._v("Gamertags")])
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _c("a", { attrs: { href: "#playedGames" } }, [_vm._v("Games you play")])
       ])
     ])
   },
@@ -33418,20 +33431,6 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
         _vm._v("Another link")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col text-center" }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-orange", attrs: { type: "submit" } },
-          [_vm._v("Save Settings")]
-        )
       ])
     ])
   }

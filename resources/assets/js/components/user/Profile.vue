@@ -225,10 +225,6 @@
 
             },
 
-            updateBioAndImages() {
-
-            },
-
             previewImage: function (event) {
                 // https://jsfiddle.net/mani04/5zyozvx8/
                 // Reference to the DOM input element
