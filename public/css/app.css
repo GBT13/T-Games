@@ -13662,6 +13662,16 @@ Used for orange main buttons
   color: white;
 }
 
+.background-gradient {
+  background: -webkit-gradient(linear, left top, right bottom, from(#f05f40), to(#ff7d4f));
+  background: linear-gradient(to bottom right, #f05f40, #ff7d4f);
+  height: calc(100vh - 55px);
+}
+
+.btn-xl {
+  padding: 1rem 2rem;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

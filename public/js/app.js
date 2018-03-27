@@ -28866,10 +28866,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     methods: {
@@ -28891,7 +28887,7 @@ var render = function() {
     "nav",
     {
       staticClass:
-        "navbar navbar-custom navbar-expand-lg navbar-light bg-light ml-3 mr-3",
+        "navbar navbar-custom navbar-expand-lg navbar-light bg-light ml-3 mr-3  ",
       attrs: { id: "navbarHeader" }
     },
     [
@@ -28905,12 +28901,6 @@ var render = function() {
       ),
       _vm._v(" "),
       _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "navbar-text nav-justified justify-content-center" },
-        [_vm._v("\n        Centered Icon thing\n    ")]
-      ),
       _vm._v(" "),
       _c(
         "div",
@@ -29237,7 +29227,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\nbody[data-v-85ef4954],\nhtml[data-v-85ef4954] {\n    width: 100%;\n    height: 100%;\n}\nbody[data-v-85ef4954] {\n    font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;\n}\nhr[data-v-85ef4954] {\n    max-width: 50px;\n    border-width: 3px;\n    border-color: #F05F40;\n}\nhr.light[data-v-85ef4954] {\n    border-color: #fff;\n}\na[data-v-85ef4954] {\n    color: #F05F40;\n    -webkit-transition: all 0.2s;\n    transition: all 0.2s;\n}\na[data-v-85ef4954]:hover {\n    color: #f05f40;\n}\nh1[data-v-85ef4954],\nh2[data-v-85ef4954],\nh3[data-v-85ef4954],\nh4[data-v-85ef4954],\nh5[data-v-85ef4954],\nh6[data-v-85ef4954] {\n    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;\n}\n.bg-primary[data-v-85ef4954] {\n    background-color: #F05F40 !important;\n}\n.bg-dark[data-v-85ef4954] {\n    background-color: #212529 !important;\n}\n.text-faded[data-v-85ef4954] {\n    color: rgba(255, 255, 255, 0.7);\n}\nsection[data-v-85ef4954] {\n    padding: 8rem 0;\n}\n.section-heading[data-v-85ef4954] {\n    margin-top: 0;\n}\n[data-v-85ef4954]::-moz-selection {\n    color: #fff;\n    background: #212529;\n    text-shadow: none;\n}\n[data-v-85ef4954]::selection {\n    color: #fff;\n    background: #212529;\n    text-shadow: none;\n}\nimg[data-v-85ef4954]::-moz-selection {\n    color: #fff;\n    background: transparent;\n}\nimg[data-v-85ef4954]::selection {\n    color: #fff;\n    background: transparent;\n}\nimg[data-v-85ef4954]::-moz-selection {\n    color: #fff;\n    background: transparent;\n}\nheader.masthead[data-v-85ef4954] {\n    padding-top: 10rem;\n    padding-bottom: calc(10rem - 56px);\n    background-image: url(\"/images/homebackground.bmp\");\n    background-position: center center;\n    background-size: cover;\n}\nheader.masthead hr[data-v-85ef4954] {\n    margin-top: 30px;\n    margin-bottom: 30px;\n}\nheader.masthead h1[data-v-85ef4954] {\n    font-size: 2rem;\n}\nheader.masthead p[data-v-85ef4954] {\n    font-weight: 300;\n}\n@media (min-width: 768px) {\nheader.masthead p[data-v-85ef4954] {\n        font-size: 1.15rem;\n}\n}\n@media (min-width: 992px) {\nheader.masthead[data-v-85ef4954] {\n        height: 100vh;\n        min-height: 650px;\n        padding-top: 0;\n        padding-bottom: 0;\n}\nheader.masthead h1[data-v-85ef4954] {\n        font-size: 3rem;\n}\n}\n@media (min-width: 1200px) {\nheader.masthead h1[data-v-85ef4954] {\n        font-size: 4rem;\n}\n}\n.service-box[data-v-85ef4954] {\n    max-width: 400px;\n}\n.portfolio-box[data-v-85ef4954] {\n    position: relative;\n    display: block;\n    max-width: 650px;\n    margin: 0 auto;\n}\n.portfolio-box .portfolio-box-caption[data-v-85ef4954] {\n    position: absolute;\n    bottom: 0;\n    display: block;\n    width: 100%;\n    height: 100%;\n    text-align: center;\n    opacity: 0;\n    color: #fff;\n    background: rgba(240, 95, 64, 0.9);\n    -webkit-transition: all 0.2s;\n    transition: all 0.2s;\n}\n.portfolio-box .portfolio-box-caption .portfolio-box-caption-content[data-v-85ef4954] {\n    position: absolute;\n    top: 50%;\n    width: 100%;\n    -webkit-transform: translateY(-50%);\n            transform: translateY(-50%);\n    text-align: center;\n}\n.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category[data-v-85ef4954],\n.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name[data-v-85ef4954] {\n    padding: 0 15px;\n    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;\n}\n.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category[data-v-85ef4954] {\n    font-size: 14px;\n    font-weight: 600;\n    text-transform: uppercase;\n}\n.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name[data-v-85ef4954] {\n    font-size: 18px;\n}\n.portfolio-box:hover .portfolio-box-caption[data-v-85ef4954] {\n    opacity: 1;\n}\n.portfolio-box[data-v-85ef4954]:focus {\n    outline: none;\n}\n@media (min-width: 768px) {\n.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category[data-v-85ef4954] {\n        font-size: 16px;\n}\n.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name[data-v-85ef4954] {\n        font-size: 22px;\n}\n}\n.text-primary[data-v-85ef4954] {\n    color: #F05F40 !important;\n}\n.btn[data-v-85ef4954] {\n    font-weight: 700;\n    text-transform: uppercase;\n    border: none;\n    border-radius: 300px;\n    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;\n}\n.btn-xl[data-v-85ef4954] {\n    padding: 1rem 2rem;\n}\n.btn-primary[data-v-85ef4954] {\n    background-color: #F05F40;\n    border-color: #F05F40;\n    color: white;\n}\n.btn-primary[data-v-85ef4954]:hover, .btn-primary[data-v-85ef4954]:focus, .btn-primary[data-v-85ef4954]:active {\n    color: #fff;\n    background-color: #ee4b28 !important;\n}\n.btn-primary[data-v-85ef4954]:active, .btn-primary[data-v-85ef4954]:focus {\n    -webkit-box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;\n            box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;\n}\n\n", ""]);
+exports.push([module.i, "\nbody[data-v-85ef4954],\nhtml[data-v-85ef4954] {\n    width: 100%;\n    height: 100%;\n}\nbody[data-v-85ef4954] {\n    font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;\n}\nhr[data-v-85ef4954] {\n    max-width: 50px;\n    border-width: 3px;\n    border-color: #F05F40;\n}\nhr.light[data-v-85ef4954] {\n    border-color: #fff;\n}\na[data-v-85ef4954] {\n    color: #F05F40;\n    -webkit-transition: all 0.2s;\n    transition: all 0.2s;\n}\na[data-v-85ef4954]:hover {\n    color: #f05f40;\n}\nh1[data-v-85ef4954],\nh2[data-v-85ef4954],\nh3[data-v-85ef4954],\nh4[data-v-85ef4954],\nh5[data-v-85ef4954],\nh6[data-v-85ef4954] {\n    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;\n}\n.bg-primary[data-v-85ef4954] {\n    background-color: #F05F40 !important;\n}\n.bg-dark[data-v-85ef4954] {\n    background-color: #212529 !important;\n}\n.text-faded[data-v-85ef4954] {\n    color: rgba(255, 255, 255, 0.7);\n}\nsection[data-v-85ef4954] {\n    padding: 8rem 0;\n}\n.section-heading[data-v-85ef4954] {\n    margin-top: 0;\n}\n[data-v-85ef4954]::-moz-selection {\n    color: #fff;\n    background: #212529;\n    text-shadow: none;\n}\n[data-v-85ef4954]::selection {\n    color: #fff;\n    background: #212529;\n    text-shadow: none;\n}\nimg[data-v-85ef4954]::-moz-selection {\n    color: #fff;\n    background: transparent;\n}\nimg[data-v-85ef4954]::selection {\n    color: #fff;\n    background: transparent;\n}\nimg[data-v-85ef4954]::-moz-selection {\n    color: #fff;\n    background: transparent;\n}\nheader.masthead[data-v-85ef4954] {\n    padding-top: 10rem;\n    padding-bottom: calc(10rem - 56px);\n    background-image: url(\"/images/homebackground.bmp\");\n    background-position: center center;\n    background-size: cover;\n}\nheader.masthead hr[data-v-85ef4954] {\n    margin-top: 30px;\n    margin-bottom: 30px;\n}\nheader.masthead h1[data-v-85ef4954] {\n    font-size: 2rem;\n}\nheader.masthead p[data-v-85ef4954] {\n    font-weight: 300;\n}\n@media (min-width: 768px) {\nheader.masthead p[data-v-85ef4954] {\n        font-size: 1.15rem;\n}\n}\n@media (min-width: 992px) {\nheader.masthead[data-v-85ef4954] {\n        height: 100vh;\n        min-height: 650px;\n        padding-top: 0;\n        padding-bottom: 0;\n}\nheader.masthead h1[data-v-85ef4954] {\n        font-size: 3rem;\n}\n}\n@media (min-width: 1200px) {\nheader.masthead h1[data-v-85ef4954] {\n        font-size: 4rem;\n}\n}\n.service-box[data-v-85ef4954] {\n    max-width: 400px;\n}\n.portfolio-box[data-v-85ef4954] {\n    position: relative;\n    display: block;\n    max-width: 650px;\n    margin: 0 auto;\n}\n.portfolio-box .portfolio-box-caption[data-v-85ef4954] {\n    position: absolute;\n    bottom: 0;\n    display: block;\n    width: 100%;\n    height: 100%;\n    text-align: center;\n    opacity: 0;\n    color: #fff;\n    background: rgba(240, 95, 64, 0.9);\n    -webkit-transition: all 0.2s;\n    transition: all 0.2s;\n}\n.portfolio-box .portfolio-box-caption .portfolio-box-caption-content[data-v-85ef4954] {\n    position: absolute;\n    top: 50%;\n    width: 100%;\n    -webkit-transform: translateY(-50%);\n            transform: translateY(-50%);\n    text-align: center;\n}\n.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category[data-v-85ef4954],\n.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name[data-v-85ef4954] {\n    padding: 0 15px;\n    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;\n}\n.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category[data-v-85ef4954] {\n    font-size: 14px;\n    font-weight: 600;\n    text-transform: uppercase;\n}\n.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name[data-v-85ef4954] {\n    font-size: 18px;\n}\n.portfolio-box:hover .portfolio-box-caption[data-v-85ef4954] {\n    opacity: 1;\n}\n.portfolio-box[data-v-85ef4954]:focus {\n    outline: none;\n}\n@media (min-width: 768px) {\n.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category[data-v-85ef4954] {\n        font-size: 16px;\n}\n.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name[data-v-85ef4954] {\n        font-size: 22px;\n}\n}\n.text-primary[data-v-85ef4954] {\n    color: #F05F40 !important;\n}\n.btn[data-v-85ef4954] {\n    font-weight: 700;\n    text-transform: uppercase;\n    border: none;\n    border-radius: 300px;\n    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;\n}\n.btn-primary[data-v-85ef4954] {\n    background-color: #F05F40;\n    border-color: #F05F40;\n    color: white;\n}\n.btn-primary[data-v-85ef4954]:hover, .btn-primary[data-v-85ef4954]:focus, .btn-primary[data-v-85ef4954]:active {\n    color: #fff;\n    background-color: #ee4b28 !important;\n}\n.btn-primary[data-v-85ef4954]:active, .btn-primary[data-v-85ef4954]:focus {\n    -webkit-box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;\n            box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;\n}\n\n", ""]);
 
 // exports
 
@@ -31789,7 +31779,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\nimg.preview[data-v-7d26114f] {\n    max-height: 300px;\n    max-width: 1000px;\n    background-color: white;\n    border: 1px solid #DDD;\n    padding: 5px;\n    margin-bottom: 15px;\n}\n", ""]);
+exports.push([module.i, "\nimg.preview[data-v-7d26114f] {\n    max-height: 300px;\n    max-width: 1000px;\n    background-color: white;\n    border: 1px solid #DDD;\n    padding: 5px;\n    margin-bottom: 15px;\n}\n.card-header[data-v-7d26114f]{\n    border-radius: 0;\n    background: -webkit-gradient(linear, left top, right bottom, from(#f05f40), to(#ff7d4f));\n    background: linear-gradient(to bottom right, #f05f40, #ff7d4f);\n}\n\n\n", ""]);
 
 // exports
 
@@ -31800,6 +31790,9 @@ exports.push([module.i, "\nimg.preview[data-v-7d26114f] {\n    max-height: 300px
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -32037,10 +32030,18 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid" }, [
+    _c("div", { staticClass: "row card-header justify-content-center" }, [
+      _c("h3", [
+        _vm._v(
+          "Welcome to your profile page " + _vm._s(_vm.$auth.user().firstname)
+        )
+      ])
+    ]),
+    _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _vm._m(0),
       _vm._v(" "),
-      _c("div", { staticClass: "col-lg-7" }, [
+      _c("div", { staticClass: "col-lg-9" }, [
         _c(
           "form",
           {
@@ -32413,48 +32414,52 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-5" }, [
-      _c("div", { staticClass: "card", staticStyle: { width: "18rem" } }, [
-        _c("img", {
-          staticClass: "card-img-top",
-          attrs: { src: "", alt: "Card image cap" }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("h5", { staticClass: "card-title" }, [_vm._v("Card title")]),
+    return _c(
+      "div",
+      { staticClass: "col-lg-3", staticStyle: { padding: "0" } },
+      [
+        _c("div", { staticClass: "card", staticStyle: { width: "18rem" } }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: "", alt: "Card image cap" }
+          }),
           _vm._v(" "),
-          _c("p", { staticClass: "card-text" }, [
-            _vm._v(
-              "Some quick example text to build on the card title and make up the bulk of\n                        the card's content."
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("ul", { staticClass: "list-group list-group-flush" }, [
-          _c("li", { staticClass: "list-group-item" }, [
-            _vm._v("Cras justo odio")
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", { staticClass: "card-title" }, [_vm._v("Card title")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text" }, [
+              _vm._v(
+                "Some quick example text to build on the card title and make up the bulk of\n                        the card's content."
+              )
+            ])
           ]),
           _vm._v(" "),
-          _c("li", { staticClass: "list-group-item" }, [
-            _vm._v("Dapibus ac facilisis in")
+          _c("ul", { staticClass: "list-group list-group-flush" }, [
+            _c("li", { staticClass: "list-group-item" }, [
+              _vm._v("Cras justo odio")
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "list-group-item" }, [
+              _vm._v("Dapibus ac facilisis in")
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "list-group-item" }, [
+              _vm._v("Vestibulum at eros")
+            ])
           ]),
           _vm._v(" "),
-          _c("li", { staticClass: "list-group-item" }, [
-            _vm._v("Vestibulum at eros")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
-            _vm._v("Card link")
-          ]),
-          _vm._v(" "),
-          _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
-            _vm._v("Another link")
+          _c("div", { staticClass: "card-body" }, [
+            _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
+              _vm._v("Card link")
+            ]),
+            _vm._v(" "),
+            _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
+              _vm._v("Another link")
+            ])
           ])
         ])
-      ])
-    ])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -32789,7 +32794,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*.background-gradient{*/\n/*align-items: center;*/\n/*}*/\n", ""]);
 
 // exports
 
@@ -32800,6 +32805,11 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -32819,18 +32829,33 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container-fluid" }, [
-      _c("h1", [_vm._v("404 Page not found")])
+  return _c("div", { staticClass: "container-fluid" }, [
+    _c("div", { staticClass: "background-gradient row align-items-center" }, [
+      _c(
+        "div",
+        { staticClass: "col text-center", staticStyle: { color: "white" } },
+        [
+          _c("h1", [_vm._v("404 Page not found")]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-light btn-xl",
+              staticStyle: { color: "#F05F40" },
+              on: {
+                click: function($event) {
+                  _vm.$router.back()
+                }
+              }
+            },
+            [_vm._v("Go Back")]
+          )
+        ]
+      )
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

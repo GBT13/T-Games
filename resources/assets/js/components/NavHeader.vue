@@ -1,15 +1,11 @@
 <template>
 
-    <nav class="navbar navbar-custom navbar-expand-lg navbar-light bg-light ml-3 mr-3" id="navbarHeader">
+    <nav class="navbar navbar-custom navbar-expand-lg navbar-light bg-light ml-3 mr-3  " id="navbarHeader">
         <router-link to="/" class="navbar-brand" active-class="active"><a>T-Games</a></router-link>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="navbar-text nav-justified justify-content-center">
-            Centered Icon thing
-        </div>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">

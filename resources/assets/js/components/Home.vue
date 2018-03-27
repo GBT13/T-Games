@@ -419,9 +419,6 @@
         font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
     }
 
-    .btn-xl {
-        padding: 1rem 2rem;
-    }
 
     .btn-primary {
         background-color: #F05F40;

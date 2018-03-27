@@ -1,7 +1,10 @@
 <template>
     <div class="container-fluid">
+        <div class="row card-header justify-content-center">
+            <h3>Welcome to your profile page {{$auth.user().firstname}}</h3>
+        </div>
         <div class="row">
-            <div class="col-lg-5">
+            <div class="col-lg-3" style="padding: 0">
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="" alt="Card image cap">
                     <div class="card-body">
@@ -22,7 +25,7 @@
             </div>
 
             <!--Bio and Pictures form-->
-            <div class="col-lg-7">
+            <div class="col-lg-9">
                 <form autocomplete="off" @submit.prevent="updateBioAndImages" method="post" class="card-body">
                     <h2>Make sure to enter an appealing bio and upload some pictures!</h2>
 
@@ -239,4 +242,11 @@
         padding: 5px;
         margin-bottom: 15px;
     }
+
+    .card-header{
+        border-radius: 0;
+        background: linear-gradient(to bottom right, #f05f40, #ff7d4f);
+    }
+
+
 </style>

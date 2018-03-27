@@ -46,3 +46,12 @@ Used for orange main buttons
   background-color: #f05f40;
   color: white;
 }
+
+.background-gradient{
+  background: linear-gradient(to bottom right, #f05f40, #ff7d4f);
+  height: calc(100vh - 55px);
+}
+
+.btn-xl {
+  padding: 1rem 2rem;
+}
