@@ -25672,6 +25672,17 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_10_vuelidate___default.a);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_12_vue_axios___default.a, __WEBPACK_IMPORTED_MODULE_11_axios___default.a);
 
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.filter('capitalize', function (value) {
+    if (!value) return '';
+
+    var splitString = value.toString().split(" ");
+    splitString.forEach(function (element, index) {
+        splitString[index] = element.charAt(0).toUpperCase() + element.slice(1);
+    });
+
+    return splitString.join(" ");
+});
+
 __WEBPACK_IMPORTED_MODULE_11_axios___default.a.defaults.baseURL = "/api";
 
 /**
@@ -31779,7 +31790,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\nimg.preview[data-v-7d26114f] {\n    max-height: 300px;\n    max-width: 1000px;\n    background-color: white;\n    border: 1px solid #DDD;\n    padding: 5px;\n    margin-bottom: 15px;\n}\n.card-header[data-v-7d26114f]{\n    border-radius: 0;\n    background: -webkit-gradient(linear, left top, right bottom, from(#f05f40), to(#ff7d4f));\n    background: linear-gradient(to bottom right, #f05f40, #ff7d4f);\n}\n\n\n", ""]);
+exports.push([module.i, "\nimg.preview[data-v-7d26114f] {\n    max-height: 300px;\n    max-width: 1000px;\n    background-color: white;\n    border: 1px solid #DDD;\n    padding: 5px;\n    margin-bottom: 15px;\n}\n.card-header[data-v-7d26114f] {\n    border-radius: 0;\n    background: -webkit-gradient(linear, left top, right bottom, from(#f05f40), to(#ff7d4f));\n    background: linear-gradient(to bottom right, #f05f40, #ff7d4f);\n}\n\n\n", ""]);
 
 // exports
 
@@ -31790,6 +31801,8 @@ exports.push([module.i, "\nimg.preview[data-v-7d26114f] {\n    max-height: 300px
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
 //
@@ -31958,6 +31971,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -31971,7 +31989,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             discord: '',
             epicName: '',
             nintendoNetworkId: '',
-            bio: this.$auth.user().bio,
+            bio: '',
             selectedFile: null,
             imageData: "" // we will store base64 format of image in this string
         };
@@ -32018,6 +32036,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 reader.readAsDataURL(input.files[0]);
             }
         }
+    },
+    created: function created() {
+        var _this2 = this;
+
+        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/user/' + this.$auth.user().id + '/profile').then(function (data) {
+            _this2.bio = data.data.bioText;
+            _this2.steamid = data.data.steamname;
+            _this2.psnName = data.data.playstationname;
+            _this2.xboxGamertag = data.data.xboxname;
+            _this2.discord = data.data.discordname;
+            _this2.epicName = data.data.epicname;
+            _this2.nintendoNetworkId = data.data.nintendoname;
+            _this2.originName = data.data.eaname;
+            _this2.uplayName = data.data.uplay;
+            _this2.battletag = data.data.blizzardname;
+        }).catch(function (error) {
+            console.log(error);
+        });
     }
 });
 
@@ -32033,13 +32069,44 @@ var render = function() {
     _c("div", { staticClass: "row card-header justify-content-center" }, [
       _c("h3", [
         _vm._v(
-          "Welcome to your profile page " + _vm._s(_vm.$auth.user().firstname)
+          "Welcome to your profile page " +
+            _vm._s(
+              _vm._f("capitalize")(
+                _vm.$auth.user().firstname + " " + _vm.$auth.user().lastname
+              )
+            )
         )
       ])
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "col-lg-3", staticStyle: { padding: "0" } }, [
+        _c("div", { staticClass: "card sticky-top" }, [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: "", alt: "Card image cap" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h5", { staticClass: "card-title" }, [
+              _vm._v(
+                _vm._s(_vm._f("capitalize")(_vm.$auth.user().firstname)) +
+                  "'s Profile"
+              )
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "card-text" }, [
+              _vm._v(
+                "This if your profile page. You'll find a lot of different opions to fill in\n                        your very own profile! From entering a detailed bio and uploading the perfect image of\n                        yourself to filling out all of your gamertags"
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._m(1)
+        ])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-lg-9" }, [
         _c(
@@ -32055,6 +32122,8 @@ var render = function() {
             }
           },
           [
+            _c("div", { attrs: { id: "peronsalBio" } }),
+            _vm._v(" "),
             _c("h2", [
               _vm._v(
                 "Make sure to enter an appealing bio and upload some pictures!"
@@ -32126,12 +32195,14 @@ var render = function() {
             }
           },
           [
+            _c("div", { attrs: { id: "gamertags" } }),
+            _vm._v(" "),
             _c("h2", [
               _vm._v("Make sure to enter all of your online nicknames here!")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group input" }, [
-              _vm._m(1),
+              _vm._m(2),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -32161,7 +32232,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group input" }, [
-              _vm._m(2),
+              _vm._m(3),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -32191,7 +32262,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group input" }, [
-              _vm._m(3),
+              _vm._m(4),
               _vm._v(" "),
               _c("input", {
                 directives: [
@@ -32222,7 +32293,7 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "form-group input col-lg-4" }, [
-                _vm._m(4),
+                _vm._m(5),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -32252,7 +32323,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group input col-lg-4" }, [
-                _vm._m(5),
+                _vm._m(6),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -32282,7 +32353,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group input col-lg-4" }, [
-                _vm._m(6),
+                _vm._m(7),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -32314,7 +32385,7 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "form-group input col-lg-4" }, [
-                _vm._m(7),
+                _vm._m(8),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -32344,7 +32415,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group input col-lg-4" }, [
-                _vm._m(8),
+                _vm._m(9),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -32374,7 +32445,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group input col-lg-4" }, [
-                _vm._m(9),
+                _vm._m(10),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -32414,52 +32485,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "col-lg-3", staticStyle: { padding: "0" } },
-      [
-        _c("div", { staticClass: "card", staticStyle: { width: "18rem" } }, [
-          _c("img", {
-            staticClass: "card-img-top",
-            attrs: { src: "", alt: "Card image cap" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("h5", { staticClass: "card-title" }, [_vm._v("Card title")]),
-            _vm._v(" "),
-            _c("p", { staticClass: "card-text" }, [
-              _vm._v(
-                "Some quick example text to build on the card title and make up the bulk of\n                        the card's content."
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("ul", { staticClass: "list-group list-group-flush" }, [
-            _c("li", { staticClass: "list-group-item" }, [
-              _vm._v("Cras justo odio")
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "list-group-item" }, [
-              _vm._v("Dapibus ac facilisis in")
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "list-group-item" }, [
-              _vm._v("Vestibulum at eros")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
-              _vm._v("Card link")
-            ]),
-            _vm._v(" "),
-            _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
-              _vm._v("Another link")
-            ])
-          ])
+    return _c("ul", { staticClass: "list-group list-group-flush" }, [
+      _c("li", { staticClass: "list-group-item" }, [
+        _c("a", { attrs: { href: "#peronsalBio" } }, [
+          _vm._v("Picture and Bio")
         ])
-      ]
-    )
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "list-group-item" }, [
+        _c("a", { attrs: { href: "#gamertags" } }, [_vm._v("Gamertags")])
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "list-group-item" }, [
+        _c("a", { attrs: { href: "#playedGames" } }, [_vm._v("Games you play")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body" }, [
+      _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
+        _vm._v("Card link")
+      ]),
+      _vm._v(" "),
+      _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
+        _vm._v("Another link")
+      ])
+    ])
   },
   function() {
     var _vm = this

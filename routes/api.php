@@ -25,6 +25,8 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('auth/user', 'AuthController@user');
     Route::post('auth/logout', 'AuthController@logout');
 
+    Route::get('user/{id}/profile', 'ProfileController@getProfileByUser');
+
 });
 
 Route::group(['middleware' => 'jwt.refresh'], function () {

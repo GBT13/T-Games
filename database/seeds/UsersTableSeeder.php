@@ -19,7 +19,8 @@ class UsersTableSeeder extends Seeder
             'password'=>bcrypt('TestTestTest'),
             'birthdate'=>'1995-04-21',
             'gender'=>'MALE',
-            'bio'=>'Blabla bio placeholder here Lorem ipsum etc.'
+            'profile_id' => 1
+
         ]);
 
         factory(App\User::class, 19)->create();

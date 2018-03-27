@@ -22,5 +22,6 @@ $factory->define(App\User::class, function (Faker $faker) {
         'birthdate' => $faker->date(),
         'gender' => $faker->randomElement(['MALE', 'FEMALE']),
         'remember_token' => str_random(10),
+        'profile_id' => random_int(2, 20)
     ];
 });

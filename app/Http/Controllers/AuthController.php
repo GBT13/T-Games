@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterFormRequest;
+use App\Profile;
 use App\User;
 use Auth;
 use Hash;
@@ -53,10 +54,11 @@ class AuthController extends Controller {
 
     public function user(Request $request) {
         $user = User::find(Auth::user()->id);
+        $profile = $user->profile()->get();
 
         return response([
             'status' => 'success',
-            'data' => $user
+            'data' => $user,
         ]);
     }
 

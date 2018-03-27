@@ -16,6 +16,17 @@ Vue.use(VueRouter);
 Vue.use(Vuelidate);
 Vue.use(VueAxios, axios);
 
+Vue.filter('capitalize', function (value) {
+    if (!value) return '';
+
+    let splitString = value.toString().split(" ");
+    splitString.forEach((element, index) => {
+        splitString[index] = element.charAt(0).toUpperCase() + element.slice(1);
+    });
+
+    return splitString.join(" ");
+});
+
 axios.defaults.baseURL = "/api";
 
 /**

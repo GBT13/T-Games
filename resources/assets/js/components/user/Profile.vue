@@ -1,21 +1,22 @@
 <template>
     <div class="container-fluid">
         <div class="row card-header justify-content-center">
-            <h3>Welcome to your profile page {{$auth.user().firstname}}</h3>
+            <h3>Welcome to your profile page {{$auth.user().firstname + ' ' + $auth.user().lastname | capitalize}}</h3>
         </div>
         <div class="row">
             <div class="col-lg-3" style="padding: 0">
-                <div class="card" style="width: 18rem;">
+                <div class="card sticky-top">
                     <img class="card-img-top" src="" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
+                        <h5 class="card-title">{{$auth.user().firstname | capitalize}}'s Profile</h5>
+                        <p class="card-text">This if your profile page. You'll find a lot of different opions to fill in
+                            your very own profile! From entering a detailed bio and uploading the perfect image of
+                            yourself to filling out all of your gamertags</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item"><a href="#peronsalBio">Picture and Bio</a></li>
+                        <li class="list-group-item"><a href="#gamertags">Gamertags</a></li>
+                        <li class="list-group-item"><a href="#playedGames">Games you play</a></li>
                     </ul>
                     <div class="card-body">
                         <a href="#" class="card-link">Card link</a>
@@ -27,6 +28,7 @@
             <!--Bio and Pictures form-->
             <div class="col-lg-9">
                 <form autocomplete="off" @submit.prevent="updateBioAndImages" method="post" class="card-body">
+                    <div id="peronsalBio"></div>
                     <h2>Make sure to enter an appealing bio and upload some pictures!</h2>
 
 
@@ -56,6 +58,7 @@
 
                 <!--Gamertag Form-->
                 <form autocomplete="off" @submit.prevent="updateProfile" method="post" class="card-body">
+                    <div id="gamertags"></div>
                     <h2>Make sure to enter all of your online nicknames here!</h2>
 
                     <!--Main gamertag input fields-->
@@ -167,6 +170,8 @@
 </template>
 
 <script>
+    import axios from 'axios';
+
     export default {
         data() {
             return {
@@ -179,7 +184,7 @@
                 discord: '',
                 epicName: '',
                 nintendoNetworkId: '',
-                bio: this.$auth.user().bio,
+                bio: '',
                 selectedFile: null,
                 imageData: ""  // we will store base64 format of image in this string
             }
@@ -229,6 +234,22 @@
                     reader.readAsDataURL(input.files[0]);
                 }
             }
+        },
+        created(){
+            axios.get('/user/'+this.$auth.user().id + '/profile').then(data =>{
+                this.bio = data.data.bioText;
+                this.steamid = data.data.steamname;
+                this.psnName = data.data.playstationname;
+                this.xboxGamertag = data.data.xboxname;
+                this.discord = data.data.discordname;
+                this.epicName = data.data.epicname;
+                this.nintendoNetworkId = data.data.nintendoname;
+                this.originName = data.data.eaname;
+                this.uplayName = data.data.uplay;
+                this.battletag = data.data.blizzardname;
+            }).catch(error =>{
+                console.log(error)
+            })
         }
     }
 </script>
@@ -243,7 +264,7 @@
         margin-bottom: 15px;
     }
 
-    .card-header{
+    .card-header {
         border-radius: 0;
         background: linear-gradient(to bottom right, #f05f40, #ff7d4f);
     }
