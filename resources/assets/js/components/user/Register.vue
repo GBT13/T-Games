@@ -130,7 +130,7 @@
 
                         <div class="row">
                             <div class="col text-center">
-                                <button type="submit" class="btn btn-orange" :disabled="$v.$invalid">Register</button>
+                                <button type="submit" class="btn btn-orange" :disabled="$v.$invalid || pending">Register</button>
                             </div>
                         </div>
                     </form>
@@ -144,7 +144,6 @@
 
 <script>
     import {required, email, numeric, minValue, maxValue, minLength, maxLength, sameAs} from 'vuelidate/lib/validators'
-    import axios from 'axios'
 
     export default {
 

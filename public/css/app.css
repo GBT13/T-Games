@@ -13582,7 +13582,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 900;
   src: url(/fonts/fa-solid-900.eot?8e3c7f5520f5ae906c6cf6d7f3ddcd19);
-  src: url(/fonts/fa-solid-900.eot?8e3c7f5520f5ae906c6cf6d7f3ddcd19) format("embedded-opentype"), url(/fonts/fa-solid-900.woff2?0ab54153eeeca0ce03978cc463b257f7) format("woff2"), url(/fonts/fa-solid-900.woff?faff92145777a3cbaf8e7367b4807987) format("woff"), url(/fonts/fa-solid-900.ttf?b87b9ba532ace76ae9f6edfe9f72ded2) format("truetype"), url(/fonts/fa-solid-900.svg?962a1bf31c081691065fe333d9fa8105) format("svg");
+  src: url(/fonts/fa-solid-900.eot?8e3c7f5520f5ae906c6cf6d7f3ddcd19) format("embedded-opentype"), url(/fonts/fa-solid-900.woff2?0ab54153eeeca0ce03978cc463b257f7) format("woff2"), url(/fonts/fa-solid-900.woff?faff92145777a3cbaf8e7367b4807987) format("woff"), url(/fonts/fa-solid-900.ttf?b87b9ba532ace76ae9f6edfe9f72ded2) format("truetype"), url(/fonts/fa-solid-900.svg?448f2aaa315fa9dce7b2cf6ce31caed6) format("svg");
 }
 
 .fa,
@@ -13601,7 +13601,7 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: normal;
   src: url(/fonts/fa-brands-400.eot?13db00b7a34fee4d819ab7f9838cc428);
-  src: url(/fonts/fa-brands-400.eot?13db00b7a34fee4d819ab7f9838cc428) format("embedded-opentype"), url(/fonts/fa-brands-400.woff2?e8c322de9658cbeb8a774b6624167c2c) format("woff2"), url(/fonts/fa-brands-400.woff?a046592bac8f2fd96e994733faf3858c) format("woff"), url(/fonts/fa-brands-400.ttf?c5ebe0b32dc1b5cc449a76c4204d13bb) format("truetype"), url(/fonts/fa-brands-400.svg?a1a749e89f578a49306ec2b055c073da) format("svg");
+  src: url(/fonts/fa-brands-400.eot?13db00b7a34fee4d819ab7f9838cc428) format("embedded-opentype"), url(/fonts/fa-brands-400.woff2?e8c322de9658cbeb8a774b6624167c2c) format("woff2"), url(/fonts/fa-brands-400.woff?a046592bac8f2fd96e994733faf3858c) format("woff"), url(/fonts/fa-brands-400.ttf?c5ebe0b32dc1b5cc449a76c4204d13bb) format("truetype"), url(/fonts/fa-brands-400.svg?65363c4d55617bbeb57d8ce6dcd46099) format("svg");
 }
 
 .fab {
