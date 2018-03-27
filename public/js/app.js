@@ -32247,7 +32247,7 @@ var render = function() {
                         : _vm._e(),
                       _vm._v(" "),
                       !_vm.$v.confirmedPassword.minLength &&
-                      _vm.$v.password.$dirty
+                      _vm.$v.confirmedPassword.$dirty
                         ? _c("p", [
                             _vm._v(
                               "Your password must contain\n                            at\n                            least 6 characters"
@@ -32256,7 +32256,7 @@ var render = function() {
                         : _vm._e(),
                       _vm._v(" "),
                       !_vm.$v.confirmedPassword.maxLength &&
-                      _vm.$v.password.$dirty
+                      _vm.$v.confirmedPassword.$dirty
                         ? _c("p", [
                             _vm._v(
                               "Your password may not\n                            contain\n                            more than 100 characters"

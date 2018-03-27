@@ -96,10 +96,10 @@
                                 empty</p>
                             <p v-if="!$v.confirmedPassword.sameAs && $v.confirmedPassword.$dirty">The passwords do not
                                 match</p>
-                            <p v-if="!$v.confirmedPassword.minLength && $v.password.$dirty">Your password must contain
+                            <p v-if="!$v.confirmedPassword.minLength && $v.confirmedPassword.$dirty">Your password must contain
                                 at
                                 least 6 characters</p>
-                            <p v-if="!$v.confirmedPassword.maxLength && $v.password.$dirty">Your password may not
+                            <p v-if="!$v.confirmedPassword.maxLength && $v.confirmedPassword.$dirty">Your password may not
                                 contain
                                 more than 100 characters</p>
 
