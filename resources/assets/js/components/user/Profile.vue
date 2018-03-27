@@ -261,7 +261,8 @@
                 this.uplayName = data.data.uplayName;
                 this.battletag = data.data.battletag;
             }).catch(error => {
-                console.log(error)
+                console.log(error);
+                alert('Something went wrong with updating your profile');
             })
         }
     }

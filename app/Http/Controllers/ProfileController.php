@@ -7,17 +7,24 @@ use App\User;
 use Illuminate\Http\Request;
 use Response;
 
-class ProfileController extends Controller
-{
-    public function getProfileByUser($id){
+class ProfileController extends Controller {
+    public function getProfileByUser($id) {
         return User::findOrFail($id)->profile()->first();
     }
 
-    public function updateProfile(Request $request){
-       $profile =  $this->getProfileByUser($request['userId']);
-       $profile->update($request->all());
+    public function updateProfile(Request $request) {
+        $profile = $this->getProfileByUser($request['userId']);
 
-        return $profile;
+        if ($profile->update($request->all())){
+            return $profile;
+        }
+
+        else return response([
+            'status' => 'error',
+            'error' => 'processing.error',
+            'msg' => 'Internal server error occurred'
+        ], 400);
+
     }
 
 }
