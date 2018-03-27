@@ -13,14 +13,14 @@ class ProfileTableSeeder extends Seeder
     public function run()
     {
         Profile::create([
-            'bioText'=>'Random bio bla bla leuke lange bio hiero top top top great great great',
-            'steamname' => 'https://steamcommunity.com/id/Testman',
-            'playstationname' => 'Testpsn',
-            'xboxname' => 'TestXbox',
-            'discordname' => 'testdiscord',
-            'nintendoname' => 'testnintendo',
-            'eaname' => 'testorigin',
-            'blizzardname'=> 'testblizzard'
+            'bio'=>'Random bio bla bla leuke lange bio hiero top top top great great great',
+            'steamid' => 'https://steamcommunity.com/id/Testman',
+            'psnName' => 'Testpsn',
+            'xboxGamertag' => 'TestXbox',
+            'discord' => 'testdiscord',
+            'nintendoNetworkId' => 'testnintendo',
+            'originName' => 'testorigin',
+            'battletag'=> 'testblizzard'
         ]);
 
         factory(App\Profile::class, 19)->create();

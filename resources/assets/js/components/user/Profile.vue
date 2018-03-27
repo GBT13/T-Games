@@ -27,9 +27,9 @@
 
             <!--Bio and Pictures form-->
             <div class="col-lg-9">
-                <form autocomplete="off" @submit.prevent="updateBioAndImages" method="post" class="card-body">
+                <form autocomplete="off" @submit.prevent="updateProfile" method="post" class="card-body">
                     <div id="peronsalBio"></div>
-                    <h2>Make sure to enter an appealing bio and upload some pictures!</h2>
+                    <h2>Enter an appealing bio and upload a profile picture!</h2>
 
 
                     <div class="form-group input">
@@ -53,11 +53,8 @@
                         </textarea>
                     </div>
 
-                </form>
 
-
-                <!--Gamertag Form-->
-                <form autocomplete="off" @submit.prevent="updateProfile" method="post" class="card-body">
+                    <!--Gamertag Fields-->
                     <div id="gamertags"></div>
                     <h2>Make sure to enter all of your online nicknames here!</h2>
 
@@ -162,6 +159,12 @@
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col text-center">
+                            <button type="submit" class="btn btn-orange" :disabled="pending">Save Profile</button>
+                        </div>
+                    </div>
+
                 </form>
 
             </div>
@@ -185,13 +188,17 @@
                 epicName: '',
                 nintendoNetworkId: '',
                 bio: '',
+                profilePicture: '',
                 selectedFile: null,
-                imageData: ""  // we will store base64 format of image in this string
+                imageData: "",  // we will store base64 format of image in this string
+                pending: false
             }
         },
         methods: {
             updateProfile() {
+                this.pending = true;
                 let formData = {
+                    userId: this.$auth.user().id,
                     steamid: this.steamid,
                     psnName: this.psnName,
                     xboxGamertag: this.xboxGamertag,
@@ -200,8 +207,14 @@
                     battletag: this.battletag,
                     discord: this.discord,
                     epicName: this.epicName,
-                    nintendoNetworkId: this.nintendoNetworkId
-                }
+                    nintendoNetworkId: this.nintendoNetworkId,
+                    bio: this.bio
+                };
+                axios.patch('/user/updateprofile', formData).then(response => {
+                    this.pending = false;
+                }).catch(error => {
+                    this.pending = false;
+                })
             },
 
             onFileSelected(event) {
@@ -235,19 +248,19 @@
                 }
             }
         },
-        created(){
-            axios.get('/user/'+this.$auth.user().id + '/profile').then(data =>{
-                this.bio = data.data.bioText;
-                this.steamid = data.data.steamname;
-                this.psnName = data.data.playstationname;
-                this.xboxGamertag = data.data.xboxname;
-                this.discord = data.data.discordname;
-                this.epicName = data.data.epicname;
-                this.nintendoNetworkId = data.data.nintendoname;
-                this.originName = data.data.eaname;
-                this.uplayName = data.data.uplay;
-                this.battletag = data.data.blizzardname;
-            }).catch(error =>{
+        created() {
+            axios.get('/user/' + this.$auth.user().id + '/profile').then(data => {
+                this.bio = data.data.bio;
+                this.steamid = data.data.steamid;
+                this.psnName = data.data.psnName;
+                this.xboxGamertag = data.data.xboxGamertag;
+                this.discord = data.data.discord;
+                this.epicName = data.data.epicName;
+                this.nintendoNetworkId = data.data.nintendoNetworkId;
+                this.originName = data.data.originName;
+                this.uplayName = data.data.uplayName;
+                this.battletag = data.data.battletag;
+            }).catch(error => {
                 console.log(error)
             })
         }

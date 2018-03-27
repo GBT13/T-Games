@@ -26,6 +26,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::post('auth/logout', 'AuthController@logout');
 
     Route::get('user/{id}/profile', 'ProfileController@getProfileByUser');
+    Route::patch('user/updateprofile', 'ProfileController@updateProfile');
 
 });
 

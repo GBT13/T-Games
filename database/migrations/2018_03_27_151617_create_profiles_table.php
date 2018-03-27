@@ -16,16 +16,16 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('imageLocation')->nullable();
-            $table->text('bioText')->nullable();
-            $table->text('steamname')->nullable();
-            $table->text('playstationname')->nullable();
-            $table->text('xboxname')->nullable();
-            $table->text('discordname')->nullable();
-            $table->text('epicname')->nullable();
-            $table->text('nintendoname')->nullable();
-            $table->text('eaname')->nullable();
-            $table->text('uplayname')->nullable();
-            $table->text('blizzardname')->nullable();
+            $table->text('bio')->nullable();
+            $table->string('steamid')->nullable();
+            $table->string('psnName')->nullable();
+            $table->string('xboxGamertag')->nullable();
+            $table->string('originName')->nullable();
+            $table->string('uplayName')->nullable();
+            $table->string('battletag')->nullable();
+            $table->string('discord')->nullable();
+            $table->string('epicName')->nullable();
+            $table->string('nintendoNetworkId')->nullable();
             $table->integer('country_id')->unsigned()->nullable();
             $table->timestamps();
         });

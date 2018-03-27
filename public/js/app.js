@@ -31974,6 +31974,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -31990,14 +31993,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             epicName: '',
             nintendoNetworkId: '',
             bio: '',
+            profilePicture: '',
             selectedFile: null,
-            imageData: "" // we will store base64 format of image in this string
+            imageData: "", // we will store base64 format of image in this string
+            pending: false
         };
     },
 
     methods: {
         updateProfile: function updateProfile() {
+            var _this = this;
+
+            this.pending = true;
             var formData = {
+                userId: this.$auth.user().id,
                 steamid: this.steamid,
                 psnName: this.psnName,
                 xboxGamertag: this.xboxGamertag,
@@ -32006,8 +32015,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 battletag: this.battletag,
                 discord: this.discord,
                 epicName: this.epicName,
-                nintendoNetworkId: this.nintendoNetworkId
+                nintendoNetworkId: this.nintendoNetworkId,
+                bio: this.bio
             };
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('/user/updateprofile', formData).then(function (response) {
+                _this.pending = false;
+            }).catch(function (error) {
+                _this.pending = false;
+            });
         },
         onFileSelected: function onFileSelected(event) {
             this.selectedFile = event.target.files[0];
@@ -32017,7 +32032,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
         previewImage: function previewImage(event) {
-            var _this = this;
+            var _this2 = this;
 
             // https://jsfiddle.net/mani04/5zyozvx8/
             // Reference to the DOM input element
@@ -32030,7 +32045,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 reader.onload = function (e) {
                     // Note: arrow function used here, so that "this.imageData" refers to the imageData of Vue component
                     // Read image as base64 and set to imageData
-                    _this.imageData = e.target.result;
+                    _this2.imageData = e.target.result;
                 };
                 // Start the reader job - read file as a data url (base64 format)
                 reader.readAsDataURL(input.files[0]);
@@ -32038,19 +32053,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     created: function created() {
-        var _this2 = this;
+        var _this3 = this;
 
         __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/user/' + this.$auth.user().id + '/profile').then(function (data) {
-            _this2.bio = data.data.bioText;
-            _this2.steamid = data.data.steamname;
-            _this2.psnName = data.data.playstationname;
-            _this2.xboxGamertag = data.data.xboxname;
-            _this2.discord = data.data.discordname;
-            _this2.epicName = data.data.epicname;
-            _this2.nintendoNetworkId = data.data.nintendoname;
-            _this2.originName = data.data.eaname;
-            _this2.uplayName = data.data.uplay;
-            _this2.battletag = data.data.blizzardname;
+            _this3.bio = data.data.bio;
+            _this3.steamid = data.data.steamid;
+            _this3.psnName = data.data.psnName;
+            _this3.xboxGamertag = data.data.xboxGamertag;
+            _this3.discord = data.data.discord;
+            _this3.epicName = data.data.epicName;
+            _this3.nintendoNetworkId = data.data.nintendoNetworkId;
+            _this3.originName = data.data.originName;
+            _this3.uplayName = data.data.uplayName;
+            _this3.battletag = data.data.battletag;
         }).catch(function (error) {
             console.log(error);
         });
@@ -32117,7 +32132,7 @@ var render = function() {
             on: {
               submit: function($event) {
                 $event.preventDefault()
-                return _vm.updateBioAndImages($event)
+                return _vm.updateProfile($event)
               }
             }
           },
@@ -32125,9 +32140,7 @@ var render = function() {
             _c("div", { attrs: { id: "peronsalBio" } }),
             _vm._v(" "),
             _c("h2", [
-              _vm._v(
-                "Make sure to enter an appealing bio and upload some pictures!"
-              )
+              _vm._v("Enter an appealing bio and upload a profile picture!")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group input" }, [
@@ -32178,23 +32191,8 @@ var render = function() {
                   }
                 }
               })
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "form",
-          {
-            staticClass: "card-body",
-            attrs: { autocomplete: "off", method: "post" },
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                return _vm.updateProfile($event)
-              }
-            }
-          },
-          [
+            ]),
+            _vm._v(" "),
             _c("div", { attrs: { id: "gamertags" } }),
             _vm._v(" "),
             _c("h2", [
@@ -32472,6 +32470,19 @@ var render = function() {
                     }
                   }
                 })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col text-center" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-orange",
+                    attrs: { type: "submit", disabled: _vm.pending }
+                  },
+                  [_vm._v("Save Profile")]
+                )
               ])
             ])
           ]

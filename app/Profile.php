@@ -8,17 +8,17 @@ class Profile extends Model
 {
     protected $fillable = [
         'image_location',
-        'bioText',
+        'bio',
         'country_id',
-        'steamname',
-        'playstationname',
-        'xboxname',
-        'discordname',
-        'epicname',
-        'nintendoname',
-        'eaname',
-        'uplayname',
-        'blizzardname'
+        'steamid',
+        'psnName',
+        'xboxGamertag',
+        'originName',
+        'uplayName',
+        'battletag',
+        'discord',
+        'epicName',
+        'nintendoNetworkId',
     ];
 
     public function country(){

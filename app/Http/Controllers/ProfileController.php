@@ -13,4 +13,11 @@ class ProfileController extends Controller
         return User::findOrFail($id)->profile()->first();
     }
 
+    public function updateProfile(Request $request){
+       $profile =  $this->getProfileByUser($request['userId']);
+       $profile->update($request->all());
+
+        return $profile;
+    }
+
 }
