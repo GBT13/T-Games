@@ -7,6 +7,10 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
+        <div class="navbar-text nav-justified justify-content-center">
+            Centered Icon thing
+        </div>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">

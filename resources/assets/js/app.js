@@ -7,6 +7,7 @@ import Register from './components/user/Register.vue';
 import Dashboard from './components/Dashboard.vue';
 import UserProfile from './components/user/Profile.vue';
 import AccountSettings from './components/user/AccountSettings.vue';
+import PageNotFound from './components/PageNotFound.vue';
 import Vuelidate from 'vuelidate';
 import axios from 'axios'
 import VueAxios from 'vue-axios'
@@ -15,7 +16,7 @@ Vue.use(VueRouter);
 Vue.use(Vuelidate);
 Vue.use(VueAxios, axios);
 
-axios.defaults.baseURL="/api";
+axios.defaults.baseURL = "/api";
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -37,6 +38,7 @@ const router = new VueRouter({
         {path: '/dashboard', name: 'dashboard', component: Dashboard, meta: {auth: true}},
         {path: '/user/profile', name: 'userProfile', component: UserProfile, meta: {auth: true}},
         {path: '/user/account', name: 'userDetails', component: AccountSettings, meta: {auth: true}},
+        {path: "*", name: 'page404', component: PageNotFound}
 
     ]
 });
