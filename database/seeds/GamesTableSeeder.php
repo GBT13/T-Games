@@ -18,9 +18,16 @@ class GamesTableSeeder extends Seeder {
         } catch (\Illuminate\Contracts\Filesystem\FileNotFoundException $e) {
 
         }
-        $data = json_decode($json, true);
+
+//        Use the associative array option to save time if you actually have all the used columns the same way in your database
+        $data = json_decode($json);
         foreach ($data as $game) {
-            Game::create($game);
+            Game::create(array(
+                'appid' => $game->appid,
+                'name' => $game->name,
+                'developer' => $game->developer,
+                'publisher' => $game->publisher
+            ));
         }
 
     }

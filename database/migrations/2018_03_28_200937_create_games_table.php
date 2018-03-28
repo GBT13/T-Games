@@ -18,7 +18,7 @@ class CreateGamesTable extends Migration
             $table->integer('appid')->unsigned();
             $table->string('name');
             $table->string('developer');
-            $table->string('publisher');
+            $table->string('publisher')->nullable();
             $table->timestamps();
         });
     }
