@@ -29,4 +29,8 @@ class Profile extends Model
         return $this->hasOne('App\User');
     }
 
+    public function games(){
+        return $this->belongsToMany('App\Game');
+    }
+
 }

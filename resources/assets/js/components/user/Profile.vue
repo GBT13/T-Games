@@ -53,6 +53,8 @@
                         </textarea>
                     </div>
 
+                    <!--TODO: Make cool spacers in between the seperate form sections-->
+                    <hr>
 
                     <!--Gamertag Fields-->
                     <div id="gamertags"></div>
@@ -159,6 +161,24 @@
                         </div>
                     </div>
 
+                    <!--TODO: Make cool spacers in between the seperate form sections-->
+                    <hr>
+
+                    <!--Played Games Section-->
+                    <div id="playedGames">
+                        <h2>Select the games you want to play with other people!</h2>
+
+                        
+
+                        <ul class="list-group">
+                            <li class="list-group-item">Cras justo odio</li>
+                            <li class="list-group-item">Dapibus ac facilisis in</li>
+                            <li class="list-group-item">Morbi leo risus</li>
+                            <li class="list-group-item">Porta ac consectetur ac</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                        </ul>
+                    </div>
+
                     <div class="row">
                         <div class="col text-center">
                             <button type="submit" class="btn btn-orange" :disabled="pending">Save Profile</button>
@@ -189,6 +209,7 @@
                 nintendoNetworkId: '',
                 bio: '',
                 profilePicture: '',
+                gamesList: [],
                 selectedFile: null,
                 imageData: "",  // we will store base64 format of image in this string
                 pending: false
@@ -259,7 +280,14 @@
             }).catch(error => {
                 console.log(error);
                 alert('Something went wrong with updating your profile');
+            });
+            axios.get('/games/all/names').then(data => {
+                this.gamesList = data;
+            }).catch(error => {
+                console.log(error);
+                alert('Something went wrong with getting the games list')
             })
+
         }
     }
 </script>
