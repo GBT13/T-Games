@@ -5,27 +5,26 @@
                 capitalize}}</h3>
         </div>
         <div class="row">
-            <div class="col-lg-3" style="padding: 0">
-                <div class="card sticky-top">
-                    <img class="card-img-top" src="" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">{{$auth.user().firstname | capitalize}}'s Account Settings</h5>
-                        <p class="card-text">This is your Account Settings page. You'll find all of the same data you've entered when registering your account.
-                            You're able to modify every field to make changes to your account at your own discretion.
-                            </p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><a href="#accountDetails">Account details</a></li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
-                </div>
+            <!--<div class="col-lg-2" style="padding: 0">-->
+                <!--<div class="card sticky-top">-->
+                    <!--<div class="card-body">-->
+                        <!--<h5 class="card-title">{{$auth.user().firstname | capitalize}}'s Account Settings</h5>-->
+                        <!--<p class="card-text">This is your Account Settings page. You'll find all of the same data you've entered when registering your account.-->
+                            <!--You're able to modify every field to make changes to your account at your own discretion.-->
+                            <!--</p>-->
+                    <!--</div>-->
+                    <!--<ul class="list-group list-group-flush">-->
+                        <!--<li class="list-group-item"><a href="#accountDetails">Account details</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <div class="col-lg-2">
+
             </div>
 
             <!--Bio and Pictures form-->
-            <div class="col-lg-9">
+            <div class="col-lg-8">
                 <form autocomplete="off" @submit.prevent="updateAccount" method="post" class="card-body">
                     <div id="accountDetails"></div>
                     <h2>You can make changes to your account details here</h2>
@@ -132,12 +131,17 @@
 
                     <div class="row">
                         <div class="col text-center">
-                            <button type="submit" class="btn btn-orange" :disabled="$v.$invalid">Save Settings</button>
+                            <button type="submit" class="btn btn-orange" :disabled="$v.$invalid || pending">Save Settings</button>
                         </div>
                     </div>
 
                 </form>
             </div>
+
+            <div class="col-lg-2">
+
+            </div>
+
         </div>
     </div>
 </template>
@@ -175,8 +179,10 @@
                 axios.patch('/user/updateaccount', formData).then(response => {
                     this.pending = false;
                     this.$auth.fetch();
+                    this.$toastr.s('Your account details have been successfully saved!');
                 }).catch(error => {
                     this.pending = false;
+                    this.$toastr.e('An error occurred while saving your accound details');
                 })
             },
         },

@@ -24,6 +24,7 @@
         "jquery": "^3.3.1",
         "vue-router": "^3.0.1",
         "vue-select": "^2.0.0",
+        "vue-toastr": "^2.0.12",
         "vuelidate": "^0.6.2",
         "vuex": "^3.0.1"
     }

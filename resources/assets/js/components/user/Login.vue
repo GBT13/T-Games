@@ -81,6 +81,7 @@
                     error: function () {
                         this.error = true;
                         this.pending = false;
+                        this.$toastr.e('Login Failed');
                     },
                     rememberMe: true,
                     redirect: '/dashboard',

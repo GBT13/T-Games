@@ -191,6 +191,7 @@
                         this.pending = false;
                         this.error = true;
                         this.errors = resp.response.data.errors;
+                        this.$toastr.e('Registration Failed');
                     },
                     redirect: null
                 });

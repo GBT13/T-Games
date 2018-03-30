@@ -10,6 +10,7 @@ import AccountSettings from './components/user/AccountSettings.vue';
 import PageNotFound from './components/PageNotFound.vue';
 import Vuelidate from 'vuelidate';
 import axios from 'axios'
+import Toastr from 'vue-toastr';
 import VueAxios from 'vue-axios'
 import VueSelect from 'vue-select';
 
@@ -17,6 +18,8 @@ Vue.use(VueRouter);
 Vue.use(Vuelidate);
 Vue.use(VueAxios, axios);
 Vue.use(VueSelect);
+Vue.use(Toastr);
+
 
 Vue.filter('capitalize', function (value) {
     if (!value) return '';
@@ -38,6 +41,7 @@ axios.defaults.baseURL = "/api";
  */
 
 require('./bootstrap');
+require('vue-toastr/src/vue-toastr.scss');
 
 window.Vue = require('vue');
 
@@ -85,5 +89,10 @@ App.router = Vue.router;
 
 const app = new Vue({
     el: '#app',
-    router
+    router,
+    mounted(){
+        this.$toastr.defaultProgressBar = false;
+        this.$toastr.defaultPosition = 'toast-bottom-center'
+    }
+
 });

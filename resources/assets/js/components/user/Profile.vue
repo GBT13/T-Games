@@ -4,29 +4,29 @@
             <h3>Welcome to your profile page {{$auth.user().firstname + ' ' + $auth.user().lastname | capitalize}}</h3>
         </div>
         <div class="row">
-            <div class="col-lg-3" style="padding: 0">
-                <div class="card sticky-top">
-                    <img class="card-img-top" src="" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">{{$auth.user().firstname | capitalize}}'s Profile</h5>
-                        <p class="card-text">This if your profile page. You'll find a lot of different opions to fill in
-                            your very own profile! From entering a detailed bio and uploading the perfect image of
-                            yourself to filling out all of your gamertags</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><a href="#peronsalBio">Picture and Bio</a></li>
-                        <li class="list-group-item"><a href="#gamertags">Gamertags</a></li>
-                        <li class="list-group-item"><a href="#playedGames">Games you play</a></li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
-                </div>
+            <!--<div class="col-lg-2" style="padding: 0">-->
+            <!--<div class="card sticky-top">-->
+            <!--<div class="card-body">-->
+            <!--<h5 class="card-title">{{$auth.user().firstname | capitalize}}'s Profile</h5>-->
+            <!--<p class="card-text">This is your profile page. You'll find a lot of different opions to fill in-->
+            <!--your very own profile! From entering a detailed bio and uploading the perfect image of-->
+            <!--yourself to filling out all of your gamertags</p>-->
+            <!--</div>-->
+            <!--<ul class="list-group list-group-flush">-->
+            <!--<li class="list-group-item"><a href="#peronsalBio">Picture and Bio</a></li>-->
+            <!--<li class="list-group-item"><a href="#gamertags">Gamertags</a></li>-->
+            <!--<li class="list-group-item"><a href="#playedGames">Games you play</a></li>-->
+            <!--</ul>-->
+
+            <!--</div>-->
+            <!--</div>-->
+
+            <div class="col-lg-2">
+
             </div>
 
             <!--Bio and Pictures form-->
-            <div class="col-lg-9">
+            <div class="col-lg-8">
                 <form autocomplete="off" @submit.prevent="updateProfile" method="post" class="card-body">
                     <div id="peronsalBio"></div>
                     <h2>Enter an appealing bio and upload a profile picture!</h2>
@@ -62,7 +62,8 @@
 
                     <!--Main gamertag input fields-->
                     <div class="form-group input">
-                        <label for="steamid"><i class="fab fa-steam fa-2x" style="color: #000025"></i> Steam Community
+                        <label for="steamid"><i class="fab fa-steam fa-2x" style="color: #000025"></i> Steam
+                            Community
                             URL</label>
                         <input
                                 type="url"
@@ -73,7 +74,8 @@
                     </div>
 
                     <div class="form-group input">
-                        <label for="psnName"><i class="fab fa-playstation fa-2x" style="color: blue"></i> Playstation
+                        <label for="psnName"><i class="fab fa-playstation fa-2x" style="color: blue"></i>
+                            Playstation
                             Network Name</label>
                         <input
                                 type="text"
@@ -108,7 +110,8 @@
                         </div>
 
                         <div class="form-group input col-lg-4">
-                            <label for="epicName"><i class="fas fa-desktop fa-2x"></i> Epic Game Launcher Name</label>
+                            <label for="epicName"><i class="fas fa-desktop fa-2x"></i> Epic Game Launcher
+                                Name</label>
                             <input
                                     type="text"
                                     class="form-control"
@@ -161,27 +164,47 @@
                         </div>
                     </div>
 
+
                     <!--TODO: Make cool spacers in between the seperate form sections-->
                     <hr>
 
                     <!--Played Games Section-->
                     <div id="playedGames">
-                        <h2>Select the games you want to play with other people!</h2>
+                        <h2>Add the games you want to play with people!</h2>
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-10 col-sm-10">
                                 <v-select label="name" @search="searchGames" :options="allGamesList"
                                           v-model="selectedGame" placeholder="Search for a game"/>
-
                             </div>
-                            <button class="btn btn-orange" @click.prevent="addSelectedGame">Add</button>
+                            <div class="col-lg-2 col-sm-2">
+                                <button class="btn btn-orange" @click.prevent="addSelectedGame">Add</button>
+                            </div>
                         </div>
                         <br><br><br>
-                        <ul class="list-group">
-                            <li class="list-group-item" v-for="game in profileGameList">{{game.name}}</li>
-                        </ul>
+                        <div class="row">
+                            <div v-if="profileGameList.length > 0" class="col-lg-12">
+                                <h3>Your currently selected games</h3>
+                                <ul class="list-group">
+                                    <li class="list-group-item" v-for="game in profileGameList">{{game.name}}
+                                        <button class="btn btn-danger float-right" @click.prevent="removeGame(game)">
+                                            Remove
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                            <!--TODO: Make this conditional so you see loading when page loading and empty when your loaded list is actually empty-->
+                        <div class="row justify-content-center">
+                            <div class="col-auto" v-if="profileGameList.length <=0">
+                                <div class="text-center">
+                                    <h3>You don't have any games selected yet!</h3>
+                                    <i class="far fa-frown fa-10x"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row" style="padding: 10px 0 10px 0">
                         <div class="col text-center">
                             <button type="submit" class="btn btn-orange" :disabled="pending">Save Profile</button>
                         </div>
@@ -190,6 +213,11 @@
                 </form>
 
             </div>
+
+            <div class="col-lg-2">
+
+            </div>
+
         </div>
     </div>
 </template>
@@ -244,8 +272,10 @@
                 };
                 axios.patch('/user/updateprofile', formData).then(response => {
                     this.pending = false;
+                    this.$toastr.s('Your profile has been successfully saved!')
                 }).catch(error => {
                     this.pending = false;
+                    this.$toastr.e('An error occurred while saving your profile')
                 })
             },
 
@@ -268,8 +298,8 @@
                     vm.allGamesList = response.data;
                     loading(false)
                 }).catch(error => {
-                    console.log(error);
-                    alert('Something went wrong with fetching games')
+                    this.$toastr.e('Something went wrong with fetching games');
+
                 })
             }, 250),
 
@@ -281,10 +311,15 @@
 
                     if (!exists) {
                         this.profileGameList.push(this.selectedGame);
-
                     }
-
                 }
+            },
+
+            removeGame(game) {
+                console.log(game.name);
+                this.profileGameList.splice(this.profileGameList.indexOf(this.profileGameList.find((element) => {
+                    return element.id === game.id
+                })), 1)
             },
 
             previewImage: function (event) {
@@ -320,15 +355,13 @@
                 this.uplayName = data.data.uplayName;
                 this.battletag = data.data.battletag;
             }).catch(error => {
-                console.log(error);
-                alert('Something went wrong with updating your profile');
+                this.$toastr.e('Something went wrong with updating your profile');
             });
 
             axios.get('/games/profile/' + this.$auth.user().id).then(response => {
                 this.profileGameList = response.data;
             }).catch(error => {
-                console.log(error);
-                alert('Something went wrong with fetching your liked games')
+                this.$toastr.e('Something went wrong with fetching your liked games')
             })
 
         }
@@ -357,6 +390,5 @@
     .v-select.open .dropdown-toggle {
         border-color: #5cb3fd
     }
-
 
 </style>

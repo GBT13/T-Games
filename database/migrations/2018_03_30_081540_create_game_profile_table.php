@@ -17,7 +17,6 @@ class CreateGameProfileTable extends Migration
             $table->increments('id');
             $table->integer('game_id')->unsigned();
             $table->integer('profile_id')->unsigned();
-            $table->timestamps();
         });
     }
 
