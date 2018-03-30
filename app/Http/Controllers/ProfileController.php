@@ -15,11 +15,13 @@ class ProfileController extends Controller {
     public function updateProfile(Request $request) {
         $profile = $this->getProfileByUser($request['userId']);
 
-        if ($profile->update($request->all())){
-            return $profile;
-        }
+        if ($profile->update($request->except('profileGameList'))) {
+            $profile->games()->detach();
+            $profile->games()->attach(array_unique($request->get('profileGameList')));
 
-        else return response([
+
+            return $profile;
+        } else return response([
             'status' => 'error',
             'error' => 'processing.error',
             'msg' => 'Internal server error occurred'

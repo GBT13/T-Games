@@ -168,47 +168,16 @@
                     <div id="playedGames">
                         <h2>Select the games you want to play with other people!</h2>
                         <div class="row">
-                            <div class="col-lg-3">
-                                <v-select label="name" @search="searchGames" :options="gamesList" placeholder="Search for a game"></v-select>
+                            <div class="col-lg-4">
+                                <v-select label="name" @search="searchGames" :options="allGamesList"
+                                          v-model="selectedGame" placeholder="Search for a game"/>
 
                             </div>
+                            <button class="btn btn-orange" @click.prevent="addSelectedGame">Add</button>
                         </div>
                         <br><br><br>
                         <ul class="list-group">
-                            <li class="list-group-item">Cras justo odio</li>
-                            <li class="list-group-item">Dapibus ac facilisis in</li>
-                            <li class="list-group-item">Morbi leo risus</li>
-                            <li class="list-group-item">Porta ac consectetur ac</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
-                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item" v-for="game in profileGameList">{{game.name}}</li>
                         </ul>
                     </div>
 
@@ -243,7 +212,9 @@
                 nintendoNetworkId: '',
                 bio: '',
                 profilePicture: '',
-                gamesList: [],
+                profileGameList: [],
+                allGamesList: [],
+                selectedGame: '',
                 selectedFile: null,
                 gameLookup: '',
                 imageData: "",  // we will store base64 format of image in this string
@@ -253,6 +224,10 @@
         methods: {
             updateProfile() {
                 this.pending = true;
+                let gameIdList = [];
+                this.profileGameList.forEach((element) => {
+                    gameIdList.push(element.id)
+                });
                 let formData = {
                     userId: this.$auth.user().id,
                     steamid: this.steamid,
@@ -264,7 +239,8 @@
                     discord: this.discord,
                     epicName: this.epicName,
                     nintendoNetworkId: this.nintendoNetworkId,
-                    bio: this.bio
+                    bio: this.bio,
+                    profileGameList: gameIdList,
                 };
                 axios.patch('/user/updateprofile', formData).then(response => {
                     this.pending = false;
@@ -281,21 +257,35 @@
 
             },
 
-            searchGames(search, loading){
+            searchGames(search, loading) {
                 loading(true);
                 this.fetchGames(search, loading, this);
 
             },
 
-            fetchGames: _.debounce((search, loading, vm) =>{
-                axios.get('/games/names?name=' + search).then(response =>{
-                    vm.gamesList = response.data;
+            fetchGames: _.debounce((search, loading, vm) => {
+                axios.get('/games/names?name=' + search).then(response => {
+                    vm.allGamesList = response.data;
                     loading(false)
-                }).catch(error =>{
+                }).catch(error => {
                     console.log(error);
                     alert('Something went wrong with fetching games')
                 })
             }, 250),
+
+            addSelectedGame() {
+                if (this.selectedGame.name) {
+                    let exists = this.profileGameList.some((element) => {
+                        return element.id === this.selectedGame.id;
+                    });
+
+                    if (!exists) {
+                        this.profileGameList.push(this.selectedGame);
+
+                    }
+
+                }
+            },
 
             previewImage: function (event) {
                 // https://jsfiddle.net/mani04/5zyozvx8/
@@ -315,7 +305,8 @@
                     reader.readAsDataURL(input.files[0]);
                 }
             }
-        },
+        }
+        ,
         created() {
             axios.get('/user/' + this.$auth.user().id + '/profile').then(data => {
                 this.bio = data.data.bio;
@@ -332,6 +323,13 @@
                 console.log(error);
                 alert('Something went wrong with updating your profile');
             });
+
+            axios.get('/games/profile/' + this.$auth.user().id).then(response => {
+                this.profileGameList = response.data;
+            }).catch(error => {
+                console.log(error);
+                alert('Something went wrong with fetching your liked games')
+            })
 
         }
     }

@@ -32006,37 +32006,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -32055,7 +32024,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             nintendoNetworkId: '',
             bio: '',
             profilePicture: '',
-            gamesList: [],
+            profileGameList: [],
+            allGamesList: [],
+            selectedGame: '',
             selectedFile: null,
             gameLookup: '',
             imageData: "", // we will store base64 format of image in this string
@@ -32068,6 +32039,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             this.pending = true;
+            var gameIdList = [];
+            this.profileGameList.forEach(function (element) {
+                gameIdList.push(element.id);
+            });
             var formData = {
                 userId: this.$auth.user().id,
                 steamid: this.steamid,
@@ -32079,7 +32054,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 discord: this.discord,
                 epicName: this.epicName,
                 nintendoNetworkId: this.nintendoNetworkId,
-                bio: this.bio
+                bio: this.bio,
+                profileGameList: gameIdList
             };
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('/user/updateprofile', formData).then(function (response) {
                 _this.pending = false;
@@ -32099,7 +32075,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         fetchGames: __WEBPACK_IMPORTED_MODULE_1_lodash___default.a.debounce(function (search, loading, vm) {
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/games/names?name=' + search).then(function (response) {
-                vm.gamesList = response.data;
+                vm.allGamesList = response.data;
                 loading(false);
             }).catch(function (error) {
                 console.log(error);
@@ -32107,8 +32083,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         }, 250),
 
-        previewImage: function previewImage(event) {
+        addSelectedGame: function addSelectedGame() {
             var _this2 = this;
+
+            if (this.selectedGame.name) {
+                var exists = this.profileGameList.some(function (element) {
+                    return element.id === _this2.selectedGame.id;
+                });
+
+                if (!exists) {
+                    this.profileGameList.push(this.selectedGame);
+                }
+            }
+        },
+
+
+        previewImage: function previewImage(event) {
+            var _this3 = this;
 
             // https://jsfiddle.net/mani04/5zyozvx8/
             // Reference to the DOM input element
@@ -32121,30 +32112,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 reader.onload = function (e) {
                     // Note: arrow function used here, so that "this.imageData" refers to the imageData of Vue component
                     // Read image as base64 and set to imageData
-                    _this2.imageData = e.target.result;
+                    _this3.imageData = e.target.result;
                 };
                 // Start the reader job - read file as a data url (base64 format)
                 reader.readAsDataURL(input.files[0]);
             }
         }
     },
+
     created: function created() {
-        var _this3 = this;
+        var _this4 = this;
 
         __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/user/' + this.$auth.user().id + '/profile').then(function (data) {
-            _this3.bio = data.data.bio;
-            _this3.steamid = data.data.steamid;
-            _this3.psnName = data.data.psnName;
-            _this3.xboxGamertag = data.data.xboxGamertag;
-            _this3.discord = data.data.discord;
-            _this3.epicName = data.data.epicName;
-            _this3.nintendoNetworkId = data.data.nintendoNetworkId;
-            _this3.originName = data.data.originName;
-            _this3.uplayName = data.data.uplayName;
-            _this3.battletag = data.data.battletag;
+            _this4.bio = data.data.bio;
+            _this4.steamid = data.data.steamid;
+            _this4.psnName = data.data.psnName;
+            _this4.xboxGamertag = data.data.xboxGamertag;
+            _this4.discord = data.data.discord;
+            _this4.epicName = data.data.epicName;
+            _this4.nintendoNetworkId = data.data.nintendoNetworkId;
+            _this4.originName = data.data.originName;
+            _this4.uplayName = data.data.uplayName;
+            _this4.battletag = data.data.battletag;
         }).catch(function (error) {
             console.log(error);
             alert('Something went wrong with updating your profile');
+        });
+
+        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/games/profile/' + this.$auth.user().id).then(function (response) {
+            _this4.profileGameList = response.data;
+        }).catch(function (error) {
+            console.log(error);
+            alert('Something went wrong with fetching your liked games');
         });
     }
 });
@@ -33444,18 +33443,39 @@ var render = function() {
               _c("div", { staticClass: "row" }, [
                 _c(
                   "div",
-                  { staticClass: "col-lg-3" },
+                  { staticClass: "col-lg-4" },
                   [
                     _c("v-select", {
                       attrs: {
                         label: "name",
-                        options: _vm.gamesList,
+                        options: _vm.allGamesList,
                         placeholder: "Search for a game"
                       },
-                      on: { search: _vm.searchGames }
+                      on: { search: _vm.searchGames },
+                      model: {
+                        value: _vm.selectedGame,
+                        callback: function($$v) {
+                          _vm.selectedGame = $$v
+                        },
+                        expression: "selectedGame"
+                      }
                     })
                   ],
                   1
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-orange",
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.addSelectedGame($event)
+                      }
+                    }
+                  },
+                  [_vm._v("Add")]
                 )
               ]),
               _vm._v(" "),
@@ -33463,7 +33483,15 @@ var render = function() {
               _c("br"),
               _c("br"),
               _vm._v(" "),
-              _vm._m(11)
+              _c(
+                "ul",
+                { staticClass: "list-group" },
+                _vm._l(_vm.profileGameList, function(game) {
+                  return _c("li", { staticClass: "list-group-item" }, [
+                    _vm._v(_vm._s(game.name))
+                  ])
+                })
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
@@ -33613,144 +33641,6 @@ var staticRenderFns = [
     return _c("label", { attrs: { for: "battletag" } }, [
       _c("i", { staticClass: "fas fa-desktop fa-2x" }),
       _vm._v(" Blizzard Battletag")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "list-group" }, [
-      _c("li", { staticClass: "list-group-item" }, [_vm._v("Cras justo odio")]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Dapibus ac facilisis in")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [_vm._v("Morbi leo risus")]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Porta ac consectetur ac")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _vm._v("Vestibulum at eros")
-      ])
     ])
   }
 ]
