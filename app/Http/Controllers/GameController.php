@@ -14,4 +14,8 @@ class GameController extends Controller
     public function getAllGames(){
         return Game::all();
     }
+
+    public function getGamesLike(Request $request){
+        return Game::where('name', 'LIKE', '%' . $request->query('name'). '%')->get();
+    }
 }

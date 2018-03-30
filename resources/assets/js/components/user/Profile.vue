@@ -167,14 +167,47 @@
                     <!--Played Games Section-->
                     <div id="playedGames">
                         <h2>Select the games you want to play with other people!</h2>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <v-select label="name" @search="searchGames" :options="gamesList" placeholder="Search for a game"></v-select>
 
-                        
-
+                            </div>
+                        </div>
+                        <br><br><br>
                         <ul class="list-group">
                             <li class="list-group-item">Cras justo odio</li>
                             <li class="list-group-item">Dapibus ac facilisis in</li>
                             <li class="list-group-item">Morbi leo risus</li>
                             <li class="list-group-item">Porta ac consectetur ac</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
+                            <li class="list-group-item">Vestibulum at eros</li>
                             <li class="list-group-item">Vestibulum at eros</li>
                         </ul>
                     </div>
@@ -194,6 +227,7 @@
 
 <script>
     import axios from 'axios';
+    import _ from 'lodash';
 
     export default {
         data() {
@@ -211,6 +245,7 @@
                 profilePicture: '',
                 gamesList: [],
                 selectedFile: null,
+                gameLookup: '',
                 imageData: "",  // we will store base64 format of image in this string
                 pending: false
             }
@@ -245,6 +280,22 @@
             onUpload() {
 
             },
+
+            searchGames(search, loading){
+                loading(true);
+                this.fetchGames(search, loading, this);
+
+            },
+
+            fetchGames: _.debounce((search, loading, vm) =>{
+                axios.get('/games/names?name=' + search).then(response =>{
+                    vm.gamesList = response.data;
+                    loading(false)
+                }).catch(error =>{
+                    console.log(error);
+                    alert('Something went wrong with fetching games')
+                })
+            }, 250),
 
             previewImage: function (event) {
                 // https://jsfiddle.net/mani04/5zyozvx8/
@@ -281,12 +332,6 @@
                 console.log(error);
                 alert('Something went wrong with updating your profile');
             });
-            axios.get('/games/all/names').then(data => {
-                this.gamesList = data;
-            }).catch(error => {
-                console.log(error);
-                alert('Something went wrong with getting the games list')
-            })
 
         }
     }
@@ -305,6 +350,14 @@
     .card-header {
         border-radius: 0;
         background: linear-gradient(to bottom right, #f05f40, #ff7d4f);
+    }
+
+    .v-select {
+        background: #fff;
+    }
+
+    .v-select.open .dropdown-toggle {
+        border-color: #5cb3fd
     }
 
 

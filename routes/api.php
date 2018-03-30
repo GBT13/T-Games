@@ -20,6 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('auth/register', 'AuthController@register');
 Route::post('auth/login', 'AuthController@login');
 //Route::get('auth/user/emailduplicate', 'AuthController@checkEmailExists');
+Route::get('games/names', 'GameController@getGamesLike');
+
 
 Route::group(['middleware' => 'jwt.auth'], function () {
 //    Login Routes

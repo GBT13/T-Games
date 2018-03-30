@@ -11,10 +11,12 @@ import PageNotFound from './components/PageNotFound.vue';
 import Vuelidate from 'vuelidate';
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import VueSelect from 'vue-select';
 
 Vue.use(VueRouter);
 Vue.use(Vuelidate);
 Vue.use(VueAxios, axios);
+Vue.use(VueSelect);
 
 Vue.filter('capitalize', function (value) {
     if (!value) return '';
@@ -77,6 +79,7 @@ Vue.use(require('@websanova/vue-auth'), {
  */
 
 Vue.component('app', require('./components/App.vue'));
+Vue.component('v-select', VueSelect);
 
 App.router = Vue.router;
 
