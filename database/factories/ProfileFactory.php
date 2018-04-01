@@ -13,6 +13,7 @@ $factory->define(App\Profile::class, function (Faker $faker) {
         'battletag' => $faker->userName,
         'discord' => $faker->userName,
         'epicName' => $faker->userName,
-        'nintendoNetworkId'=>$faker->userName
+        'nintendoNetworkId'=>$faker->userName,
+        'user_id' => 2
     ];
 });

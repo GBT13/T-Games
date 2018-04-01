@@ -2,7 +2,7 @@
     <div class="container-fluid">
 
         <div class="row card-header justify-content-center">
-            <h3>Welcome to your profile page {{$auth.user().firstname + ' ' + $auth.user().lastname | capitalize}}</h3>
+            <h3>{{$auth.user().firstname + ' ' + $auth.user().lastname | capitalize}}'s Dashboard</h3>
         </div>
 
         <div class="row">

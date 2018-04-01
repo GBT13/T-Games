@@ -27,6 +27,7 @@ class CreateProfilesTable extends Migration
             $table->string('epicName')->nullable();
             $table->string('nintendoNetworkId')->nullable();
             $table->integer('country_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
         });
     }

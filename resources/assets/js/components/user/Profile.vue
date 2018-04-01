@@ -342,7 +342,7 @@
             }
         }
         ,
-        created() {
+        beforeCreate() {
             axios.get('/user/' + this.$auth.user().id + '/profile').then(data => {
                 this.bio = data.data.bio;
                 this.steamid = data.data.steamid;

@@ -19,10 +19,9 @@ class UsersTableSeeder extends Seeder
             'password'=>bcrypt('TestTestTest'),
             'birthdate'=>'1995-04-21',
             'gender'=>'MALE',
-            'profile_id' => 1
 
         ]);
 
-        factory(App\User::class, 19)->create();
+        factory(App\User::class, 49)->create();
     }
 }

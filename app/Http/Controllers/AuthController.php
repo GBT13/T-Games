@@ -13,7 +13,7 @@ use JWTAuth;
 class AuthController extends Controller {
     public function register(RegisterFormRequest $request) {
 
-        return User::create([
+        $user = User::create([
             'firstname' =>$request->firstname,
             'lastname' => $request->lastname,
             'email' => $request->email,
@@ -21,6 +21,10 @@ class AuthController extends Controller {
             'birthdate' => $request->birthdate,
             'gender' => $request->gender,
         ]);
+
+        $user->profile()->create();
+
+        return $user;
 
 
 //        $user = new User;
