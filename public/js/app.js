@@ -46597,6 +46597,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "home"
@@ -46610,15 +46625,71 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _vm._m(2),
+    _vm._v(" "),
+    _vm._m(3),
+    _vm._v(" "),
+    !_vm.$auth.check()
+      ? _c("section", { staticClass: "bg-dark text-white" }, [
+          _c(
+            "div",
+            { staticClass: "container text-center" },
+            [
+              _c("h2", { staticClass: "mb-4" }, [
+                _vm._v("Sign up for a free account!")
+              ]),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn btn-light btn-xl sr-button",
+                  attrs: { tag: "a", to: "/register" }
+                },
+                [_vm._v("Register\n                Now!\n            ")]
+              )
+            ],
+            1
+          )
+        ])
+      : _c("section", { staticClass: "bg-dark text-white" }, [
+          _c(
+            "div",
+            { staticClass: "container text-center" },
+            [
+              _c("h2", { staticClass: "mb-4" }, [
+                _vm._v("You're already logged in, check out your dashboard!")
+              ]),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn btn-light btn-xl sr-button",
+                  attrs: { tag: "a", to: "/dashboard" }
+                },
+                [_vm._v("To Dashboard!")]
+              )
+            ],
+            1
+          )
+        ]),
+    _vm._v(" "),
+    _vm._m(4)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("header", { staticClass: "masthead text-center text-white d-flex" }, [
+    return _c(
+      "header",
+      { staticClass: "masthead text-center text-white d-flex" },
+      [
         _c("div", { staticClass: "container my-auto" }, [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-lg-10 mx-auto" }, [
@@ -46647,9 +46718,17 @@ var staticRenderFns = [
             ])
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("section", { staticClass: "bg-primary", attrs: { id: "about" } }, [
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "section",
+      { staticClass: "bg-primary", attrs: { id: "about" } },
+      [
         _c("div", { staticClass: "container" }, [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-lg-8 mx-auto text-center" }, [
@@ -46661,7 +46740,7 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("p", { staticClass: "text-faded mb-4" }, [
                 _vm._v(
-                  "T-Games has every piece of functionality you want to match with other gamers online! Our patent pending matchmaking algorithm allows you to match with gamers from all around the world.   No strings attached!"
+                  "T-Games has every piece of functionality you want to match with other\n                        gamers online! Our exclusive matchmaking algorithms allow you to match with gamers from all\n                        around the world. No strings attached!"
                 )
               ]),
               _vm._v(" "),
@@ -46676,406 +46755,336 @@ var staticRenderFns = [
             ])
           ])
         ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { attrs: { id: "services" } }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-12 text-center" }, [
+            _c("h2", { staticClass: "section-heading" }, [
+              _vm._v("At Your Service")
+            ]),
+            _vm._v(" "),
+            _c("hr", { staticClass: "my-4" })
+          ])
+        ])
       ]),
       _vm._v(" "),
-      _c("section", { attrs: { id: "services" } }, [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-12 text-center" }, [
-              _c("h2", { staticClass: "section-heading" }, [
-                _vm._v("At Your Service")
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-3 col-md-6 text-center" }, [
+            _c("div", { staticClass: "service-box mt-5 mx-auto" }, [
+              _c("i", {
+                staticClass: "fa fa-4x fa-gem text-primary mb-3 sr-icons"
+              }),
+              _vm._v(" "),
+              _c("h3", { staticClass: "mb-3" }, [
+                _vm._v("Advanced Algorithms")
               ]),
               _vm._v(" "),
-              _c("hr", { staticClass: "my-4" })
+              _c("p", { staticClass: "text-muted mb-0" }, [
+                _vm._v(
+                  "Our patent pending matching algorithms help you find your\n                            ultimate gaming partner."
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-3 col-md-6 text-center" }, [
+            _c("div", { staticClass: "service-box mt-5 mx-auto" }, [
+              _c("i", {
+                staticClass:
+                  "fa fa-4x fa-paper-plane text-primary mb-3 sr-icons"
+              }),
+              _vm._v(" "),
+              _c("h3", { staticClass: "mb-3" }, [_vm._v("Fast Support")]),
+              _vm._v(" "),
+              _c("p", { staticClass: "text-muted mb-0" }, [
+                _vm._v(
+                  "You can rest easy knowing our 24/7 support staff will try their\n                            best to answer any questions you might have"
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-3 col-md-6 text-center" }, [
+            _c("div", { staticClass: "service-box mt-5 mx-auto" }, [
+              _c("i", {
+                staticClass: "fa fa-4x fa-newspaper text-primary mb-3 sr-icons"
+              }),
+              _vm._v(" "),
+              _c("h3", { staticClass: "mb-3" }, [_vm._v("Up to Date")]),
+              _vm._v(" "),
+              _c("p", { staticClass: "text-muted mb-0" }, [
+                _vm._v(
+                  "By scraping the Steam api we make sure we have all of the hottest\n                            new releases available for selection."
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-3 col-md-6 text-center" }, [
+            _c("div", { staticClass: "service-box mt-5 mx-auto" }, [
+              _c("i", {
+                staticClass: "fa fa-4x fa-heart text-primary mb-3 sr-icons"
+              }),
+              _vm._v(" "),
+              _c("h3", { staticClass: "mb-3" }, [_vm._v("Made with Love")]),
+              _vm._v(" "),
+              _c("p", { staticClass: "text-muted mb-0" }, [
+                _vm._v("You have to make your websites with love these days!")
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "p-0", attrs: { id: "portfolio" } }, [
+      _c("div", { staticClass: "container-fluid p-0" }, [
+        _c("div", { staticClass: "row no-gutters popup-gallery" }, [
+          _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
+            _c(
+              "a",
+              {
+                staticClass: "portfolio-box",
+                attrs: { href: "/images/portfolio/fullsize/1.jpg" }
+              },
+              [
+                _c("img", {
+                  staticClass: "img-fluid",
+                  attrs: { src: "/images/portfolio/thumbnails/1.jpg", alt: "" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "portfolio-box-caption" }, [
+                  _c("div", { staticClass: "portfolio-box-caption-content" }, [
+                    _c("div", { staticClass: "project-category text-faded" }, [
+                      _vm._v(
+                        "\n                                    Category\n                                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "project-name" }, [
+                      _vm._v(
+                        "\n                                    Project Name\n                                "
+                      )
+                    ])
+                  ])
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
+            _c(
+              "a",
+              {
+                staticClass: "portfolio-box",
+                attrs: { href: "/images/portfolio/fullsize/2.jpg" }
+              },
+              [
+                _c("img", {
+                  staticClass: "img-fluid",
+                  attrs: { src: "/images/portfolio/thumbnails/2.jpg", alt: "" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "portfolio-box-caption" }, [
+                  _c("div", { staticClass: "portfolio-box-caption-content" }, [
+                    _c("div", { staticClass: "project-category text-faded" }, [
+                      _vm._v(
+                        "\n                                    Category\n                                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "project-name" }, [
+                      _vm._v(
+                        "\n                                    Project Name\n                                "
+                      )
+                    ])
+                  ])
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
+            _c(
+              "a",
+              {
+                staticClass: "portfolio-box",
+                attrs: { href: "/images/portfolio/fullsize/3.jpg" }
+              },
+              [
+                _c("img", {
+                  staticClass: "img-fluid",
+                  attrs: { src: "/images/portfolio/thumbnails/3.jpg", alt: "" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "portfolio-box-caption" }, [
+                  _c("div", { staticClass: "portfolio-box-caption-content" }, [
+                    _c("div", { staticClass: "project-category text-faded" }, [
+                      _vm._v(
+                        "\n                                    Category\n                                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "project-name" }, [
+                      _vm._v(
+                        "\n                                    Project Name\n                                "
+                      )
+                    ])
+                  ])
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
+            _c(
+              "a",
+              {
+                staticClass: "portfolio-box",
+                attrs: { href: "/images/portfolio/fullsize/4.jpg" }
+              },
+              [
+                _c("img", {
+                  staticClass: "img-fluid",
+                  attrs: { src: "/images/portfolio/thumbnails/4.jpg", alt: "" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "portfolio-box-caption" }, [
+                  _c("div", { staticClass: "portfolio-box-caption-content" }, [
+                    _c("div", { staticClass: "project-category text-faded" }, [
+                      _vm._v(
+                        "\n                                    Category\n                                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "project-name" }, [
+                      _vm._v(
+                        "\n                                    Project Name\n                                "
+                      )
+                    ])
+                  ])
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
+            _c(
+              "a",
+              {
+                staticClass: "portfolio-box",
+                attrs: { href: "/images/portfolio/fullsize/5.jpg" }
+              },
+              [
+                _c("img", {
+                  staticClass: "img-fluid",
+                  attrs: { src: "/images/portfolio/thumbnails/5.jpg", alt: "" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "portfolio-box-caption" }, [
+                  _c("div", { staticClass: "portfolio-box-caption-content" }, [
+                    _c("div", { staticClass: "project-category text-faded" }, [
+                      _vm._v(
+                        "\n                                    Category\n                                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "project-name" }, [
+                      _vm._v(
+                        "\n                                    Project Name\n                                "
+                      )
+                    ])
+                  ])
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
+            _c(
+              "a",
+              {
+                staticClass: "portfolio-box",
+                attrs: { href: "/images/portfolio/fullsize/6.jpg" }
+              },
+              [
+                _c("img", {
+                  staticClass: "img-fluid",
+                  attrs: { src: "/images/portfolio/thumbnails/6.jpg", alt: "" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "portfolio-box-caption" }, [
+                  _c("div", { staticClass: "portfolio-box-caption-content" }, [
+                    _c("div", { staticClass: "project-category text-faded" }, [
+                      _vm._v(
+                        "\n                                    Category\n                                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "project-name" }, [
+                      _vm._v(
+                        "\n                                    Project Name\n                                "
+                      )
+                    ])
+                  ])
+                ])
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { attrs: { id: "contact" } }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-8 mx-auto text-center" }, [
+            _c("h2", { staticClass: "section-heading" }, [
+              _vm._v("Let's Get In Touch!")
+            ]),
+            _vm._v(" "),
+            _c("hr", { staticClass: "my-4" }),
+            _vm._v(" "),
+            _c("p", { staticClass: "mb-5" }, [
+              _vm._v(
+                "Got some feedback for us? Have a brilliant suggestion to improve our service?\n                        Give us a call or send us an email and we will get back to you as soon as possible!"
+              )
             ])
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-3 col-md-6 text-center" }, [
-              _c("div", { staticClass: "service-box mt-5 mx-auto" }, [
-                _c("i", {
-                  staticClass: "fa fa-4x fa-gem text-primary mb-3 sr-icons"
-                }),
-                _vm._v(" "),
-                _c("h3", { staticClass: "mb-3" }, [_vm._v("Sturdy Templates")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "text-muted mb-0" }, [
-                  _vm._v(
-                    "Our templates are updated regularly so they don't break."
-                  )
-                ])
-              ])
-            ]),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-4 ml-auto text-center" }, [
+            _c("i", { staticClass: "fa fa-phone fa-3x mb-3 sr-contact" }),
             _vm._v(" "),
-            _c("div", { staticClass: "col-lg-3 col-md-6 text-center" }, [
-              _c("div", { staticClass: "service-box mt-5 mx-auto" }, [
-                _c("i", {
-                  staticClass:
-                    "fa fa-4x fa-paper-plane text-primary mb-3 sr-icons"
-                }),
-                _vm._v(" "),
-                _c("h3", { staticClass: "mb-3" }, [_vm._v("Ready to Ship")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "text-muted mb-0" }, [
-                  _vm._v(
-                    "You can use this theme as is, or you can make changes!"
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-3 col-md-6 text-center" }, [
-              _c("div", { staticClass: "service-box mt-5 mx-auto" }, [
-                _c("i", {
-                  staticClass:
-                    "fa fa-4x fa-newspaper text-primary mb-3 sr-icons"
-                }),
-                _vm._v(" "),
-                _c("h3", { staticClass: "mb-3" }, [_vm._v("Up to Date")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "text-muted mb-0" }, [
-                  _vm._v("We update dependencies to keep things fresh.")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-3 col-md-6 text-center" }, [
-              _c("div", { staticClass: "service-box mt-5 mx-auto" }, [
-                _c("i", {
-                  staticClass: "fa fa-4x fa-heart text-primary mb-3 sr-icons"
-                }),
-                _vm._v(" "),
-                _c("h3", { staticClass: "mb-3" }, [_vm._v("Made with Love")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "text-muted mb-0" }, [
-                  _vm._v("You have to make your websites with love these days!")
-                ])
-              ])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("section", { staticClass: "p-0", attrs: { id: "portfolio" } }, [
-        _c("div", { staticClass: "container-fluid p-0" }, [
-          _c("div", { staticClass: "row no-gutters popup-gallery" }, [
-            _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "portfolio-box",
-                  attrs: { href: "/images/portfolio/fullsize/1.jpg" }
-                },
-                [
-                  _c("img", {
-                    staticClass: "img-fluid",
-                    attrs: {
-                      src: "/images/portfolio/thumbnails/1.jpg",
-                      alt: ""
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "portfolio-box-caption" }, [
-                    _c(
-                      "div",
-                      { staticClass: "portfolio-box-caption-content" },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "project-category text-faded" },
-                          [
-                            _vm._v(
-                              "\n                                    Category\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "project-name" }, [
-                          _vm._v(
-                            "\n                                    Project Name\n                                "
-                          )
-                        ])
-                      ]
-                    )
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "portfolio-box",
-                  attrs: { href: "/images/portfolio/fullsize/2.jpg" }
-                },
-                [
-                  _c("img", {
-                    staticClass: "img-fluid",
-                    attrs: {
-                      src: "/images/portfolio/thumbnails/2.jpg",
-                      alt: ""
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "portfolio-box-caption" }, [
-                    _c(
-                      "div",
-                      { staticClass: "portfolio-box-caption-content" },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "project-category text-faded" },
-                          [
-                            _vm._v(
-                              "\n                                    Category\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "project-name" }, [
-                          _vm._v(
-                            "\n                                    Project Name\n                                "
-                          )
-                        ])
-                      ]
-                    )
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "portfolio-box",
-                  attrs: { href: "/images/portfolio/fullsize/3.jpg" }
-                },
-                [
-                  _c("img", {
-                    staticClass: "img-fluid",
-                    attrs: {
-                      src: "/images/portfolio/thumbnails/3.jpg",
-                      alt: ""
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "portfolio-box-caption" }, [
-                    _c(
-                      "div",
-                      { staticClass: "portfolio-box-caption-content" },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "project-category text-faded" },
-                          [
-                            _vm._v(
-                              "\n                                    Category\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "project-name" }, [
-                          _vm._v(
-                            "\n                                    Project Name\n                                "
-                          )
-                        ])
-                      ]
-                    )
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "portfolio-box",
-                  attrs: { href: "/images/portfolio/fullsize/4.jpg" }
-                },
-                [
-                  _c("img", {
-                    staticClass: "img-fluid",
-                    attrs: {
-                      src: "/images/portfolio/thumbnails/4.jpg",
-                      alt: ""
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "portfolio-box-caption" }, [
-                    _c(
-                      "div",
-                      { staticClass: "portfolio-box-caption-content" },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "project-category text-faded" },
-                          [
-                            _vm._v(
-                              "\n                                    Category\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "project-name" }, [
-                          _vm._v(
-                            "\n                                    Project Name\n                                "
-                          )
-                        ])
-                      ]
-                    )
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "portfolio-box",
-                  attrs: { href: "/images/portfolio/fullsize/5.jpg" }
-                },
-                [
-                  _c("img", {
-                    staticClass: "img-fluid",
-                    attrs: {
-                      src: "/images/portfolio/thumbnails/5.jpg",
-                      alt: ""
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "portfolio-box-caption" }, [
-                    _c(
-                      "div",
-                      { staticClass: "portfolio-box-caption-content" },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "project-category text-faded" },
-                          [
-                            _vm._v(
-                              "\n                                    Category\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "project-name" }, [
-                          _vm._v(
-                            "\n                                    Project Name\n                                "
-                          )
-                        ])
-                      ]
-                    )
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "portfolio-box",
-                  attrs: { href: "/images/portfolio/fullsize/6.jpg" }
-                },
-                [
-                  _c("img", {
-                    staticClass: "img-fluid",
-                    attrs: {
-                      src: "/images/portfolio/thumbnails/6.jpg",
-                      alt: ""
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "portfolio-box-caption" }, [
-                    _c(
-                      "div",
-                      { staticClass: "portfolio-box-caption-content" },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "project-category text-faded" },
-                          [
-                            _vm._v(
-                              "\n                                    Category\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "project-name" }, [
-                          _vm._v(
-                            "\n                                    Project Name\n                                "
-                          )
-                        ])
-                      ]
-                    )
-                  ])
-                ]
-              )
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("section", { staticClass: "bg-dark text-white" }, [
-        _c("div", { staticClass: "container text-center" }, [
-          _c("h2", { staticClass: "mb-4" }, [
-            _vm._v("Free Download at Start Bootstrap!")
+            _c("p", [_vm._v("071-5188-800")])
           ]),
           _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-light btn-xl sr-button",
-              attrs: {
-                href: "http://startbootstrap.com/template-overviews/creative/"
-              }
-            },
-            [_vm._v("Download Now!")]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("section", { attrs: { id: "contact" } }, [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-8 mx-auto text-center" }, [
-              _c("h2", { staticClass: "section-heading" }, [
-                _vm._v("Let's Get In Touch!")
-              ]),
-              _vm._v(" "),
-              _c("hr", { staticClass: "my-4" }),
-              _vm._v(" "),
-              _c("p", { staticClass: "mb-5" }, [
-                _vm._v(
-                  "Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!"
-                )
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-4 ml-auto text-center" }, [
-              _c("i", { staticClass: "fa fa-phone fa-3x mb-3 sr-contact" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("123-456-6789")])
-            ]),
+          _c("div", { staticClass: "col-lg-4 mr-auto text-center" }, [
+            _c("i", { staticClass: "fa fa-envelope fa-3x mb-3 sr-contact" }),
             _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4 mr-auto text-center" }, [
-              _c("i", { staticClass: "fa fa-envelope fa-3x mb-3 sr-contact" }),
-              _vm._v(" "),
-              _c("p", [
-                _c(
-                  "a",
-                  { attrs: { href: "mailto:your-email@your-domain.com" } },
-                  [_vm._v("feedback@startbootstrap.com")]
-                )
-              ])
+            _c("p", [
+              _c(
+                "a",
+                { attrs: { href: "mailto:feedback@daseengoeievraag.nl" } },
+                [_vm._v("feedback@daseengoeievraag.nl")]
+              )
             ])
           ])
         ])
