@@ -34,4 +34,16 @@ class Profile extends Model
         return $this->belongsToMany('App\Game');
     }
 
+    public function possibleMatchesMatcher(){
+        $matched1 = $this->hasmany('App\Match', 'matched_1')->whereRejected(0);
+
+        return $matched1;
+    }
+
+    public function possibleMatchesMatchee(){
+        $matched2 = $this->hasmany('App\Match', 'matched_2')->whereRejected(0);
+
+        return $matched2;
+    }
+
 }

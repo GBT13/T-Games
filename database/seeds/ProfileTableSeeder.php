@@ -32,7 +32,7 @@ class ProfileTableSeeder extends Seeder {
 //        Seed selected games for profiles
         App\Profile::all()->each(function ($profile) use ($games) {
             $profile->games()->attach(
-                $games->random(rand(0, 4))->pluck('id')->toArray()
+                $games->random(rand(0, 8))->pluck('id')->toArray()
             );
         });
 

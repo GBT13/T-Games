@@ -21,6 +21,10 @@ Route::post('auth/register', 'AuthController@register');
 Route::post('auth/login', 'AuthController@login');
 Route::get('auth/user/emailduplicate', 'AuthController@checkEmailExists');
 
+Route::get('matches/user/{id}', 'MatchController@getAllPendingMatches');
+Route::get('matches/match/{id}', 'MatchController@getAllProfilesFromMatch');
+Route::get('matches/find/{id}', 'MatchController@findMatches');
+
 
 Route::group(['middleware' => 'jwt.auth'], function () {
 //    Login Routes
