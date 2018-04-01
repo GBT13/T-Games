@@ -34,16 +34,18 @@ class Profile extends Model
         return $this->belongsToMany('App\Game');
     }
 
-    public function possibleMatchesMatcher(){
-        $matched1 = $this->hasmany('App\Match', 'matched_1')->whereRejected(0);
-
-        return $matched1;
+    public function possibleMatches(){
+        return $this->hasmany('App\Match')->whereRejected(0);
     }
 
-    public function possibleMatchesMatchee(){
-        $matched2 = $this->hasmany('App\Match', 'matched_2')->whereRejected(0);
-
-        return $matched2;
+    public function mutuallyAcceptedMatches(){
+        $ownAccepted = $this->hasMany('App\Match')->whereAccepted(1);
+        $partnerAccepted = [];
+        foreach ($ownAccepted as $acceptedMatch) {
+            if ($acceptedMatch->matchPartner()->accepted === 1){
+                $partnerAccepted->push($acceptedMatch);
+            }
+        }
     }
 
 }
