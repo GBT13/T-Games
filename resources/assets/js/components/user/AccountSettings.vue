@@ -227,5 +227,8 @@
 </script>
 
 <style scoped>
-
+    .card-header {
+        border-radius: 0;
+        background: linear-gradient(to bottom right, #f05f40, #ff7d4f);
+    }
 </style>

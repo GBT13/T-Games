@@ -197,7 +197,7 @@
                         <div class="row justify-content-center">
                             <div class="col-auto" v-if="profileGameList.length <=0">
                                 <div class="text-center">
-                                    <h3>You don't have any games selected yet!</h3>
+                                    <h3>You haven't selected any games yet!</h3>
                                     <i class="far fa-frown fa-10x"></i>
                                 </div>
                             </div>

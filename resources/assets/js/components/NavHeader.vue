@@ -7,6 +7,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
@@ -16,6 +17,12 @@
                     <a class="nav-link disabled" href="#">Disabled</a>
                 </li>
             </ul>
+
+            <!--Navbar centered element TODO: maybe make this a static element instead of a link-->
+            <div class=" d-flex justify-content-center mx-auto abs-center-x">
+                <router-link to="/dashboard"><i class="fas fa-fire fa-2x" style="color: #f05f40"></i></router-link>
+            </div>
+
             <!--<form class="form-inline my-2 my-lg-0">-->
             <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
             <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
@@ -51,6 +58,7 @@
                         class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
         </div>
+
     </nav>
 </template>
 
@@ -69,6 +77,18 @@
 <style scoped>
     #navbarHeader{
         background: transparent;
+    }
+
+    .abs-center-x {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    @media (max-width: 992px) {
+        .abs-center-x {
+            display: none !important;
+        }
     }
 
 </style>
