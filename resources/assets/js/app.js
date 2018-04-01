@@ -7,13 +7,32 @@ import Register from './components/user/Register.vue';
 import Dashboard from './components/Dashboard.vue';
 import UserProfile from './components/user/Profile.vue';
 import AccountSettings from './components/user/AccountSettings.vue';
+import PageNotFound from './components/PageNotFound.vue';
+import Vuelidate from 'vuelidate';
 import axios from 'axios'
+import Toastr from 'vue-toastr';
 import VueAxios from 'vue-axios'
+import VueSelect from 'vue-select';
 
 Vue.use(VueRouter);
+Vue.use(Vuelidate);
 Vue.use(VueAxios, axios);
+Vue.use(VueSelect);
+Vue.use(Toastr);
 
-axios.defaults.baseURL="/api";
+
+Vue.filter('capitalize', function (value) {
+    if (!value) return '';
+
+    let splitString = value.toString().split(" ");
+    splitString.forEach((element, index) => {
+        splitString[index] = element.charAt(0).toUpperCase() + element.slice(1);
+    });
+
+    return splitString.join(" ");
+});
+
+axios.defaults.baseURL = "/api";
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -22,6 +41,7 @@ axios.defaults.baseURL="/api";
  */
 
 require('./bootstrap');
+require('vue-toastr/src/vue-toastr.scss');
 
 window.Vue = require('vue');
 
@@ -35,6 +55,7 @@ const router = new VueRouter({
         {path: '/dashboard', name: 'dashboard', component: Dashboard, meta: {auth: true}},
         {path: '/user/profile', name: 'userProfile', component: UserProfile, meta: {auth: true}},
         {path: '/user/account', name: 'userDetails', component: AccountSettings, meta: {auth: true}},
+        {path: "*", name: 'page404', component: PageNotFound}
 
     ]
 });
@@ -62,10 +83,16 @@ Vue.use(require('@websanova/vue-auth'), {
  */
 
 Vue.component('app', require('./components/App.vue'));
+Vue.component('v-select', VueSelect);
 
 App.router = Vue.router;
 
 const app = new Vue({
     el: '#app',
-    router
+    router,
+    mounted(){
+        this.$toastr.defaultProgressBar = false;
+        this.$toastr.defaultPosition = 'toast-bottom-center'
+    }
+
 });

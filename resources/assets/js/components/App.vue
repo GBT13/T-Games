@@ -14,6 +14,7 @@
 <script>
     import NavHeader from './NavHeader.vue'
 
+
     export default {
         name: "app",
         components: {

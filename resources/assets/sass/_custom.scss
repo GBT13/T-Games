@@ -1,0 +1,57 @@
+.btn {
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 300px;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/**
+Used for orange main buttons
+ */
+.btn-orange {
+  background-color: #F05F40;
+  border-color: #F05F40;
+  color: white;
+}
+
+.btn-orange:hover, .btn-orange:focus, .btn-orange:active {
+  color: #fff;
+  background-color: #ee4b28 !important;
+}
+
+.btn-orange:active, .btn-orange:focus {
+  box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
+}
+
+.input.invalid label {
+  color: red;
+}
+
+.input.invalid input {
+  border: 1px solid red;
+  background-color: lightcoral;
+}
+
+.input.invalid select {
+  border: 1px solid red;
+  background-color: lightcoral;
+}
+
+.input.invalid option {
+  background-color: white;
+}
+
+.card-header {
+  background-color: #f05f40;
+  color: white;
+}
+
+.background-gradient{
+  background: linear-gradient(to bottom right, #f05f40, #ff7d4f);
+  height: calc(100vh - 55px);
+}
+
+.btn-xl {
+  padding: 1rem 2rem;
+}
