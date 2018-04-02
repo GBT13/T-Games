@@ -269,6 +269,7 @@
                     nintendoNetworkId: this.nintendoNetworkId,
                     bio: this.bio,
                     profileGameList: gameIdList,
+                    profilePicture: this.imageData
                 };
                 axios.patch('/user/updateprofile', formData).then(response => {
                     this.pending = false;

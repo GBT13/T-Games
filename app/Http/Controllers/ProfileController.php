@@ -6,6 +6,7 @@ use App\Profile;
 use App\User;
 use Illuminate\Http\Request;
 use Response;
+use Storage;
 
 class ProfileController extends Controller {
     public function getProfileByUser($id) {
@@ -18,6 +19,15 @@ class ProfileController extends Controller {
         if ($profile->update($request->except('profileGameList'))) {
             $profile->games()->detach();
             $profile->games()->attach(array_unique($request->get('profileGameList')));
+
+            if ($fileData = $request['profilePicture']) {
+                $fileName = 'profile_picture_' . $profile->id . '_' . time() . '.png';
+                @list($type, $fileData) = explode(';', $fileData);
+                @list(, $fileData) = explode(',', $fileData);
+                Storage::disk('profilePictures')->put($fileName, base64_decode($fileData));
+
+                $profile->update(['imageLocation' => 'images/profiles/' . $fileName]);
+            }
 
 
             return $profile;
