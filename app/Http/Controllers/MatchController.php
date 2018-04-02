@@ -23,11 +23,11 @@ class MatchController extends Controller {
 //        return $allProfiles = $profile1->push($profile2);
 //    }
 
-    public function getAllPendingMatches($id){
+    public function getAllPendingMatches($id) {
         return Profile::findOrFail($id)->possibleMatches();
     }
 
-    public function getAllMutuallyAcceptedMatches($id){
+    public function getAllMutuallyAcceptedMatches($id) {
         return Profile::findOrFail($id)->mutuallyAcceptedMatches();
     }
 
@@ -35,13 +35,16 @@ class MatchController extends Controller {
 //        $ownProfile = Auth::user()->profile();
         $ownProfile = Profile::findOrFail($id);
         $otherProfiles = Profile::whereKeyNot($id)->get();
-        $foundMatches = [];
+        $foundMatches = ['matches' => []];
 
         foreach ($otherProfiles as $profile) {
             $matchScore = count(($profile->games()->get()->intersect($ownProfile->games()->get())));
 
             if ($matchScore > 1) {
-                array_push($foundMatches, $profile);
+                array_add($profile, 'user', $profile->user()->get());
+                array_add($profile, 'matched_games', $profile->games()->get()->intersect($ownProfile->games()->get()));
+                array_push($foundMatches['matches'], $profile);
+
             }
 
         }

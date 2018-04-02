@@ -8,6 +8,7 @@ import Dashboard from './components/Dashboard.vue';
 import UserProfile from './components/user/Profile.vue';
 import AccountSettings from './components/user/AccountSettings.vue';
 import PageNotFound from './components/PageNotFound.vue';
+import Image from './components/shared/Image.vue';
 import Vuelidate from 'vuelidate';
 import axios from 'axios'
 import Toastr from 'vue-toastr';
@@ -30,6 +31,31 @@ Vue.filter('capitalize', function (value) {
     });
 
     return splitString.join(" ");
+});
+
+/**
+ *
+ * @param {String} text
+ * @param {Number} length
+ * @param {String} clamp
+ *
+ */
+Vue.filter('truncate', function (text, length, clamp) {
+    clamp = clamp || '...';
+    length = length || 30;
+
+    if (text.length <= length) return text;
+
+    let tcText = text.slice(0, length - clamp.length);
+    let last = tcText.length - 1;
+
+    while (last > 0 && tcText[last] !== ' ' && tcText[last] !== clamp[0]) last -= 1;
+
+    last = last || length - clamp.length;
+
+    tcText = tcText.slice(0, last);
+
+    return tcText + clamp;
 });
 
 axios.defaults.baseURL = "/api";
@@ -84,13 +110,14 @@ Vue.use(require('@websanova/vue-auth'), {
 
 Vue.component('app', require('./components/App.vue'));
 Vue.component('v-select', VueSelect);
+Vue.component('v-image', Image);
 
 App.router = Vue.router;
 
 const app = new Vue({
     el: '#app',
     router,
-    mounted(){
+    mounted() {
         this.$toastr.defaultProgressBar = false;
         this.$toastr.defaultPosition = 'toast-bottom-center'
     }
