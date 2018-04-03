@@ -60,7 +60,7 @@
             }
         },
         beforeCreate() {
-            axios.get('/matches/find/' + 7/*this.$auth.user().id*/).then(response => {
+            axios.get('/matches/find/' + this.$auth.user().id).then(response => {
                 this.possibleMatchList = response.data.matches;
             }).catch(error => {
                 this.$toastr.e('Something went wrong with finding matches for you');

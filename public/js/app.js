@@ -48935,7 +48935,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     beforeCreate: function beforeCreate() {
         var _this = this;
 
-        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/matches/find/' + 7 /*this.$auth.user().id*/).then(function (response) {
+        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/matches/find/' + this.$auth.user().id).then(function (response) {
             _this.possibleMatchList = response.data.matches;
         }).catch(function (error) {
             _this.$toastr.e('Something went wrong with finding matches for you');
