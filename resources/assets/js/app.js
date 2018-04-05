@@ -114,6 +114,9 @@ Vue.component('v-image', Image);
 
 App.router = Vue.router;
 
+//Eventbus
+export const eventBus = new Vue({});
+
 const app = new Vue({
     el: '#app',
     router,
@@ -123,3 +126,4 @@ const app = new Vue({
     }
 
 });
+
