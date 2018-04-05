@@ -48858,7 +48858,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.card-header[data-v-78b73b2d] {\n    border-radius: 0;\n    background: -webkit-gradient(linear, left top, right bottom, from(#f05f40), to(#ff7d4f));\n    background: linear-gradient(to bottom right, #f05f40, #ff7d4f);\n}\n", ""]);
+exports.push([module.i, "\n.card-header[data-v-78b73b2d] {\n    border-radius: 0;\n    background: -webkit-gradient(linear, left top, right bottom, from(#f05f40), to(#ff7d4f));\n    background: linear-gradient(to bottom right, #f05f40, #ff7d4f);\n}\n.btn-transparent[data-v-78b73b2d] {\n    background-color: transparent;\n}\n.btn-transparent[data-v-78b73b2d]:active, .btn-transparent[data-v-78b73b2d]:focus {\n    outline: none !important;\n    -webkit-box-shadow: none !important;\n            box-shadow: none !important;\n}\n.btn-row[data-v-78b73b2d] {\n    position: relative;\n    top: -4em;\n    padding: 0;\n    margin-bottom: -3em;\n}\n.fa-times[data-v-78b73b2d] {\n    text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;\n}\n.fa-heart[data-v-78b73b2d] {\n    text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;\n}\n", ""]);
 
 // exports
 
@@ -48871,6 +48871,29 @@ exports.push([module.i, "\n.card-header[data-v-78b73b2d] {\n    border-radius: 0
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -48940,6 +48963,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }).catch(function (error) {
             _this.$toastr.e('Something went wrong with finding matches for you');
         });
+    },
+
+    methods: {
+        acceptMatch: function acceptMatch(match) {},
+        rejectMatch: function rejectMatch(match) {}
     }
 });
 
@@ -49863,66 +49891,117 @@ var render = function() {
                 staticStyle: { padding: "10px 10px 10px 10px" }
               },
               [
-                _c(
-                  "div",
-                  { staticClass: "card card-default" },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "card-header text-center",
-                        staticStyle: { padding: "10px 0 0 0" }
-                      },
-                      [
-                        _c("h4", [
-                          _vm._v(
-                            _vm._s(
-                              _vm._f("capitalize")(
-                                match.user.firstname + " " + match.user.lastname
-                              )
-                            ) + "\n                        "
-                          )
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("v-image", {
-                      staticClass: "card-img-top",
-                      staticStyle: {
-                        "max-width": "available",
-                        "max-height": "available"
-                      },
-                      attrs: { src: match.imageLocation }
-                    }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "card-body" }, [
-                      _c("div", { staticClass: "card-text" }, [
+                _c("div", { staticClass: "card card-default" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "card-header text-center",
+                      staticStyle: { padding: "10px 0 0 0" }
+                    },
+                    [
+                      _c("h4", [
                         _vm._v(
-                          "\n                                " +
-                            _vm._s(_vm._f("truncate")(match.bio, 300)) +
-                            "\n                            "
+                          _vm._s(
+                            _vm._f("capitalize")(
+                              match.user.firstname + " " + match.user.lastname
+                            )
+                          ) + "\n                        "
                         )
                       ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "card-footer" }, [
-                      _vm._v(
-                        "\n                            Games you matched on:\n                        "
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "card-img-top" },
+                    [
+                      _c("v-image", {
+                        staticClass: "img-fluid",
+                        staticStyle: {
+                          "max-width": "available",
+                          "max-height": "available",
+                          "min-height": "100px"
+                        },
+                        attrs: { src: match.imageLocation }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "btn-row" }, [
+                    _c("div", { staticClass: "float-left" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-sm btn-transparent",
+                          staticStyle: { "padding-left": "2em" }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fas fa-times fa-3x",
+                            staticStyle: { color: "red" },
+                            on: {
+                              click: function($event) {
+                                _vm.rejectMatch(match)
+                              }
+                            }
+                          })
+                        ]
                       )
                     ]),
                     _vm._v(" "),
-                    _c(
-                      "ul",
-                      { staticClass: "list-group" },
-                      _vm._l(match.matched_games.slice(0, 5), function(game) {
-                        return _c("li", { staticClass: "list-group-item" }, [
-                          _vm._v(_vm._s(game.name))
-                        ])
-                      })
+                    _c("div", { staticClass: "float-right" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-sm btn-transparent",
+                          staticStyle: { "padding-right": "2em" }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "fas fa-heart fa-3x",
+                            staticStyle: { color: "#91e600" },
+                            on: {
+                              click: function($event) {
+                                _vm.acceptMatch(match)
+                              }
+                            }
+                          })
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("div", { staticClass: "card-text" }, [
+                      _vm._v(
+                        "\n                                " +
+                          _vm._s(_vm._f("truncate")(match.bio, 300)) +
+                          "\n                            "
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-footer" }, [
+                    _vm._v(
+                      "\n                            Games you matched on:\n                        "
                     )
-                  ],
-                  1
-                )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "ul",
+                    { staticClass: "list-group" },
+                    _vm._l(match.matched_games.slice(0, 5), function(game) {
+                      return _c("li", { staticClass: "list-group-item" }, [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(game.name) +
+                            "\n                            "
+                        )
+                      ])
+                    })
+                  )
+                ])
               ]
             )
           })
@@ -52085,7 +52164,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\nimg[data-v-643057db] {\n    background-image: url(\"/images/profile_placeholder.bmp\");\n    background-size: 640px 480px;\n    background-position: center;\n}\n", ""]);
 
 // exports
 
@@ -52124,11 +52203,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("img", {
-    staticClass: "mx-auto",
-    attrs: {
-      src: _vm.src ? _vm.src : _vm.profile_placeholder,
-      alt: _vm.alt ? _vm.alt : _vm.default_alt_text
-    }
+    staticStyle: { width: "100%", height: "100%" },
+    attrs: { src: _vm.src ? _vm.src : _vm.profile_placeholder }
   })
 }
 var staticRenderFns = []

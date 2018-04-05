@@ -1,5 +1,5 @@
 <template>
-    <img class="mx-auto" :src="src ? src : profile_placeholder" :alt="alt ? alt : default_alt_text">
+    <img :src="src ? src : profile_placeholder"  style="width: 100%; height: 100%">
 </template>
 
 <script>
@@ -18,5 +18,9 @@
 </script>
 
 <style scoped>
-
+    img {
+        background-image: url("/images/profile_placeholder.bmp");
+        background-size: 640px 480px;
+        background-position: center;
+    }
 </style>
