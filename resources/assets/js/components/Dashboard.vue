@@ -30,17 +30,26 @@
                             </div>
                             <div class="btn-row">
                                 <div class="float-left">
-                                    <button class="btn btn-sm btn-transparent" style="padding-left: 2em;"><i
-                                            class="fas fa-times fa-3x"
-                                            style="color: red;"
-                                            @click="rejectMatch(match)"></i>
+                                    <button class="btn btn-sm btn-transparent"
+                                            style="padding-left: 2em;"
+                                            data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="Reject">
+                                        <i class="fas fa-times fa-3x"
+                                           style="color: red;"
+                                           @click="rejectMatch(match)"></i>
                                     </button>
                                 </div>
                                 <div class="float-right">
-                                    <button class="btn btn-sm btn-transparent" style="padding-right: 2em;"><i
-                                            class="fas fa-heart fa-3x"
-                                            style="color: #91e600;"
-                                            @click="acceptMatch(match)"></i>
+                                    <button type="button"
+                                            class="btn btn-sm btn-transparent"
+                                            style="padding-right: 2em;"
+                                            data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="Like">
+                                        <i class="fas fa-heart fa-3x"
+                                           style="color: #91e600;"
+                                           @click="acceptMatch(match)"></i>
                                     </button>
                                 </div>
                             </div>
@@ -85,15 +94,20 @@
         beforeCreate() {
             axios.get('/matches/find/' + this.$auth.user().id).then(response => {
                 this.possibleMatchList = response.data.matches;
+
+                //Used to enable bootstrap style tooltips on the page when the content has loaded in from the server
+                $(function () {
+                    $('[data-toggle="tooltip"]').tooltip()
+                })
             }).catch(error => {
                 this.$toastr.e('Something went wrong with finding matches for you');
             })
         },
-        methods:{
-            acceptMatch(match){
+        methods: {
+            acceptMatch(match) {
 
             },
-            rejectMatch(match){
+            rejectMatch(match) {
 
             }
         }

@@ -90,5 +90,7 @@ class MatchController extends Controller {
         return $foundMatches;
     }
 
+    //TODO: Rework the matches table to add partner_profile_id, and make sure it's added when finding matches. With this new table layout it's easier and more performance friendly to find mutual matches
+
 
 }

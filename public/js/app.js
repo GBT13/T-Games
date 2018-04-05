@@ -48946,6 +48946,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -48960,6 +48969,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/matches/find/' + this.$auth.user().id).then(function (response) {
             _this.possibleMatchList = response.data.matches;
+
+            //Used to enable bootstrap style tooltips on the page when the content has loaded in from the server
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
         }).catch(function (error) {
             _this.$toastr.e('Something went wrong with finding matches for you');
         });
@@ -49934,7 +49948,12 @@ var render = function() {
                         "button",
                         {
                           staticClass: "btn btn-sm btn-transparent",
-                          staticStyle: { "padding-left": "2em" }
+                          staticStyle: { "padding-left": "2em" },
+                          attrs: {
+                            "data-toggle": "tooltip",
+                            "data-placement": "top",
+                            title: "Reject"
+                          }
                         },
                         [
                           _c("i", {
@@ -49955,7 +49974,13 @@ var render = function() {
                         "button",
                         {
                           staticClass: "btn btn-sm btn-transparent",
-                          staticStyle: { "padding-right": "2em" }
+                          staticStyle: { "padding-right": "2em" },
+                          attrs: {
+                            type: "button",
+                            "data-toggle": "tooltip",
+                            "data-placement": "top",
+                            title: "Like"
+                          }
                         },
                         [
                           _c("i", {
