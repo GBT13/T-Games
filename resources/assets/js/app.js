@@ -14,12 +14,15 @@ import axios from 'axios'
 import Toastr from 'vue-toastr';
 import VueAxios from 'vue-axios'
 import VueSelect from 'vue-select';
+import VModal from 'vue-js-modal'
+
 
 Vue.use(VueRouter);
 Vue.use(Vuelidate);
 Vue.use(VueAxios, axios);
 Vue.use(VueSelect);
 Vue.use(Toastr);
+Vue.use(VModal, {dynamic: true});
 
 
 Vue.filter('capitalize', function (value) {
