@@ -48948,10 +48948,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         acceptMatch: function acceptMatch(match) {
+            $('[data-toggle="tooltip"]').tooltip('hide');
             console.log(match);
         },
         rejectMatch: function rejectMatch(match) {
-            console.log(match);
+            var _this3 = this;
+
+            $('[data-toggle="tooltip"]').tooltip('hide');
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('/matches/' + match.id + '/reject').then(function (response) {
+                _this3.possibleMatchList.splice(_this3.possibleMatchList.indexOf(_this3.possibleMatchList.find(function (element) {
+                    return element.id === match.id;
+                })), 1);
+            }).catch(function (error) {
+                _this3.$toastr.e('Something went wrong with rejecting this match');
+            });
         }
     },
     components: {
@@ -49927,7 +49937,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.btn-transparent[data-v-2213fbf5] {\n    background-color: transparent;\n}\n.btn-transparent[data-v-2213fbf5]:active, .btn-transparent[data-v-2213fbf5]:focus {\n    outline: none !important;\n    -webkit-box-shadow: none !important;\n            box-shadow: none !important;\n}\n.btn-row[data-v-2213fbf5] {\n    position: relative;\n    top: -4em;\n    padding: 0;\n    margin-bottom: -3em;\n}\n.fa-times[data-v-2213fbf5] {\n    text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;\n}\n.fa-heart[data-v-2213fbf5] {\n    text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;\n}\n", ""]);
+exports.push([module.i, "\n.btn-transparent[data-v-2213fbf5] {\n    background-color: transparent;\n}\n.btn-heart:hover .fa-heart[data-v-2213fbf5] {\n    color: #49f500;\n}\n.btn-cross:hover .fa-times[data-v-2213fbf5] {\n    color: #ff443c;\n}\n.btn-transparent[data-v-2213fbf5]:active, .btn-transparent[data-v-2213fbf5]:focus {\n    outline: none !important;\n    -webkit-box-shadow: none !important;\n            box-shadow: none !important;\n}\n.btn-row[data-v-2213fbf5] {\n    position: relative;\n    top: -4em;\n    padding: 0;\n    margin-bottom: -3em;\n}\n.fa-times[data-v-2213fbf5] {\n    color: red;\n    text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;\n}\n.fa-heart[data-v-2213fbf5] {\n    color: #91e600;\n    text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;\n}\n", ""]);
 
 // exports
 
@@ -49939,8 +49949,6 @@ exports.push([module.i, "\n.btn-transparent[data-v-2213fbf5] {\n    background-c
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app__ = __webpack_require__(7);
-//
-//
 //
 //
 //
@@ -50061,7 +50069,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-sm btn-transparent",
+            staticClass: "btn btn-sm btn-transparent btn-cross",
             staticStyle: { "padding-left": "2em" },
             attrs: {
               "data-toggle": "tooltip",
@@ -50070,12 +50078,7 @@ var render = function() {
             },
             on: { click: _vm.rejectMatch }
           },
-          [
-            _c("i", {
-              staticClass: "fas fa-times fa-3x",
-              staticStyle: { color: "red" }
-            })
-          ]
+          [_c("i", { staticClass: "fas fa-times fa-3x" })]
         )
       ]),
       _vm._v(" "),
@@ -50083,7 +50086,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-sm btn-transparent",
+            staticClass: "btn btn-sm btn-transparent btn-heart",
             staticStyle: { "padding-right": "2em" },
             attrs: {
               type: "button",
@@ -50093,12 +50096,7 @@ var render = function() {
             },
             on: { click: _vm.acceptMatch }
           },
-          [
-            _c("i", {
-              staticClass: "fas fa-heart fa-3x",
-              staticStyle: { color: "#91e600" }
-            })
-          ]
+          [_c("i", { staticClass: "fas fa-heart fa-3x" })]
         )
       ])
     ]),

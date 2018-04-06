@@ -11,26 +11,24 @@
         </div>
         <div class="btn-row">
             <div class="float-left">
-                <button class="btn btn-sm btn-transparent"
+                <button class="btn btn-sm btn-transparent btn-cross"
                         style="padding-left: 2em;"
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Reject"
                         @click="rejectMatch">
-                    <i class="fas fa-times fa-3x"
-                       style="color: red;"></i>
+                    <i class="fas fa-times fa-3x"></i>
                 </button>
             </div>
             <div class="float-right">
                 <button type="button"
-                        class="btn btn-sm btn-transparent"
+                        class="btn btn-sm btn-transparent btn-heart"
                         style="padding-right: 2em;"
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Like"
                         @click="acceptMatch">
-                    <i class="fas fa-heart fa-3x"
-                       style="color: #91e600;"></i>
+                    <i class="fas fa-heart fa-3x"></i>
                 </button>
             </div>
         </div>
@@ -76,6 +74,14 @@
         background-color: transparent;
     }
 
+    .btn-heart:hover .fa-heart {
+        color: #49f500;
+    }
+
+    .btn-cross:hover .fa-times {
+        color: #ff443c;
+    }
+
     .btn-transparent:active, .btn-transparent:focus {
         outline: none !important;
         box-shadow: none !important;
@@ -89,10 +95,12 @@
     }
 
     .fa-times {
+        color: red;
         text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
     }
 
     .fa-heart {
+        color: #91e600;
         text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
     }
 </style>

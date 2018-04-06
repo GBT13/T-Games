@@ -53,17 +53,29 @@
                 this.$toastr.e('Something went wrong with finding matches for you');
             })
         },
-        created(){
-          eventBus.$on('matchAccepted', (data)=>{this.acceptMatch(data);});
-          eventBus.$on('matchRejected', (data)=>{this.rejectMatch(data);});
+        created() {
+            eventBus.$on('matchAccepted', (data) => {
+                this.acceptMatch(data);
+            });
+            eventBus.$on('matchRejected', (data) => {
+                this.rejectMatch(data);
+            });
         },
         methods: {
             acceptMatch(match) {
-                console.log(match);
-            },
-            rejectMatch(match) {
+                $('[data-toggle="tooltip"]').tooltip('hide');
                 console.log(match);
 
+            },
+            rejectMatch(match) {
+                $('[data-toggle="tooltip"]').tooltip('hide');
+                axios.patch('/matches/' + match.id + '/reject').then(response => {
+                    this.possibleMatchList.splice(this.possibleMatchList.indexOf(this.possibleMatchList.find((element)=>{
+                        return element.id === match.id;
+                    })), 1);
+                }).catch(error => {
+                    this.$toastr.e('Something went wrong with rejecting this match');
+                })
             }
         },
         components: {

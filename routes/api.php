@@ -22,7 +22,7 @@ Route::post('auth/login', 'AuthController@login');
 Route::get('auth/user/emailduplicate', 'AuthController@checkEmailExists');
 
 Route::get('matches/user/{id}', 'MatchController@getAllPendingMatches');
-Route::get('matches/match/{id}', 'MatchController@getAllProfilesFromMatch');
+//Route::get('matches/match/{id}', 'MatchController@getAllMutuallyAcceptedMatches');
 Route::get('matches/find/{id}', 'MatchController@findMatches');
 
 
@@ -41,6 +41,10 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('user/{id}/profile', 'ProfileController@getProfileByUser');
     Route::patch('user/updateprofile', 'ProfileController@updateProfile');
     Route::patch('user/updateaccount', 'UserController@updateAccountSettings');
+
+//    Match Routes
+    Route::patch('matches/{partnerId}/reject', 'MatchController@rejectMatch');
+
 
 });
 

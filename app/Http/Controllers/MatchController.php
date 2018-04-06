@@ -9,26 +9,19 @@ use Auth;
 use Illuminate\Http\Request;
 
 class MatchController extends Controller {
-//    public function getAllPendingMatches($id) {
-//        $matches1 = Profile::findOrFail($id)->possibleMatchesMatcher()->get();
-//        $matches2 = Profile::findOrFail($id)->possibleMatchesMatchee()->get();
-//
-//        return $allMatches = $matches1->push($matches2);
-//    }
-//
-//    public function getAllProfilesFromMatch($id) {
-//        $profile1 = Match::findOrFail($id)->matcherProfile()->get();
-//        $profile2 = Match::findOrFail($id)->matcheeProfile()->get();
-//
-//        return $allProfiles = $profile1->push($profile2);
-//    }
 
     public function getAllPendingMatches($id) {
-        return Profile::findOrFail($id)->possibleMatches();
+        return Profile::findOrFail($id)->possibleMatches()->get();
     }
 
-    public function getAllMutuallyAcceptedMatches($id) {
-        return Profile::findOrFail($id)->mutuallyAcceptedMatches();
+//    public function getAllMutuallyAcceptedMatches($id) {
+//        return Profile::findOrFail($id)->mutuallyAcceptedMatches();
+//    }
+
+    public function rejectMatch($partnerId){
+        $ownProfile = Auth::user()->profile()->first();
+//        return Match::whereProfileId($ownProfile->id)->wherePartnerProfileId($partnerId)->update(['rejected' => true]);
+        return 1;
     }
 
     public function findMatches($id) {
@@ -37,17 +30,17 @@ class MatchController extends Controller {
         $otherProfiles = Profile::whereKeyNot($id)->get();
         $foundMatches = ['matches' => []];
 
-        foreach ($otherProfiles as $profile) {
-            $matchScore = count(($profile->games()->get()->intersect($ownProfile->games()->get())));
+        foreach ($otherProfiles as $partnerProfile) {
+            $matchScore = count(($partnerProfile->games()->get()->intersect($ownProfile->games()->get())));
 
             if ($matchScore > 1) {
-                array_add($profile, 'user', $profile->user()->get());
-                array_add($profile, 'matched_games', $profile->games()->get()->intersect($ownProfile->games()->get()));
-                array_push($foundMatches['matches'], $profile);
+                array_add($partnerProfile, 'user', $partnerProfile->user()->get());
+                array_add($partnerProfile, 'matched_games', $partnerProfile->games()->get()->intersect($ownProfile->games()->get()));
+                array_push($foundMatches['matches'], $partnerProfile);
 
 //                Fetch all matches for the profiles of the current profile iteration
                 $existingOwnMatches = Match::whereProfileId($ownProfile->id)->get();
-                $existingPartnerMatches = Match::whereProfileId($profile->id)->get();
+                $existingPartnerMatches = Match::whereProfileId($partnerProfile->id)->get();
 
 
 //                Check whether there are any matches in the database
@@ -71,15 +64,15 @@ class MatchController extends Controller {
 
 //                    If no match pair has been found for the current profile iteration create them in the database
                     if ($existingMatchAmount < 1) {
-                        $ownMatch = Match::create(['profile_id' => $ownProfile->id]);
-                        $partnerMatch = Match::create(['profile_id' => $profile->id, 'partner_match_id' => $ownMatch->id]);
+                        $ownMatch = Match::create(['profile_id' => $ownProfile->id, 'partner_profile_id' => $partnerProfile->id]);
+                        $partnerMatch = Match::create(['profile_id' => $partnerProfile->id, 'partner_match_id' => $ownMatch->id, 'partner_profile_id' => $ownProfile->id]);
                         $ownMatch->update(['partner_match_id' => $partnerMatch->id]);
                     }
 
 //                    If there are no matches in the database whatsoever for the current profile iteration create them immediately
                 } else {
-                    $ownMatch = Match::create(['profile_id' => $ownProfile->id]);
-                    $partnerMatch = Match::create(['profile_id' => $profile->id, 'partner_match_id' => $ownMatch->id]);
+                    $ownMatch = Match::create(['profile_id' => $ownProfile->id, 'partner_profile_id' => $partnerProfile->id]);
+                    $partnerMatch = Match::create(['profile_id' => $partnerProfile->id, 'partner_match_id' => $ownMatch->id, 'partner_profile_id' => $ownProfile->id]);
                     $ownMatch->update(['partner_match_id' => $partnerMatch->id]);
                 }
 
