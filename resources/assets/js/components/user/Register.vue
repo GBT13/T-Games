@@ -137,6 +137,7 @@
                 </div>
             </div>
         </div>
+        <!--TODO: Remove this buttons before production-->
         <button class="btn btn-danger" @click="success = !success">Toggle Success</button>
         <button class="btn btn-danger" @click="pending = !pending">Toggle pending</button>
     </div>

@@ -48160,6 +48160,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -48926,11 +48927,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/matches/find/' + this.$auth.user().id).then(function (response) {
             _this.possibleMatchList = response.data.matches;
-
-            //Used to enable bootstrap style tooltips on the page when the content has loaded in from the server
-            $(function () {
-                $('[data-toggle="tooltip"]').tooltip();
-            });
         }).catch(function (error) {
             _this.$toastr.e('Something went wrong with finding matches for you');
         });
@@ -48948,19 +48944,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         acceptMatch: function acceptMatch(match) {
-            $('[data-toggle="tooltip"]').tooltip('hide');
-            console.log(match);
-        },
-        rejectMatch: function rejectMatch(match) {
             var _this3 = this;
 
-            $('[data-toggle="tooltip"]').tooltip('hide');
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('/matches/' + match.id + '/reject').then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('/matches/' + match.id + '/accept').then(function (response) {
                 _this3.possibleMatchList.splice(_this3.possibleMatchList.indexOf(_this3.possibleMatchList.find(function (element) {
                     return element.id === match.id;
                 })), 1);
             }).catch(function (error) {
-                _this3.$toastr.e('Something went wrong with rejecting this match');
+                _this3.$toastr.e('Something went wrong with accepting this match');
+            });
+        },
+        rejectMatch: function rejectMatch(match) {
+            var _this4 = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('/matches/' + match.id + '/reject').then(function (response) {
+                _this4.possibleMatchList.splice(_this4.possibleMatchList.indexOf(_this4.possibleMatchList.find(function (element) {
+                    return element.id === match.id;
+                })), 1);
+            }).catch(function (error) {
+                _this4.$toastr.e('Something went wrong with rejecting this match');
             });
         }
     },
@@ -50002,20 +50004,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
-
+//TODO: Check if there is a way to re-enable buttons when a server error occurs in the parent component
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            pending: false
+        };
+    },
+
     props: {
         match: null
     },
     methods: {
         acceptMatch: function acceptMatch() {
+            $('[data-toggle="tooltip"]').tooltip('hide');
+
+            this.pending = true;
             __WEBPACK_IMPORTED_MODULE_0__app__["eventBus"].$emit('matchAccepted', this.match);
         },
         rejectMatch: function rejectMatch() {
+            $('[data-toggle="tooltip"]').tooltip('hide');
+
+            this.pending = true;
             __WEBPACK_IMPORTED_MODULE_0__app__["eventBus"].$emit('matchRejected', this.match);
         }
+    },
+    created: function created() {
+        //Used to enable bootstrap style tooltips on the page when the content has loaded in from the server
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
     }
 });
 
@@ -50074,7 +50096,8 @@ var render = function() {
             attrs: {
               "data-toggle": "tooltip",
               "data-placement": "top",
-              title: "Reject"
+              title: "Reject",
+              disabled: this.pending
             },
             on: { click: _vm.rejectMatch }
           },
@@ -50092,7 +50115,8 @@ var render = function() {
               type: "button",
               "data-toggle": "tooltip",
               "data-placement": "top",
-              title: "Like"
+              title: "Like",
+              disabled: this.pending
             },
             on: { click: _vm.acceptMatch }
           },
@@ -50170,6 +50194,7 @@ var render = function() {
             return _c(
               "div",
               {
+                key: match.id,
                 staticClass: "col-lg-4 col-md-6",
                 staticStyle: { padding: "10px 10px 10px 10px" }
               },

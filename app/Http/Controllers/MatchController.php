@@ -18,10 +18,29 @@ class MatchController extends Controller {
 //        return Profile::findOrFail($id)->mutuallyAcceptedMatches();
 //    }
 
-    public function rejectMatch($partnerId){
+    public function rejectMatch($partnerId) {
         $ownProfile = Auth::user()->profile()->first();
 //        return Match::whereProfileId($ownProfile->id)->wherePartnerProfileId($partnerId)->update(['rejected' => true]);
+        //TODO: Re-enable the above when done testing front-end animations
         return 1;
+    }
+
+    public function acceptMatch($partnerId) {
+        $ownProfile = Auth::user()->profile()->first();
+        $ownMatch = Match::whereProfileId($ownProfile->id)->wherePartnerProfileId($partnerId)->update(['accepted' => true]);
+
+        if (Match::whereProfileId($partnerId)->wherePartnerProfileId($ownProfile->id)->first()->accepted == 1) {
+            return response([
+                'status' => 'success',
+                'MUTUAL_MATCH' => true
+            ]);
+        } else {
+            return response([
+                'status' => 'success',
+                'MUTUAL_MATCH' => false
+            ]);
+        }
+
     }
 
     public function findMatches($id) {
@@ -55,6 +74,9 @@ class MatchController extends Controller {
 
 //                                If one of the two people has rejected the match already splice it from the possible profiles that are returned so it won't show up again for either user
                                 if ($existingOwnMatch->rejected === 1 || $existingPartnerMatch->rejected === 1) {
+                                    array_splice($foundMatches['matches'], (array_search(['id' => $existingPartnerMatch->profile_id], $foundMatches['matches'])), 1);
+//                                If you have accepted the match already, splice it from the possible profiles that are returned so it won't show up again for you
+                                } else if ($existingOwnMatch->accepted === 1) {
                                     array_splice($foundMatches['matches'], (array_search(['id' => $existingPartnerMatch->profile_id], $foundMatches['matches'])), 1);
                                 }
                             }

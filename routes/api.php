@@ -44,6 +44,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
 
 //    Match Routes
     Route::patch('matches/{partnerId}/reject', 'MatchController@rejectMatch');
+    Route::patch('matches/{partnerId}/accept', 'MatchController@acceptMatch');
 
 
 });

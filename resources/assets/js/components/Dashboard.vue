@@ -17,7 +17,7 @@
 
                     <!--MatchCard-->
                     <div class="col-lg-4 col-md-6" style="padding: 10px 10px 10px 10px "
-                         v-for="match in possibleMatchList">
+                         v-for="match in possibleMatchList" :key="match.id">
                         <v-matchcard :match="match"></v-matchcard>
                     </div>
                 </div>
@@ -38,17 +38,13 @@
     export default {
         data() {
             return {
-                possibleMatchList: []
+                possibleMatchList: [],
             }
         },
         beforeCreate() {
             axios.get('/matches/find/' + this.$auth.user().id).then(response => {
                 this.possibleMatchList = response.data.matches;
 
-                //Used to enable bootstrap style tooltips on the page when the content has loaded in from the server
-                $(function () {
-                    $('[data-toggle="tooltip"]').tooltip()
-                })
             }).catch(error => {
                 this.$toastr.e('Something went wrong with finding matches for you');
             })
@@ -63,14 +59,18 @@
         },
         methods: {
             acceptMatch(match) {
-                $('[data-toggle="tooltip"]').tooltip('hide');
-                console.log(match);
+                axios.patch('/matches/' + match.id + '/accept').then(response => {
+                    this.possibleMatchList.splice(this.possibleMatchList.indexOf(this.possibleMatchList.find((element) => {
+                        return element.id === match.id;
+                    })), 1);
+                }).catch(error => {
+                    this.$toastr.e('Something went wrong with accepting this match');
+                })
 
             },
             rejectMatch(match) {
-                $('[data-toggle="tooltip"]').tooltip('hide');
                 axios.patch('/matches/' + match.id + '/reject').then(response => {
-                    this.possibleMatchList.splice(this.possibleMatchList.indexOf(this.possibleMatchList.find((element)=>{
+                    this.possibleMatchList.splice(this.possibleMatchList.indexOf(this.possibleMatchList.find((element) => {
                         return element.id === match.id;
                     })), 1);
                 }).catch(error => {

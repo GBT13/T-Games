@@ -16,7 +16,8 @@
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Reject"
-                        @click="rejectMatch">
+                        @click="rejectMatch"
+                        :disabled="this.pending">
                     <i class="fas fa-times fa-3x"></i>
                 </button>
             </div>
@@ -27,7 +28,8 @@
                         data-toggle="tooltip"
                         data-placement="top"
                         title="Like"
-                        @click="acceptMatch">
+                        @click="acceptMatch"
+                        :disabled="this.pending">
                     <i class="fas fa-heart fa-3x"></i>
                 </button>
             </div>
@@ -53,18 +55,35 @@
 
 <script>
     import {eventBus} from "../../app";
-
+    //TODO: Check if there is a way to re-enable buttons when a server error occurs in the parent component
     export default {
+        data() {
+            return {
+                pending: false
+            }
+        },
         props: {
             match: null
         },
         methods: {
             acceptMatch() {
+                $('[data-toggle="tooltip"]').tooltip('hide');
+
+                this.pending = true;
                 eventBus.$emit('matchAccepted', this.match)
             },
             rejectMatch() {
+                $('[data-toggle="tooltip"]').tooltip('hide');
+
+                this.pending = true;
                 eventBus.$emit('matchRejected', this.match)
             }
+        },
+        created() {
+            //Used to enable bootstrap style tooltips on the page when the content has loaded in from the server
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
         }
     }
 </script>
