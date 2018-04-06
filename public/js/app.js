@@ -59794,7 +59794,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.rounded-circle[data-v-6b17fd68] {\n    border: solid 2px black;\n}\n.profile-image[data-v-6b17fd68] {\n    height: 270px;\n    width: 100%;\n}\n.profile-image-container[data-v-6b17fd68]{\n    padding: 1em .5em 1em .5em;\n}\n\n", ""]);
+exports.push([module.i, "\n.rounded-circle[data-v-6b17fd68] {\n    border: solid 2px black;\n}\n.profile-image[data-v-6b17fd68] {\n    height: 270px;\n    width: 100%;\n}\n.profile-image-container[data-v-6b17fd68]{\n    padding: 1em .5em 1em .5em;\n}\n@media (max-width: 575px) {\n.profile-image[data-v-6b17fd68] {\n        height: 135px;\n        width: 135px;\n}\n}\n\n", ""]);
 
 // exports
 
@@ -59857,31 +59857,48 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "row col-lg-12", staticStyle: { "margin-left": "0" } },
+      {
+        staticClass: "row col-lg-12 col-sm-12 col-12",
+        staticStyle: { "margin-left": "0" }
+      },
       [
-        _c("div", { staticClass: "col-lg-6 profile-image-container" }, [
-          _c("img", {
-            staticClass: "img-fluid profile-image rounded-circle",
-            attrs: {
-              src: _vm.ownProfile.imageLocation
-                ? _vm.ownProfile.imageLocation
-                : _vm.profile_placeholder,
-              alt: "Profile Picture"
-            }
-          })
-        ]),
+        _c(
+          "div",
+          {
+            staticClass:
+              "col-lg-6 col-sm-6 col-6 profile-image-container text-center"
+          },
+          [
+            _c("img", {
+              staticClass: "img-fluid profile-image rounded-circle",
+              attrs: {
+                src: _vm.ownProfile.imageLocation
+                  ? _vm.ownProfile.imageLocation
+                  : _vm.profile_placeholder,
+                alt: "Profile Picture"
+              }
+            })
+          ]
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "col-lg-6 profile-image-container" }, [
-          _c("img", {
-            staticClass: "img-fluid profile-image rounded-circle",
-            attrs: {
-              src: _vm.match.imageLocation
-                ? _vm.match.imageLocation
-                : _vm.profile_placeholder,
-              alt: "Match Picture"
-            }
-          })
-        ])
+        _c(
+          "div",
+          {
+            staticClass:
+              "col-lg-6 col-sm-6 col-6 profile-image-container text-center"
+          },
+          [
+            _c("img", {
+              staticClass: "img-fluid profile-image rounded-circle",
+              attrs: {
+                src: _vm.match.imageLocation
+                  ? _vm.match.imageLocation
+                  : _vm.profile_placeholder,
+                alt: "Match Picture"
+              }
+            })
+          ]
+        )
       ]
     )
   ])
@@ -59891,9 +59908,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header col-lg-12 text-center" }, [
-      _c("h1", [_vm._v("It's a match!")])
-    ])
+    return _c(
+      "div",
+      { staticClass: "card-header col-lg-12 col-sm-12 col-xs-12 text-center" },
+      [_c("h1", [_vm._v("It's a match!")])]
+    )
   }
 ]
 render._withStripped = true

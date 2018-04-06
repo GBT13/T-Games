@@ -1,18 +1,18 @@
 <template>
     <div class=" justify-content-center">
 
-        <div class="card-header col-lg-12 text-center">
+        <div class="card-header col-lg-12 col-sm-12 col-xs-12 text-center">
             <h1>It's a match!</h1>
         </div>
 
-        <div class="row col-lg-12" style="margin-left: 0;">
-            <div class="col-lg-6 profile-image-container">
+        <div class="row col-lg-12 col-sm-12 col-12" style="margin-left: 0;">
+            <div class="col-lg-6 col-sm-6 col-6 profile-image-container text-center">
                 <img class="img-fluid profile-image rounded-circle"
 
                      :src="ownProfile.imageLocation ? ownProfile.imageLocation : profile_placeholder"
                      alt="Profile Picture">
             </div>
-            <div class="col-lg-6 profile-image-container">
+            <div class="col-lg-6 col-sm-6 col-6 profile-image-container text-center">
                 <img class="img-fluid profile-image rounded-circle"
 
                      :src="match.imageLocation ? match.imageLocation : profile_placeholder"
@@ -49,6 +49,13 @@
 
     .profile-image-container{
         padding: 1em .5em 1em .5em;
+    }
+
+    @media (max-width: 575px) {
+        .profile-image {
+            height: 135px;
+            width: 135px;
+        }
     }
 
 </style>
