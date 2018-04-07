@@ -1,20 +1,20 @@
 <template>
     <div class=" justify-content-center">
 
-        <div class="card-header col-lg-12 col-sm-12 col-xs-12 text-center">
-            <h1>It's a match!</h1>
+        <div class="transparent card-header col-lg-12 col-sm-12 col-xs-12 text-center">
+            <h1 class="solid">It's a match!</h1>
         </div>
 
-        <div class="row col-lg-12 col-sm-12 col-12">
+        <div class="row col-lg-12 col-sm-12 col-12 transparent">
             <div class="col-lg-6 col-sm-6 col-6 profile-image-container text-center">
-                <v-image class="profile-image rounded-circle" :src="ownProfile.profile.imageLocation"></v-image>
+                <v-image class="profile-image rounded-circle solid" :src="ownProfile.profile.imageLocation"></v-image>
             </div>
             <div class="col-lg-6 col-sm-6 col-6 profile-image-container text-center">
-                <v-image class="profile-image rounded-circle" :src="match.imageLocation"></v-image>
+                <v-image class="profile-image rounded-circle solid" :src="match.imageLocation"></v-image>
             </div>
         </div>
 
-        <div class="row col-lg-12 col-sm-12 col-12">
+        <div class="row col-lg-12 col-sm-12 col-12 transparent" style="color: white;">
             <div class="col-lg-6 col-sm-6 col-6 text-center">
                 <h3>{{ownProfile.firstname | capitalize}}</h3>
             </div>
@@ -23,7 +23,23 @@
             </div>
         </div>
 
+        <div class="row btn-row col-lg-12 col-sm-12 col-12 transparent" style="padding-top: 1.5em;">
+            <button class="btn btn-xl btn-light col-lg-6 col-sm-6 col-10 btn-action mx-auto">Chat</button>
+        </div>
+        <div class="row btn-row col-lg-12 col-sm-12 col-12 transparent">
+
+            <button class="btn btn-xl btn-light col-lg-6 col-sm-6 col-10 btn-action mx-auto">View their Profile</button>
+        </div>
+        <div class="row btn-row col-lg-12 col-sm-12 col-12 transparent">
+
+            <button @click="$emit('close')" class="btn btn-xl btn-danger col-lg-6 col-sm-6 col-10 btn-action mx-auto">
+                Close
+            </button>
+        </div>
+
     </div>
+
+
 </template>
 
 <script>
@@ -42,7 +58,7 @@
 
 <style scoped>
     .rounded-circle {
-        border: solid 2px black;
+        /*border: solid 1px black;*/
     }
 
     .profile-image {
@@ -66,6 +82,32 @@
 
     .row {
         margin-left: 0;
+    }
+
+    .btn-row {
+        padding-bottom: 1.5em;
+        /*background-color: #f05f40;*/
+        background-color: #212529;
+        /*background-color: #eaeaea;*/
+        /*background-color: #FF7A5D;*/
+        /*background-color: #F89136;*/
+
+    }
+
+    .btn-light {
+        color: #f05f40;
+    }
+
+    .blur {
+        filter: blur(1em);
+    }
+
+    .transparent{
+        background-color: rgba(25, 25, 25, 0.88);
+    }
+
+    .solid{
+        opacity: 1 !important;
     }
 
 </style>

@@ -48867,7 +48867,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.card-header[data-v-78b73b2d] {\n    border-radius: 0;\n    background: -webkit-gradient(linear, left top, right bottom, from(#f05f40), to(#ff7d4f));\n    background: linear-gradient(to bottom right, #f05f40, #ff7d4f);\n}\n\n\n", ""]);
+exports.push([module.i, "\n.card-header[data-v-78b73b2d] {\n    border-radius: 0;\n    background: -webkit-gradient(linear, left top, right bottom, from(#f05f40), to(#ff7d4f));\n    background: linear-gradient(to bottom right, #f05f40, #ff7d4f);\n}\n.mutualModal[data-v-78b73b2d]{\n    background-color: transparent;\n    text-align: left;\n    border-radius: 3px;\n    -webkit-box-shadow: 0 20px 60px -2px rgba(27, 33, 58, 0.4);\n            box-shadow: 0 20px 60px -2px rgba(27, 33, 58, 0.4);\n    padding: 0;\n}\n\n\n", ""]);
 
 // exports
 
@@ -48989,7 +48989,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 //Properties
                 adaptive: true,
                 height: 'auto',
-                scrollable: true
+                scrollable: true,
+                name: 'dwadw',
+                classes: ['mutualModal']
+
             });
         }
     },
@@ -50273,7 +50276,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.rounded-circle[data-v-6b17fd68] {\n    border: solid 2px black;\n}\n.profile-image[data-v-6b17fd68] {\n    height: 270px !important;\n    width: 270px !important;\n    -o-object-fit: cover !important;\n       object-fit: cover !important;\n}\n.profile-image-container[data-v-6b17fd68] {\n    padding: 1em .5em 1em .5em;\n}\n@media (max-width: 575px) {\n.profile-image[data-v-6b17fd68] {\n        height: 130px !important;\n        width: 130px !important;\n        -o-object-fit: cover !important;\n           object-fit: cover !important;\n}\n}\n.row[data-v-6b17fd68] {\n    margin-left: 0;\n}\n\n", ""]);
+exports.push([module.i, "\n.rounded-circle[data-v-6b17fd68] {\n    /*border: solid 1px black;*/\n}\n.profile-image[data-v-6b17fd68] {\n    height: 270px !important;\n    width: 270px !important;\n    -o-object-fit: cover !important;\n       object-fit: cover !important;\n}\n.profile-image-container[data-v-6b17fd68] {\n    padding: 1em .5em 1em .5em;\n}\n@media (max-width: 575px) {\n.profile-image[data-v-6b17fd68] {\n        height: 130px !important;\n        width: 130px !important;\n        -o-object-fit: cover !important;\n           object-fit: cover !important;\n}\n}\n.row[data-v-6b17fd68] {\n    margin-left: 0;\n}\n.btn-row[data-v-6b17fd68] {\n    padding-bottom: 1.5em;\n    /*background-color: #f05f40;*/\n    background-color: #212529;\n    /*background-color: #eaeaea;*/\n    /*background-color: #FF7A5D;*/\n    /*background-color: #F89136;*/\n}\n.btn-light[data-v-6b17fd68] {\n    color: #f05f40;\n}\n.blur[data-v-6b17fd68] {\n    -webkit-filter: blur(1em);\n            filter: blur(1em);\n}\n.transparent[data-v-6b17fd68]{\n    background-color: rgba(25, 25, 25, 0.88);\n}\n.solid[data-v-6b17fd68]{\n    opacity: 1 !important;\n}\n\n", ""]);
 
 // exports
 
@@ -50284,6 +50287,22 @@ exports.push([module.i, "\n.rounded-circle[data-v-6b17fd68] {\n    border: solid
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -50337,7 +50356,7 @@ var render = function() {
   return _c("div", { staticClass: " justify-content-center" }, [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "row col-lg-12 col-sm-12 col-12" }, [
+    _c("div", { staticClass: "row col-lg-12 col-sm-12 col-12 transparent" }, [
       _c(
         "div",
         {
@@ -50346,7 +50365,7 @@ var render = function() {
         },
         [
           _c("v-image", {
-            staticClass: "profile-image rounded-circle",
+            staticClass: "profile-image rounded-circle solid",
             attrs: { src: _vm.ownProfile.profile.imageLocation }
           })
         ],
@@ -50361,7 +50380,7 @@ var render = function() {
         },
         [
           _c("v-image", {
-            staticClass: "profile-image rounded-circle",
+            staticClass: "profile-image rounded-circle solid",
             attrs: { src: _vm.match.imageLocation }
           })
         ],
@@ -50369,19 +50388,50 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row col-lg-12 col-sm-12 col-12" }, [
-      _c("div", { staticClass: "col-lg-6 col-sm-6 col-6 text-center" }, [
-        _c("h3", [
-          _vm._v(_vm._s(_vm._f("capitalize")(_vm.ownProfile.firstname)))
+    _c(
+      "div",
+      {
+        staticClass: "row col-lg-12 col-sm-12 col-12 transparent",
+        staticStyle: { color: "white" }
+      },
+      [
+        _c("div", { staticClass: "col-lg-6 col-sm-6 col-6 text-center" }, [
+          _c("h3", [
+            _vm._v(_vm._s(_vm._f("capitalize")(_vm.ownProfile.firstname)))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-6 col-sm-6 col-6 text-center" }, [
+          _c("h3", [
+            _vm._v(_vm._s(_vm._f("capitalize")(_vm.match.user.firstname)))
+          ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-6 col-sm-6 col-6 text-center" }, [
-        _c("h3", [
-          _vm._v(_vm._s(_vm._f("capitalize")(_vm.match.user.firstname)))
-        ])
-      ])
-    ])
+      ]
+    ),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _vm._m(2),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "row btn-row col-lg-12 col-sm-12 col-12 transparent" },
+      [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-xl btn-danger col-lg-6 col-sm-6 col-10 btn-action mx-auto",
+            on: {
+              click: function($event) {
+                _vm.$emit("close")
+              }
+            }
+          },
+          [_vm._v("\n            Close\n        ")]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -50391,8 +50441,52 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "card-header col-lg-12 col-sm-12 col-xs-12 text-center" },
-      [_c("h1", [_vm._v("It's a match!")])]
+      {
+        staticClass:
+          "transparent card-header col-lg-12 col-sm-12 col-xs-12 text-center"
+      },
+      [_c("h1", { staticClass: "solid" }, [_vm._v("It's a match!")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "row btn-row col-lg-12 col-sm-12 col-12 transparent",
+        staticStyle: { "padding-top": "1.5em" }
+      },
+      [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-xl btn-light col-lg-6 col-sm-6 col-10 btn-action mx-auto"
+          },
+          [_vm._v("Chat")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "row btn-row col-lg-12 col-sm-12 col-12 transparent" },
+      [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-xl btn-light col-lg-6 col-sm-6 col-10 btn-action mx-auto"
+          },
+          [_vm._v("View their Profile")]
+        )
+      ]
     )
   }
 ]
@@ -50470,7 +50564,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "col-lg-2" }),
       _vm._v(" "),
-      _c("modals-container")
+      _c("modals-container", { staticClass: "transparent" })
     ],
     1
   )
@@ -52628,7 +52722,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\nimg[data-v-643057db] {\n    background-image: url(\"/images/profile_placeholder.bmp\");\n    background-size: cover;\n}\n", ""]);
+exports.push([module.i, "\nimg[data-v-643057db] {\n    background-image: url(\"/images/profile_placeholder.bmp\");\n    background-size: cover;\n    background-color: white;\n}\n", ""]);
 
 // exports
 

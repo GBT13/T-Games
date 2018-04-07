@@ -21,5 +21,6 @@
     img {
         background-image: url("/images/profile_placeholder.bmp");
         background-size: cover;
+        background-color: white;
     }
 </style>

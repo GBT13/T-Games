@@ -28,7 +28,7 @@
 
         <div class="col-lg-2"></div>
 
-        <modals-container></modals-container>
+        <modals-container class="transparent"></modals-container>
 
     </div>
 
@@ -97,7 +97,11 @@
                         //Properties
                         adaptive: true,
                         height: 'auto',
-                        scrollable: true
+                        scrollable: true,
+                        name: 'dwadw',
+                        classes: ['mutualModal']
+
+
                     }
                 );
             }
@@ -112,6 +116,14 @@
     .card-header {
         border-radius: 0;
         background: linear-gradient(to bottom right, #f05f40, #ff7d4f);
+    }
+
+    .mutualModal{
+        background-color: transparent;
+        text-align: left;
+        border-radius: 3px;
+        box-shadow: 0 20px 60px -2px rgba(27, 33, 58, 0.4);
+        padding: 0;
     }
 
 
