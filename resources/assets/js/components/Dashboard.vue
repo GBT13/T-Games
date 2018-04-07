@@ -90,7 +90,7 @@
                         //Props
                         name: 'MutualMatch',
                         match: match,
-                        ownProfile: 'test'
+                        ownProfile: this.$auth.user()
                     },
 
                     {

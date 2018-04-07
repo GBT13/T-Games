@@ -20,7 +20,6 @@
 <style scoped>
     img {
         background-image: url("/images/profile_placeholder.bmp");
-        background-size: 640px 480px;
-        background-position: center;
+        background-size: cover;
     }
 </style>

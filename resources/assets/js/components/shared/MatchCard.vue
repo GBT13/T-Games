@@ -7,7 +7,7 @@
 
         <div class="card-img-top">
             <v-image :src="match.imageLocation" class="img-fluid"
-                     style="max-width: available; max-height: available; min-height: 100px"></v-image>
+                     style="max-width: available; max-height: available; min-height: 150px"></v-image>
         </div>
         <div class="btn-row">
             <div class="float-left">

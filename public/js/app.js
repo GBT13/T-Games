@@ -47752,7 +47752,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-lg-3" }, [
+      _c("div", { staticClass: "col-lg-4" }, [
         _c("div", { staticClass: "card" }, [
           _vm._m(0),
           _vm._v(" "),
@@ -48271,7 +48271,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-lg-3" }, [
+      _c("div", { staticClass: "col-lg-4" }, [
         _vm.success
           ? _c("div", { staticClass: "card text-center" }, [
               _vm._m(0),
@@ -48304,7 +48304,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-lg-3" }, [
+      _c("div", { staticClass: "col-lg-4" }, [
         !_vm.success
           ? _c("div", { staticClass: "card" }, [
               _vm._m(1),
@@ -48984,7 +48984,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 //Props
                 name: 'MutualMatch',
                 match: match,
-                ownProfile: 'test'
+                ownProfile: this.$auth.user()
             }, {
                 //Properties
                 adaptive: true,
@@ -50105,7 +50105,7 @@ var render = function() {
           staticStyle: {
             "max-width": "available",
             "max-height": "available",
-            "min-height": "100px"
+            "min-height": "150px"
           },
           attrs: { src: _vm.match.imageLocation }
         })
@@ -50273,7 +50273,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.rounded-circle[data-v-6b17fd68] {\n    border: solid 2px black;\n}\n.profile-image[data-v-6b17fd68] {\n    height: 270px;\n    width: 270px;\n    -o-object-fit: cover;\n       object-fit: cover;\n}\n.profile-image-container[data-v-6b17fd68]{\n    padding: 1em .5em 1em .5em;\n}\n@media (max-width: 575px) {\n.profile-image[data-v-6b17fd68] {\n        height: 135px;\n        width: 135px;\n        -o-object-fit: cover;\n           object-fit: cover;\n}\n}\n\n", ""]);
+exports.push([module.i, "\n.rounded-circle[data-v-6b17fd68] {\n    border: solid 2px black;\n}\n.profile-image[data-v-6b17fd68] {\n    height: 270px !important;\n    width: 270px !important;\n    -o-object-fit: cover !important;\n       object-fit: cover !important;\n}\n.profile-image-container[data-v-6b17fd68] {\n    padding: 1em .5em 1em .5em;\n}\n@media (max-width: 575px) {\n.profile-image[data-v-6b17fd68] {\n        height: 130px !important;\n        width: 130px !important;\n        -o-object-fit: cover !important;\n           object-fit: cover !important;\n}\n}\n.row[data-v-6b17fd68] {\n    margin-left: 0;\n}\n\n", ""]);
 
 // exports
 
@@ -50284,6 +50284,9 @@ exports.push([module.i, "\n.rounded-circle[data-v-6b17fd68] {\n    border: solid
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -50334,52 +50337,51 @@ var render = function() {
   return _c("div", { staticClass: " justify-content-center" }, [
     _vm._m(0),
     _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "row col-lg-12 col-sm-12 col-12",
-        staticStyle: { "margin-left": "0" }
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass:
-              "col-lg-6 col-sm-6 col-6 profile-image-container text-center"
-          },
-          [
-            _c("img", {
-              staticClass: " profile-image rounded-circle",
-              attrs: {
-                src: _vm.ownProfile.imageLocation
-                  ? _vm.ownProfile.imageLocation
-                  : _vm.profile_placeholder,
-                alt: "Profile Picture"
-              }
-            })
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "col-lg-6 col-sm-6 col-6 profile-image-container text-center"
-          },
-          [
-            _c("img", {
-              staticClass: " profile-image rounded-circle",
-              attrs: {
-                src: _vm.match.imageLocation
-                  ? _vm.match.imageLocation
-                  : _vm.profile_placeholder,
-                alt: "Match Picture"
-              }
-            })
-          ]
-        )
-      ]
-    )
+    _c("div", { staticClass: "row col-lg-12 col-sm-12 col-12" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "col-lg-6 col-sm-6 col-6 profile-image-container text-center"
+        },
+        [
+          _c("v-image", {
+            staticClass: "profile-image rounded-circle",
+            attrs: { src: _vm.ownProfile.profile.imageLocation }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "col-lg-6 col-sm-6 col-6 profile-image-container text-center"
+        },
+        [
+          _c("v-image", {
+            staticClass: "profile-image rounded-circle",
+            attrs: { src: _vm.match.imageLocation }
+          })
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row col-lg-12 col-sm-12 col-12" }, [
+      _c("div", { staticClass: "col-lg-6 col-sm-6 col-6 text-center" }, [
+        _c("h3", [
+          _vm._v(_vm._s(_vm._f("capitalize")(_vm.ownProfile.firstname)))
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-6 col-sm-6 col-6 text-center" }, [
+        _c("h3", [
+          _vm._v(_vm._s(_vm._f("capitalize")(_vm.match.user.firstname)))
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -52626,7 +52628,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\nimg[data-v-643057db] {\n    background-image: url(\"/images/profile_placeholder.bmp\");\n    background-size: 640px 480px;\n    background-position: center;\n}\n", ""]);
+exports.push([module.i, "\nimg[data-v-643057db] {\n    background-image: url(\"/images/profile_placeholder.bmp\");\n    background-size: cover;\n}\n", ""]);
 
 // exports
 

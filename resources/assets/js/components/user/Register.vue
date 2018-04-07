@@ -2,7 +2,7 @@
     <div class="container-fluid">
 
         <div class="row justify-content-center">
-            <div class="col-lg-3">
+            <div class="col-lg-4">
                 <div class="card text-center" v-if="success">
                     <div class="card-header">
                         <h3>Registration Successful</h3>
@@ -19,7 +19,7 @@
         </div>
 
         <div class="row justify-content-center">
-            <div class="col-lg-3">
+            <div class="col-lg-4">
                 <div class="card" v-if="!success">
                     <div class="card-header text-center" id="registrationFormHeader">
                         <h3>Register a new account</h3>

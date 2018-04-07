@@ -14,7 +14,7 @@ class AuthController extends Controller {
     public function register(RegisterFormRequest $request) {
 
         $user = User::create([
-            'firstname' =>$request->firstname,
+            'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -57,8 +57,7 @@ class AuthController extends Controller {
     }
 
     public function user(Request $request) {
-        $user = User::find(Auth::user()->id);
-        $profile = $user->profile()->get();
+        $user = User::with('profile')->findOrFail(Auth::user()->id);
 
         return response([
             'status' => 'success',
@@ -81,13 +80,13 @@ class AuthController extends Controller {
         ], 200);
     }
 
-    public function checkEmailExists(Request $request){
-        if (User::where('email', $request->email)->exists()){
-            return response ('Duplicate!', 409);
-        } else{
-            return response('Unique', 200);}
+    public function checkEmailExists(Request $request) {
+        if (User::where('email', $request->email)->exists()) {
+            return response('Duplicate!', 409);
+        } else {
+            return response('Unique', 200);
         }
-
+    }
 
 
 }

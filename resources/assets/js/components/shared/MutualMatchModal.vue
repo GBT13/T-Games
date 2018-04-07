@@ -5,18 +5,21 @@
             <h1>It's a match!</h1>
         </div>
 
-        <div class="row col-lg-12 col-sm-12 col-12" style="margin-left: 0;">
+        <div class="row col-lg-12 col-sm-12 col-12">
             <div class="col-lg-6 col-sm-6 col-6 profile-image-container text-center">
-                <img class=" profile-image rounded-circle"
-
-                     :src="ownProfile.imageLocation ? ownProfile.imageLocation : profile_placeholder"
-                     alt="Profile Picture">
+                <v-image class="profile-image rounded-circle" :src="ownProfile.profile.imageLocation"></v-image>
             </div>
             <div class="col-lg-6 col-sm-6 col-6 profile-image-container text-center">
-                <img class=" profile-image rounded-circle"
+                <v-image class="profile-image rounded-circle" :src="match.imageLocation"></v-image>
+            </div>
+        </div>
 
-                     :src="match.imageLocation ? match.imageLocation : profile_placeholder"
-                     alt="Match Picture">
+        <div class="row col-lg-12 col-sm-12 col-12">
+            <div class="col-lg-6 col-sm-6 col-6 text-center">
+                <h3>{{ownProfile.firstname | capitalize}}</h3>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-6 text-center">
+                <h3>{{match.user.firstname | capitalize}}</h3>
             </div>
         </div>
 
@@ -43,22 +46,26 @@
     }
 
     .profile-image {
-        height: 270px;
-        width: 270px;
-        object-fit: cover;
+        height: 270px !important;
+        width: 270px !important;
+        object-fit: cover !important;
     }
 
-    .profile-image-container{
+    .profile-image-container {
         padding: 1em .5em 1em .5em;
     }
 
     @media (max-width: 575px) {
         .profile-image {
-            height: 135px;
-            width: 135px;
-            object-fit: cover;
+            height: 130px !important;
+            width: 130px !important;
+            object-fit: cover !important;
 
         }
+    }
+
+    .row {
+        margin-left: 0;
     }
 
 </style>
