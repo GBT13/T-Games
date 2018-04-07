@@ -344,26 +344,27 @@
         }
         ,
         beforeCreate() {
-            axios.get('/user/' + this.$auth.user().id + '/profile').then(data => {
-                this.bio = data.data.bio;
-                this.steamid = data.data.steamid;
-                this.psnName = data.data.psnName;
-                this.xboxGamertag = data.data.xboxGamertag;
-                this.discord = data.data.discord;
-                this.epicName = data.data.epicName;
-                this.nintendoNetworkId = data.data.nintendoNetworkId;
-                this.originName = data.data.originName;
-                this.uplayName = data.data.uplayName;
-                this.battletag = data.data.battletag;
+            axios.get('/user/' + this.$auth.user().id + '/profile/withgames').then(response => {
+                this.bio = response.data.bio;
+                this.steamid = response.data.steamid;
+                this.psnName = response.data.psnName;
+                this.xboxGamertag = response.data.xboxGamertag;
+                this.discord = response.data.discord;
+                this.epicName = response.data.epicName;
+                this.nintendoNetworkId = response.data.nintendoNetworkId;
+                this.originName = response.data.originName;
+                this.uplayName = response.data.uplayName;
+                this.battletag = response.data.battletag;
+                this.profileGameList = response.data.games;
             }).catch(error => {
                 this.$toastr.e('Something went wrong with updating your profile');
             });
 
-            axios.get('/games/profile/' + this.$auth.user().id).then(response => {
-                this.profileGameList = response.data;
-            }).catch(error => {
-                this.$toastr.e('Something went wrong with fetching your liked games')
-            })
+            // axios.get('/games/profile/' + this.$auth.user().id).then(response => {
+            //     this.profileGameList = response.data;
+            // }).catch(error => {
+            //     this.$toastr.e('Something went wrong with fetching your liked games')
+            // })
 
         }
     }

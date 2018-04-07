@@ -7,13 +7,13 @@
 
         <div class="row col-lg-12 col-sm-12 col-12" style="margin-left: 0;">
             <div class="col-lg-6 col-sm-6 col-6 profile-image-container text-center">
-                <img class="img-fluid profile-image rounded-circle"
+                <img class=" profile-image rounded-circle"
 
                      :src="ownProfile.imageLocation ? ownProfile.imageLocation : profile_placeholder"
                      alt="Profile Picture">
             </div>
             <div class="col-lg-6 col-sm-6 col-6 profile-image-container text-center">
-                <img class="img-fluid profile-image rounded-circle"
+                <img class=" profile-image rounded-circle"
 
                      :src="match.imageLocation ? match.imageLocation : profile_placeholder"
                      alt="Match Picture">
@@ -44,7 +44,8 @@
 
     .profile-image {
         height: 270px;
-        width: 100%;
+        width: 270px;
+        object-fit: cover;
     }
 
     .profile-image-container{
@@ -55,6 +56,8 @@
         .profile-image {
             height: 135px;
             width: 135px;
+            object-fit: cover;
+
         }
     }
 

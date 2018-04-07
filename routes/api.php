@@ -39,6 +39,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
 
 //    Account management Routes
     Route::get('user/{id}/profile', 'ProfileController@getProfileByUser');
+    Route::get('user/{id}/profile/withgames', 'ProfileController@getProfileAndGamesByUser');
     Route::patch('user/updateprofile', 'ProfileController@updateProfile');
     Route::patch('user/updateaccount', 'UserController@updateAccountSettings');
 

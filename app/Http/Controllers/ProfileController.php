@@ -13,6 +13,10 @@ class ProfileController extends Controller {
         return User::findOrFail($id)->profile()->first();
     }
 
+    public function getProfileAndGamesByUser($id) {
+        return User::findOrFail($id)->profile()->with('games')->first();
+    }
+
     public function updateProfile(Request $request) {
         $profile = $this->getProfileByUser($request['userId']);
 
