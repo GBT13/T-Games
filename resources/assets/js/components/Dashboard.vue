@@ -69,6 +69,7 @@
                         return element.id === match.id;
                     })), 1);
 
+                    //TODO: Make sure the modal only shows up when the response data MUTUAL_MATCH === true
                     this.showModal(match)
                 }).catch(error => {
                     this.$toastr.e('Something went wrong with accepting this match');

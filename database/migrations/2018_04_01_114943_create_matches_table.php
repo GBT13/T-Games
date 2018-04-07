@@ -16,7 +16,6 @@ class CreateMatchesTable extends Migration
         Schema::create('matches', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('profile_id')->unsigned();
-            $table->integer('partner_match_id')->unsigned()->nullable();
             $table->integer('partner_profile_id')->unsigned()->nullable();
             $table->boolean('accepted')->default(false);
             $table->boolean('rejected')->default(false);

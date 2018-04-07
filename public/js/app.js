@@ -48962,6 +48962,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     return element.id === match.id;
                 })), 1);
 
+                //TODO: Make sure the modal only shows up when the response data MUTUAL_MATCH === true
                 _this3.showModal(match);
             }).catch(function (error) {
                 _this3.$toastr.e('Something went wrong with accepting this match');
