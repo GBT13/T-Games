@@ -5,9 +5,9 @@
             capitalize}}
         </h4></div>
 
-        <div class="card-img-top">
+        <div class="card-img-top text-center">
             <v-image :src="match.imageLocation" class="img-fluid"
-                     style="max-width: available; max-height: available; min-height: 150px"></v-image>
+                     style="max-width: available; max-height: 450px; min-height: 150px"></v-image>
         </div>
         <div class="btn-row">
             <div class="float-left">

@@ -27,11 +27,13 @@
             <button class="btn btn-xl btn-light col-lg-6 col-sm-6 col-10 btn-action mx-auto">Chat</button>
         </div>
         <div class="row btn-row col-lg-12 col-sm-12 col-12 transparent">
-
-            <button class="btn btn-xl btn-light col-lg-6 col-sm-6 col-10 btn-action mx-auto">View their Profile</button>
+            <button v-if="match.user.gender==='MALE'"
+                    class="btn btn-xl btn-light col-lg-6 col-sm-6 col-10 btn-action mx-auto">View his Profile
+            </button>
+            <button v-else class="btn btn-xl btn-light col-lg-6 col-sm-6 col-10 btn-action mx-auto">View her Profile
+            </button>
         </div>
         <div class="row btn-row col-lg-12 col-sm-12 col-12 transparent">
-
             <button @click="$emit('close')" class="btn btn-xl btn-danger col-lg-6 col-sm-6 col-10 btn-action mx-auto">
                 Close
             </button>
@@ -102,11 +104,11 @@
         filter: blur(1em);
     }
 
-    .transparent{
+    .transparent {
         background-color: rgba(25, 25, 25, 0.88);
     }
 
-    .solid{
+    .solid {
         opacity: 1 !important;
     }
 

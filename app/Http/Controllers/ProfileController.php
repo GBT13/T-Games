@@ -30,7 +30,7 @@ class ProfileController extends Controller {
                 @list(, $fileData) = explode(',', $fileData);
                 Storage::disk('profilePictures')->put($fileName, base64_decode($fileData));
 
-                $profile->update(['imageLocation' => 'images/profiles/' . $fileName]);
+                $profile->update(['imageLocation' => '/images/profiles/' . $fileName]);
             }
 
 

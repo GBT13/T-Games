@@ -1,5 +1,5 @@
 <template>
-    <img :src="src ? src : profile_placeholder"  style="width: 100%; height: 100%">
+    <img :src="src ? src : profile_placeholder"  >
 </template>
 
 <script>

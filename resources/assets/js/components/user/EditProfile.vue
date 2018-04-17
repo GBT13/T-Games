@@ -4,23 +4,6 @@
             <h3>Welcome to your profile page {{$auth.user().firstname + ' ' + $auth.user().lastname | capitalize}}</h3>
         </div>
         <div class="row">
-            <!--<div class="col-lg-2" style="padding: 0">-->
-            <!--<div class="card sticky-top">-->
-            <!--<div class="card-body">-->
-            <!--<h5 class="card-title">{{$auth.user().firstname | capitalize}}'s Profile</h5>-->
-            <!--<p class="card-text">This is your profile page. You'll find a lot of different opions to fill in-->
-            <!--your very own profile! From entering a detailed bio and uploading the perfect image of-->
-            <!--yourself to filling out all of your gamertags</p>-->
-            <!--</div>-->
-            <!--<ul class="list-group list-group-flush">-->
-            <!--<li class="list-group-item"><a href="#peronsalBio">Picture and Bio</a></li>-->
-            <!--<li class="list-group-item"><a href="#gamertags">Gamertags</a></li>-->
-            <!--<li class="list-group-item"><a href="#playedGames">Games you play</a></li>-->
-            <!--</ul>-->
-
-            <!--</div>-->
-            <!--</div>-->
-
             <div class="col-lg-2">
 
             </div>
@@ -31,12 +14,18 @@
                     <div id="peronsalBio"></div>
                     <h2>Enter an appealing bio and upload a profile picture!</h2>
 
+                    <div v-if="dbProfilePicture">
+                        <h3>Your current picture</h3>
+                        <v-image :src="dbProfilePicture" style="max-width: 500px; max-height: 500px;"></v-image>
+                    </div>
+
 
                     <div class="form-group input">
                         Upload a profile picture:
                         <input type="file" @change="previewImage" accept="image/*">
                     </div>
                     <div class="image-preview" v-if="imageData.length > 0">
+                        <h2>Your new profile picture</h2>
                         <img class="preview" :src="imageData">
                     </div>
 
@@ -193,7 +182,7 @@
                                 </ul>
                             </div>
                         </div>
-                            <!--TODO: Make this conditional so you see loading when page loading and empty when your loaded list is actually empty-->
+                        <!--TODO: Make this conditional so you see loading when page loading and empty when your loaded list is actually empty-->
                         <div class="row justify-content-center">
                             <div class="col-auto" v-if="profileGameList.length <=0">
                                 <div class="text-center">
@@ -246,7 +235,8 @@
                 selectedFile: null,
                 gameLookup: '',
                 imageData: "",  // we will store base64 format of image in this string
-                pending: false
+                dbProfilePicture: '',
+                pending: false,
             }
         },
         methods: {
@@ -356,17 +346,11 @@
                 this.uplayName = response.data.uplayName;
                 this.battletag = response.data.battletag;
                 this.profileGameList = response.data.games;
+                this.dbProfilePicture = response.data.imageLocation;
             }).catch(error => {
                 this.$toastr.e('Something went wrong with updating your profile');
             });
-
-            // axios.get('/games/profile/' + this.$auth.user().id).then(response => {
-            //     this.profileGameList = response.data;
-            // }).catch(error => {
-            //     this.$toastr.e('Something went wrong with fetching your liked games')
-            // })
-
-        }
+        },
     }
 </script>
 
