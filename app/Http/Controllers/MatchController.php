@@ -20,29 +20,24 @@ class MatchController extends Controller {
 
     public function rejectMatch($partnerId) {
         $ownProfile = Auth::user()->profile()->first();
-//        return Match::whereProfileId($ownProfile->id)->wherePartnerProfileId($partnerId)->update(['rejected' => true]);
-        //TODO: Re-enable the above when done testing front-end animations
-        return 1;
+        return Match::whereProfileId($ownProfile->id)->wherePartnerProfileId($partnerId)->update(['rejected' => true]);
     }
 
     public function acceptMatch($partnerId) {
-//        $ownProfile = Auth::user()->profile()->first();
-//        $ownMatch = Match::whereProfileId($ownProfile->id)->wherePartnerProfileId($partnerId)->update(['accepted' => true]);
-//
-//        if (Match::whereProfileId($partnerId)->wherePartnerProfileId($ownProfile->id)->first()->accepted == 1) {
-//            return response([
-//                'status' => 'success',
-//                'MUTUAL_MATCH' => true
-//            ]);
-//        } else {
-//            return response([
-//                'status' => 'success',
-//                'MUTUAL_MATCH' => false
-//            ]);
-//        }
-        //TODO: Re-enable the above when done testing front-end animations
-        return 1;
+        $ownProfile = Auth::user()->profile()->first();
+        $ownMatch = Match::whereProfileId($ownProfile->id)->wherePartnerProfileId($partnerId)->update(['accepted' => true]);
 
+        if (Match::whereProfileId($partnerId)->wherePartnerProfileId($ownProfile->id)->first()->accepted == 1) {
+            return response([
+                'status' => 'success',
+                'MUTUAL_MATCH' => true
+            ]);
+        } else {
+            return response([
+                'status' => 'success',
+                'MUTUAL_MATCH' => false
+            ]);
+        }
     }
 
     public function findMatches($id) {
@@ -83,8 +78,4 @@ class MatchController extends Controller {
 
         return $matchArray;
     }
-
-//TODO: Rework the matches table to add partner_profile_id, and make sure it's added when finding matches. With this new table layout it's easier and more performance friendly to find mutual matches
-
-
 }

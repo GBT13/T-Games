@@ -19,7 +19,6 @@
                         <v-image :src="dbProfilePicture" style="max-width: 500px; max-height: 500px;"></v-image>
                     </div>
 
-
                     <div class="form-group input">
                         Upload a profile picture:
                         <input type="file" @change="previewImage" accept="image/*">
@@ -228,7 +227,6 @@
                 epicName: '',
                 nintendoNetworkId: '',
                 bio: '',
-                profilePicture: '',
                 profileGameList: [],
                 allGamesList: [],
                 selectedGame: '',
@@ -263,6 +261,9 @@
                 };
                 axios.patch('/user/updateprofile', formData).then(response => {
                     this.pending = false;
+                    this.imageData = "";
+                    this.selectedFile = null;
+                    this.dbProfilePicture = response.data.imageLocation;
                     this.$toastr.s('Your profile has been successfully saved!')
                 }).catch(error => {
                     this.pending = false;

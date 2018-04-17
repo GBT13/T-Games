@@ -61,6 +61,10 @@
             eventBus.$on('matchRejected', (data) => {
                 this.rejectMatch(data);
             });
+            eventBus.$on('viewProfile', (data) => {
+                this.$router.push({name: 'userMatch', params: {id: data.id}});
+                console.log('should switch page');
+            })
         },
         methods: {
             acceptMatch(match) {
@@ -118,7 +122,7 @@
         background: linear-gradient(to bottom right, #f05f40, #ff7d4f);
     }
 
-    .mutualModal{
+    .mutualModal {
         background-color: transparent;
         text-align: left;
         border-radius: 3px;

@@ -28,9 +28,11 @@
         </div>
         <div class="row btn-row col-lg-12 col-sm-12 col-12 transparent">
             <button v-if="match.user.gender==='MALE'"
-                    class="btn btn-xl btn-light col-lg-6 col-sm-6 col-10 btn-action mx-auto">View his Profile
+                    class="btn btn-xl btn-light col-lg-6 col-sm-6 col-10 btn-action mx-auto"
+                    @click="viewProfile">View his Profile
             </button>
-            <button v-else class="btn btn-xl btn-light col-lg-6 col-sm-6 col-10 btn-action mx-auto">View her Profile
+            <button v-else class="btn btn-xl btn-light col-lg-6 col-sm-6 col-10 btn-action mx-auto"
+                    @click="viewProfile">View her Profile
             </button>
         </div>
         <div class="row btn-row col-lg-12 col-sm-12 col-12 transparent">
@@ -45,6 +47,7 @@
 </template>
 
 <script>
+    import {eventBus} from "../../app";
     export default {
         data() {
             return {
@@ -54,6 +57,12 @@
         props: {
             match: null,
             ownProfile: null
+        },
+        methods: {
+            viewProfile(){
+                this.$emit('close');
+                eventBus.$emit('viewProfile', this.match)
+            }
         }
     }
 </script>
