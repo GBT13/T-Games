@@ -21,9 +21,10 @@ Route::post('auth/register', 'AuthController@register');
 Route::post('auth/login', 'AuthController@login');
 Route::get('auth/user/emailduplicate', 'AuthController@checkEmailExists');
 
-Route::get('matches/user/{id}', 'MatchController@getAllPendingMatches');
-//Route::get('matches/match/{id}', 'MatchController@getAllMutuallyAcceptedMatches');
+//TODO Make sure to move this into the auth required middleware group
 Route::get('matches/find/{id}', 'MatchController@findMatches');
+Route::get('matches/mutual', 'MatchController@getAllMutualMatches');
+
 
 
 Route::group(['middleware' => 'jwt.auth'], function () {
@@ -38,7 +39,6 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('games/profile/{id}', 'GameController@getGamesByProfile');
 
 //    Account management Routes
-    Route::get('user/{id}/profile', 'ProfileController@getProfileByUser');
     Route::get('user/{id}/profile/withgames', 'ProfileController@getProfileAndGamesByUser');
     Route::get('user/{id}/match/withgames', 'ProfileController@getProfileAndGamesByMutualMatch');
     Route::patch('user/updateprofile', 'ProfileController@updateProfile');

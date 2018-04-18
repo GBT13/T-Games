@@ -13,9 +13,4 @@ class Match extends Model
     public function profile(){
         return $this->belongsTo('App\Profile');
     }
-
-    public function matchPartner($id){
-        return Match::whereId($id);
-    }
-
 }

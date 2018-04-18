@@ -43,14 +43,4 @@ class Profile extends Model {
         return $this->hasmany('App\Match')->whereRejected(0);
     }
 
-//    public function mutuallyAcceptedMatches() {
-//        $ownAccepted = $this->hasMany('App\Match')->whereAccepted(1);
-//        $partnerAccepted = [];
-//        foreach ($ownAccepted as $acceptedMatch) {
-//            if ($acceptedMatch->matchPartner()->accepted === 1) {
-//                $partnerAccepted->push($acceptedMatch);
-//            }
-//        } return $partnerAccepted;
-//    }
-
 }

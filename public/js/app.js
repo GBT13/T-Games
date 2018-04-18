@@ -884,12 +884,6 @@ module.exports = g;
 
 /***/ }),
 /* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(75);
-
-/***/ }),
-/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -920,7 +914,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_shared_Image_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__components_shared_Image_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_vuelidate__ = __webpack_require__(130);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_vuelidate___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_vuelidate__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_axios__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_vue_toastr__ = __webpack_require__(132);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_vue_toastr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_vue_toastr__);
@@ -1048,6 +1042,12 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         this.$toastr.defaultPosition = 'toast-bottom-center';
     }
 });
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(75);
 
 /***/ }),
 /* 8 */
@@ -42885,7 +42885,7 @@ module.exports = (function () {
 /* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(7);
+__webpack_require__(6);
 module.exports = __webpack_require__(149);
 
 
@@ -48881,9 +48881,9 @@ exports.push([module.i, "\n.card-header[data-v-78b73b2d] {\n    border-radius: 0
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_MatchCard__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_MatchCard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__shared_MatchCard__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_MutualMatchModal_vue__ = __webpack_require__(98);
@@ -48969,8 +48969,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     return element.id === match.id;
                 })), 1);
 
-                //TODO: Make sure the modal only shows up when the response data MUTUAL_MATCH === true
-                _this3.showModal(match);
+                if (response.data.MUTUAL_MATCH === true) {
+                    _this3.showModal(match);
+                }
             }).catch(function (error) {
                 _this3.$toastr.e('Something went wrong with accepting this match');
             });
@@ -48997,7 +48998,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 adaptive: true,
                 height: 'auto',
                 scrollable: true,
-                name: 'dwadw',
+                name: 'MutualMatchModal',
                 classes: ['mutualModal']
 
             });
@@ -49987,7 +49988,7 @@ exports.push([module.i, "\n.btn-transparent[data-v-2213fbf5] {\n    background-c
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app__ = __webpack_require__(6);
 //
 //
 //
@@ -50294,7 +50295,7 @@ exports.push([module.i, "\n.rounded-circle[data-v-6b17fd68] {\n    /*border: sol
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app__ = __webpack_require__(6);
 //
 //
 //
@@ -50709,7 +50710,7 @@ exports.push([module.i, "\nimg.preview[data-v-008089e5] {\n    max-height: 300px
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash__);
@@ -54877,7 +54878,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(6);
+window.axios = __webpack_require__(7);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
