@@ -14,7 +14,7 @@ class UserTest extends TestCase {
     }
 
     public function testProfile() {
-        $response = $this->withHeaders(['Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly90aW5kZXJnYW1lcy50ZXN0L2FwaS9hdXRoL2xvZ2luIiwiaWF0IjoxNTI0MDQxODUxLCJleHAiOjE1MjQwNDU0NTEsIm5iZiI6MTUyNDA0MTg1MSwianRpIjoiVTNNQzFSa2RpRjl0d3ozSyJ9.f2Fn82RWHC8O9NZZ05apOM7AULacgY_Ji_G45RXI_HY'])->get('api/user/1/profile/withgames');
+        $response = $this->withHeaders(['Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly90aW5kZXJnYW1lcy50ZXN0L2FwaS9hdXRoL3JlZnJlc2giLCJpYXQiOjE1MjQwNDQwODMsImV4cCI6MTUyNDA3MjQzNSwibmJmIjoxNTI0MDY4ODM1LCJqdGkiOiJGbFdGT0x2QkhWeXVJaDNqIn0.rrm63OEPTr-FviHxgkmERXrHYQdVPJUk7-BxgboC2gs'])->get('api/user/1/profile/withgames');
 
         $response->assertJson(['id' => 1]);
     }

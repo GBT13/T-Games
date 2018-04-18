@@ -6,7 +6,9 @@ import Login from './components/user/login.vue'
 import Register from './components/user/Register.vue';
 import Dashboard from './components/Dashboard.vue';
 import EditProfile from './components/user/EditProfile.vue';
-import ShowProfile from './components/user/ShowProfile.vue';
+import MatchProfile from './components/shared/MatchProfile.vue';
+import MutualMatches from './components/user/MutualMatches.vue';
+import SingleMatch from './components/user/SingleMatch.vue';
 import AccountSettings from './components/user/AccountSettings.vue';
 import PageNotFound from './components/PageNotFound.vue';
 import Image from './components/shared/Image.vue';
@@ -84,8 +86,9 @@ const router = new VueRouter({
         {path: '/register', name: 'register', component: Register, meta: {auth: false}},
         {path: '/dashboard', name: 'dashboard', component: Dashboard, meta: {auth: true}},
         {path: '/user/profile', name: 'userProfile', component: EditProfile, meta: {auth: true}},
-        {path: '/user/match/:id', name: 'userMatch', component: ShowProfile, meta: {auth: true}},
+        {path: '/user/match/:id', name: 'userSingleMatch', component: SingleMatch, meta: {auth: true}},
         {path: '/user/account', name: 'userDetails', component: AccountSettings, meta: {auth: true}},
+        {path: '/user/matches', name: 'userMatches', component: MutualMatches, meta: {auth: true}},
         {path: "*", name: 'page404', component: PageNotFound}
 
     ]
@@ -116,6 +119,7 @@ Vue.use(require('@websanova/vue-auth'), {
 Vue.component('app', require('./components/App.vue'));
 Vue.component('v-select', VueSelect);
 Vue.component('v-image', Image);
+Vue.component('v-match-profile', MatchProfile);
 
 App.router = Vue.router;
 

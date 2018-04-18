@@ -62,7 +62,7 @@
                 this.rejectMatch(data);
             });
             eventBus.$on('viewProfile', (data) => {
-                this.$router.push({name: 'userMatch', params: {id: data.id}});
+                this.$router.push({name: 'userSingleMatch', params: {id: data.id}});
                 console.log('should switch page');
             })
         },

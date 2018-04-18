@@ -51,7 +51,7 @@
                         <router-link class="dropdown-item" tag="a" to="/user/profile">Profile</router-link>
                         <router-link class="dropdown-item" tag="a" to="/user/account">Account Settings</router-link>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <router-link class="dropdown-item" tag="a" to="/user/matches">Mutual Matches</router-link>
                     </div>
                 </li>
                 <li v-if="$auth.check()" @click.prevent="logout"><a href="/" class="nav-link"><i

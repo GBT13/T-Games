@@ -23,7 +23,6 @@ Route::get('auth/user/emailduplicate', 'AuthController@checkEmailExists');
 
 //TODO Make sure to move this into the auth required middleware group
 Route::get('matches/find/{id}', 'MatchController@findMatches');
-Route::get('matches/mutual', 'MatchController@getAllMutualMatches');
 
 
 
@@ -47,6 +46,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
 //    Match Routes
     Route::patch('matches/{partnerId}/reject', 'MatchController@rejectMatch');
     Route::patch('matches/{partnerId}/accept', 'MatchController@acceptMatch');
+    Route::get('matches/mutual', 'MatchController@getAllMutualMatches');
 
 
 });
