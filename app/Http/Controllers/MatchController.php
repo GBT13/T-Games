@@ -65,9 +65,7 @@ class MatchController extends Controller {
 
     public function getAllMutualMatches() {
         $mutualMatchProfiles = [];
-        //TODO Make sure this uses the auth user before production
         $acceptedMatches = Match::whereProfileId(Auth::user()->profile()->first()->id)->whereAccepted(1)->get();
-//        $acceptedMatches = Match::whereProfileId(1)->whereAccepted(1)->get();
 
         foreach ($acceptedMatches as $acceptedMatch) {
             if ($this->getPairedMatch($acceptedMatch['partner_profile_id'], $acceptedMatch['profile_id'])->whereAccepted(1)->first()) {

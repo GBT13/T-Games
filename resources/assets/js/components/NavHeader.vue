@@ -14,9 +14,13 @@
                     <i class="fas fa-fire"></i>
                     Dashboard
                 </router-link>
+                <router-link v-if="$auth.check()" to="/user/matches" class="navbar-text nav-link" active-class="active">
+                    <i class="fas fa-address-book"></i>
+                    Mutual Matches
+                </router-link>
             </ul>
 
-            <!--Navbar centered element TODO: maybe make this a static element instead of a link-->
+            <!--Navbar centered element-->
             <div class=" d-flex justify-content-center mx-auto abs-center-x">
                 <router-link to="/dashboard"><i class="fas fa-fire fa-2x" style="color: #f05f40"></i></router-link>
             </div>

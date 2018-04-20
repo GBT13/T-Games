@@ -23,7 +23,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="name in nameList" v-if="name.name">
+                    <tr v-for="name in nameList" v-if="name.name" :key="name.platform">
                         <th scope="row"><i :class="name.fa"></i> {{name.platform}}</th>
                         <td>{{name.name}}</td>
                     </tr>
@@ -38,7 +38,7 @@
                 <h2 v-if="responseData.user.gender === 'FEMALE'">Games she plays</h2>
 
                 <div class="row" style="margin-left: 0; margin-right: 0;">
-                    <div class="card-body card col-lg-auto col-md-auto" v-for="game in responseData.games">
+                    <div class="card-body card col-lg-auto col-md-auto" v-for="game in responseData.games" :key="game.id">
                         {{game.name}}
                     </div>
                 </div>

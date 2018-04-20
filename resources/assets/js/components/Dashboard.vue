@@ -7,9 +7,7 @@
 
         <div class="row">
 
-            <div class="col-lg-2"></div>
-
-            <div class="col-lg-8">
+            <div class="col-lg-8 mx-auto">
                 <div class="row justify-content-center">
                     <h2>Your possible matches</h2>
                 </div>
@@ -25,8 +23,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-lg-2"></div>
 
         <modals-container class="transparent"></modals-container>
 
@@ -63,7 +59,6 @@
             });
             eventBus.$on('viewProfile', (data) => {
                 this.$router.push({name: 'userSingleMatch', params: {id: data.id}});
-                console.log('should switch page');
             })
         },
         methods: {
@@ -78,6 +73,7 @@
                     }
                 }).catch(error => {
                     this.$toastr.e('Something went wrong with accepting this match');
+                    this.cascadeErrorToChild();
                 })
 
             },
@@ -88,6 +84,7 @@
                     })), 1);
                 }).catch(error => {
                     this.$toastr.e('Something went wrong with rejecting this match');
+                    this.cascadeErrorToChild();
                 })
             },
             showModal(match) {
@@ -105,10 +102,11 @@
                         scrollable: true,
                         name: 'MutualMatchModal',
                         classes: ['mutualModal']
-
-
                     }
                 );
+            },
+            cascadeErrorToChild(){
+                eventBus.$emit('matchStatusEditError');
             }
         },
         components: {

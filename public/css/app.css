@@ -13909,6 +13909,10 @@ Used for orange main buttons
   height: calc(100vh - 55px);
 }
 
+.vert-align-with-header {
+  height: calc(100vh - 118px);
+}
+
 .btn-xl {
   padding: 1rem 2rem;
 }

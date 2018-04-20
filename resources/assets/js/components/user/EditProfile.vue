@@ -4,12 +4,9 @@
             <h3>Welcome to your profile page {{$auth.user().firstname + ' ' + $auth.user().lastname | capitalize}}</h3>
         </div>
         <div class="row">
-            <div class="col-lg-2">
-
-            </div>
 
             <!--Bio and Pictures form-->
-            <div class="col-lg-8">
+            <div class="col-lg-8 mx-auto">
                 <form autocomplete="off" @submit.prevent="updateProfile" method="post" class="card-body">
                     <div id="peronsalBio"></div>
                     <h2>Enter an appealing bio and upload a profile picture!</h2>
@@ -157,7 +154,7 @@
                     <hr>
 
                     <!--Played Games Section-->
-                    <div id="playedGames">
+                    <div id="playedGames" v-if="profileGameList">
                         <h2>Add the games you want to play with people!</h2>
                         <div class="row">
                             <div class="col-lg-10 col-sm-10">
@@ -173,7 +170,7 @@
                             <div v-if="profileGameList.length > 0" class="col-lg-12">
                                 <h3>Your currently selected games</h3>
                                 <ul class="list-group">
-                                    <li class="list-group-item" v-for="game in profileGameList">{{game.name}}
+                                    <li class="list-group-item" v-for="game in profileGameList" :key="game.id">{{game.name}}
                                         <button class="btn btn-danger float-right" @click.prevent="removeGame(game)">
                                             Remove
                                         </button>
@@ -181,7 +178,6 @@
                                 </ul>
                             </div>
                         </div>
-                        <!--TODO: Make this conditional so you see loading when page loading and empty when your loaded list is actually empty-->
                         <div class="row justify-content-center">
                             <div class="col-auto" v-if="profileGameList.length <=0">
                                 <div class="text-center">
@@ -199,10 +195,6 @@
                     </div>
 
                 </form>
-
-            </div>
-
-            <div class="col-lg-2">
 
             </div>
 
@@ -227,7 +219,7 @@
                 epicName: '',
                 nintendoNetworkId: '',
                 bio: '',
-                profileGameList: [],
+                profileGameList: null,
                 allGamesList: [],
                 selectedGame: '',
                 selectedFile: null,
