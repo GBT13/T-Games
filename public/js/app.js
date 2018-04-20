@@ -46040,17 +46040,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     methods: {
@@ -46094,7 +46083,26 @@ var render = function() {
           attrs: { id: "navbarSupportedContent" }
         },
         [
-          _vm._m(1),
+          _c(
+            "ul",
+            { staticClass: "navbar-nav mr-auto" },
+            [
+              _vm.$auth.check()
+                ? _c(
+                    "router-link",
+                    {
+                      staticClass: "navbar-text nav-link",
+                      attrs: { to: "/dashboard", "active-class": "active" }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-fire" }),
+                      _vm._v("\n                Dashboard\n            ")
+                    ]
+                  )
+                : _vm._e()
+            ],
+            1
+          ),
           _vm._v(" "),
           _c(
             "div",
@@ -46138,20 +46146,6 @@ var render = function() {
                       attrs: { to: "/register", "active-class": "active" }
                     },
                     [_vm._v("\n                Register\n            ")]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.$auth.check()
-                ? _c(
-                    "router-link",
-                    {
-                      staticClass: "navbar-text nav-link",
-                      attrs: { to: "/dashboard", "active-class": "active" }
-                    },
-                    [
-                      _c("i", { staticClass: "fas fa-fire" }),
-                      _vm._v("\n                Dashboard\n            ")
-                    ]
                   )
                 : _vm._e(),
               _vm._v(" "),
@@ -46232,7 +46226,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._m(2)]
+                    [_vm._m(1)]
                   )
                 : _vm._e()
             ],
@@ -46264,24 +46258,6 @@ var staticRenderFns = [
       },
       [_c("span", { staticClass: "navbar-toggler-icon" })]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "navbar-nav mr-auto" }, [
-      _c("li", { staticClass: "nav-item" }, [
-        _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-          _vm._v("Link")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "nav-item" }, [
-        _c("a", { staticClass: "nav-link disabled", attrs: { href: "#" } }, [
-          _vm._v("Disabled")
-        ])
-      ])
-    ])
   },
   function() {
     var _vm = this
@@ -51921,7 +51897,7 @@ var render = function() {
         "div",
         { staticClass: "col-lg-4 text-center" },
         [
-          _c("h3", [
+          _c("h3", { staticStyle: { overflow: "hidden" } }, [
             _vm._v(
               _vm._s(
                 _vm._f("capitalize")(
@@ -52132,7 +52108,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.list-header[data-v-1c5916b6]{\n    background-color: #f05f40;\n    color: white;\n}\n", ""]);
+exports.push([module.i, "\n.list-header[data-v-1c5916b6] {\n    background-color: #f05f40;\n    color: white;\n    margin-bottom: 0;\n}\n.match-items[data-v-1c5916b6] {\n    overflow: hidden;\n    cursor: pointer;\n}\n.active[data-v-1c5916b6] {\n    background-color: white;\n    color: black;\n    border: 1px solid darkgray;\n}\n", ""]);
 
 // exports
 
@@ -52145,6 +52121,12 @@ exports.push([module.i, "\n.list-header[data-v-1c5916b6]{\n    background-color:
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -52223,10 +52205,10 @@ var render = function() {
     _vm._m(0),
     _vm._v(" "),
     _vm.mutualMatches
-      ? _c("div", { staticClass: "col-lg-8 mx-auto" }, [
+      ? _c("div", { staticClass: "col-lg-9 mx-auto" }, [
           _vm.mutualMatches.length > 0
             ? _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-lg-2" }, [
+                _c("div", { staticClass: "col-lg-3" }, [
                   _c(
                     "ul",
                     {
@@ -52240,7 +52222,11 @@ var render = function() {
                         return _c(
                           "li",
                           {
-                            staticClass: "list-group-item",
+                            staticClass:
+                              "list-group-item list-group-item-action match-items",
+                            class: {
+                              active: _vm.selectedProfile.id === mutualMatch.id
+                            },
                             on: {
                               click: function($event) {
                                 _vm.selectMatch(mutualMatch)
@@ -52248,8 +52234,31 @@ var render = function() {
                             }
                           },
                           [
+                            _vm.selectedProfile === mutualMatch
+                              ? _c("i", {
+                                  staticClass: "fas fa-caret-right",
+                                  staticStyle: { "margin-left": "-1em" }
+                                })
+                              : _vm._e(),
                             _vm._v(
-                              _vm._s(mutualMatch.user.firstname) +
+                              "\n                        " +
+                                _vm._s(
+                                  _vm._f("truncate")(
+                                    _vm._f("capitalize")(
+                                      mutualMatch.user.firstname
+                                    ),
+                                    20
+                                  )
+                                ) +
+                                "\n                        " +
+                                _vm._s(
+                                  _vm._f("truncate")(
+                                    _vm._f("capitalize")(
+                                      mutualMatch.user.lastname
+                                    ),
+                                    20
+                                  )
+                                ) +
                                 "\n                    "
                             )
                           ]
@@ -52262,7 +52271,7 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "div",
-                  { staticClass: "col-lg-10" },
+                  { staticClass: "col-lg-9" },
                   [
                     _vm.selectedMatch
                       ? _c("v-match-profile", {
@@ -52273,9 +52282,7 @@ var render = function() {
                   1
                 )
               ])
-            : _c("div", { staticClass: "row" }, [
-                _c("h1", [_vm._v("No matches (yet) ;)")])
-              ])
+            : _c("div", { staticClass: "row align-items-center" }, [_vm._m(2)])
         ])
       : _vm._e()
   ])
@@ -52297,6 +52304,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("li", { staticClass: "list-group-item list-header" }, [
       _c("h3", [_vm._v("Matches")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col text-center align-self-center" }, [
+      _c("h1", [_vm._v("No matches (yet) ;)")])
     ])
   }
 ]

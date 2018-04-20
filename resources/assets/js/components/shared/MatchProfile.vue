@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row card-body">
             <div class="col-lg-4 text-center">
-                <h3>{{responseData.user.firstname + ' ' + responseData.user.lastname | truncate(25) | capitalize}}</h3>
+                <h3 style="overflow: hidden">{{responseData.user.firstname + ' ' + responseData.user.lastname | truncate(25) | capitalize}}</h3>
                 <v-image class="img-fluid" :src="responseData.imageLocation"></v-image>
             </div>
             <div class="col-lg-8">

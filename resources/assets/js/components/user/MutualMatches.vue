@@ -4,25 +4,31 @@
             <h3>Your Mutual Matches</h3>
         </div>
 
-        <div class="col-lg-8 mx-auto" v-if="mutualMatches">
+        <div class="col-lg-9 mx-auto" v-if="mutualMatches">
             <div class="row" v-if="mutualMatches.length > 0">
-                <div class="col-lg-2">
 
+                <div class="col-lg-3">
                     <ul class="list-group card-body" style="padding-right: 0">
                         <li class="list-group-item list-header"><h3>Matches</h3></li>
-                        <li @click="selectMatch(mutualMatch)" class="list-group-item"
-                            v-for="mutualMatch in mutualMatches">{{mutualMatch.user.firstname}}
+                        <li @click="selectMatch(mutualMatch)" class="list-group-item list-group-item-action match-items"
+                            v-for="mutualMatch in mutualMatches"
+                            :class="{active : selectedProfile.id === mutualMatch.id}">
+                            <i v-if="selectedProfile===mutualMatch" class="fas fa-caret-right" style="margin-left: -1em;"></i>
+                            {{mutualMatch.user.firstname | capitalize | truncate(20)}}
+                            {{mutualMatch.user.lastname | capitalize | truncate(20)}}
                         </li>
                     </ul>
                 </div>
 
-                <div class="col-lg-10">
+                <div class="col-lg-9">
                     <v-match-profile v-if="selectedMatch" :responseData="selectedProfile"></v-match-profile>
                 </div>
             </div>
 
-            <div class="row" v-else>
-                <h1>No matches (yet) ;)</h1>
+            <div class="row align-items-center" v-else>
+                <div class="col text-center align-self-center">
+                    <h1>No matches (yet) ;)</h1>
+                </div>
             </div>
         </div>
 
@@ -56,16 +62,28 @@
                 }
 
             }).catch(error => {
-                    // this.$router.push({name: 'dashboard'});
-                    this.$toastr.e('Something went wrong with fetching your mutual matches');
+                // this.$router.push({name: 'dashboard'});
+                this.$toastr.e('Something went wrong with fetching your mutual matches');
             });
         },
     }
 </script>
 
 <style scoped>
-    .list-header{
+    .list-header {
         background-color: #f05f40;
         color: white;
+        margin-bottom: 0;
+    }
+
+    .match-items {
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .active {
+        background-color: white;
+        color: black;
+        border: 1px solid darkgray;
     }
 </style>

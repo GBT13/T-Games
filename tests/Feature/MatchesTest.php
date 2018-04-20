@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\User;
+use JWTAuth;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -9,8 +11,9 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class MatchesTest extends TestCase {
 
     public function testMatches() {
-        $response = $this->withHeaders(['Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly90aW5kZXJnYW1lcy50ZXN0L2FwaS9hdXRoL3JlZnJlc2giLCJpYXQiOjE1MjQwNDQwODMsImV4cCI6MTUyNDA3MjQzNSwibmJmIjoxNTI0MDY4ODM1LCJqdGkiOiJGbFdGT0x2QkhWeXVJaDNqIn0.rrm63OEPTr-FviHxgkmERXrHYQdVPJUk7-BxgboC2gs'])->get('api/matches/find/1');
-
+        $token = JWTAuth::fromUser(User::find(1));
+        $response = $this->withHeaders(['Authorization' => 'Bearer ' . $token])->get('api/matches/find/1');
+        $response->assertStatus(200);
         $response->assertJsonStructure([
             'matches' => ['*' => ['id', 'imageLocation',
                 'matched_games' => ['*' => ['id', 'appid', 'name']],
@@ -18,12 +21,16 @@ class MatchesTest extends TestCase {
     }
 
     public function testMutualMatches() {
-        $response = $this->withHeaders(['Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly90aW5kZXJnYW1lcy50ZXN0L2FwaS9hdXRoL3JlZnJlc2giLCJpYXQiOjE1MjQwNDQwODMsImV4cCI6MTUyNDA3MjQzNSwibmJmIjoxNTI0MDY4ODM1LCJqdGkiOiJGbFdGT0x2QkhWeXVJaDNqIn0.rrm63OEPTr-FviHxgkmERXrHYQdVPJUk7-BxgboC2gs'])->get('api/matches/mutual');
+        $token = JWTAuth::fromUser(User::find(1));
+        $response = $this->withHeaders(['Authorization' => 'Bearer ' . $token])->get('api/matches/mutual');
+        $response->assertStatus(200);
 
         $response->assertJsonStructure([
             '*' => ['id', 'imageLocation',
                 'user' => ['id', 'firstname', 'lastname']]
         ]);
+
+
     }
 
     public function testMatchesAuth() {
