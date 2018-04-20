@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-lg-3">
+            <div class="col-lg-4">
                 <!--<div class="alert alert-danger" v-if="error">-->
                 <!--<p>There was an error, unable to sign in with those credentials.</p>-->
                 <!--</div>-->

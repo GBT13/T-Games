@@ -4,23 +4,6 @@
             <h3>Welcome to your profile page {{$auth.user().firstname + ' ' + $auth.user().lastname | capitalize}}</h3>
         </div>
         <div class="row">
-            <!--<div class="col-lg-2" style="padding: 0">-->
-            <!--<div class="card sticky-top">-->
-            <!--<div class="card-body">-->
-            <!--<h5 class="card-title">{{$auth.user().firstname | capitalize}}'s Profile</h5>-->
-            <!--<p class="card-text">This is your profile page. You'll find a lot of different opions to fill in-->
-            <!--your very own profile! From entering a detailed bio and uploading the perfect image of-->
-            <!--yourself to filling out all of your gamertags</p>-->
-            <!--</div>-->
-            <!--<ul class="list-group list-group-flush">-->
-            <!--<li class="list-group-item"><a href="#peronsalBio">Picture and Bio</a></li>-->
-            <!--<li class="list-group-item"><a href="#gamertags">Gamertags</a></li>-->
-            <!--<li class="list-group-item"><a href="#playedGames">Games you play</a></li>-->
-            <!--</ul>-->
-
-            <!--</div>-->
-            <!--</div>-->
-
             <div class="col-lg-2">
 
             </div>
@@ -31,12 +14,17 @@
                     <div id="peronsalBio"></div>
                     <h2>Enter an appealing bio and upload a profile picture!</h2>
 
+                    <div v-if="dbProfilePicture">
+                        <h3>Your current picture</h3>
+                        <v-image :src="dbProfilePicture" style="max-width: 500px; max-height: 500px;"></v-image>
+                    </div>
 
                     <div class="form-group input">
                         Upload a profile picture:
                         <input type="file" @change="previewImage" accept="image/*">
                     </div>
                     <div class="image-preview" v-if="imageData.length > 0">
+                        <h2>Your new profile picture</h2>
                         <img class="preview" :src="imageData">
                     </div>
 
@@ -193,7 +181,7 @@
                                 </ul>
                             </div>
                         </div>
-                            <!--TODO: Make this conditional so you see loading when page loading and empty when your loaded list is actually empty-->
+                        <!--TODO: Make this conditional so you see loading when page loading and empty when your loaded list is actually empty-->
                         <div class="row justify-content-center">
                             <div class="col-auto" v-if="profileGameList.length <=0">
                                 <div class="text-center">
@@ -239,14 +227,14 @@
                 epicName: '',
                 nintendoNetworkId: '',
                 bio: '',
-                profilePicture: '',
                 profileGameList: [],
                 allGamesList: [],
                 selectedGame: '',
                 selectedFile: null,
                 gameLookup: '',
                 imageData: "",  // we will store base64 format of image in this string
-                pending: false
+                dbProfilePicture: '',
+                pending: false,
             }
         },
         methods: {
@@ -269,9 +257,13 @@
                     nintendoNetworkId: this.nintendoNetworkId,
                     bio: this.bio,
                     profileGameList: gameIdList,
+                    profilePicture: this.imageData
                 };
                 axios.patch('/user/updateprofile', formData).then(response => {
                     this.pending = false;
+                    this.imageData = "";
+                    this.selectedFile = null;
+                    this.dbProfilePicture = response.data.imageLocation;
                     this.$toastr.s('Your profile has been successfully saved!')
                 }).catch(error => {
                     this.pending = false;
@@ -343,28 +335,23 @@
         }
         ,
         beforeCreate() {
-            axios.get('/user/' + this.$auth.user().id + '/profile').then(data => {
-                this.bio = data.data.bio;
-                this.steamid = data.data.steamid;
-                this.psnName = data.data.psnName;
-                this.xboxGamertag = data.data.xboxGamertag;
-                this.discord = data.data.discord;
-                this.epicName = data.data.epicName;
-                this.nintendoNetworkId = data.data.nintendoNetworkId;
-                this.originName = data.data.originName;
-                this.uplayName = data.data.uplayName;
-                this.battletag = data.data.battletag;
+            axios.get('/user/' + this.$auth.user().id + '/profile/withgames').then(response => {
+                this.bio = response.data.bio;
+                this.steamid = response.data.steamid;
+                this.psnName = response.data.psnName;
+                this.xboxGamertag = response.data.xboxGamertag;
+                this.discord = response.data.discord;
+                this.epicName = response.data.epicName;
+                this.nintendoNetworkId = response.data.nintendoNetworkId;
+                this.originName = response.data.originName;
+                this.uplayName = response.data.uplayName;
+                this.battletag = response.data.battletag;
+                this.profileGameList = response.data.games;
+                this.dbProfilePicture = response.data.imageLocation;
             }).catch(error => {
                 this.$toastr.e('Something went wrong with updating your profile');
             });
-
-            axios.get('/games/profile/' + this.$auth.user().id).then(response => {
-                this.profileGameList = response.data;
-            }).catch(error => {
-                this.$toastr.e('Something went wrong with fetching your liked games')
-            })
-
-        }
+        },
     }
 </script>
 

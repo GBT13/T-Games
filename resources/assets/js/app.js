@@ -5,20 +5,27 @@ import Home from './components/Home.vue'
 import Login from './components/user/login.vue'
 import Register from './components/user/Register.vue';
 import Dashboard from './components/Dashboard.vue';
-import UserProfile from './components/user/Profile.vue';
+import EditProfile from './components/user/EditProfile.vue';
+import MatchProfile from './components/shared/MatchProfile.vue';
+import MutualMatches from './components/user/MutualMatches.vue';
+import SingleMatch from './components/user/SingleMatch.vue';
 import AccountSettings from './components/user/AccountSettings.vue';
 import PageNotFound from './components/PageNotFound.vue';
+import Image from './components/shared/Image.vue';
 import Vuelidate from 'vuelidate';
 import axios from 'axios'
 import Toastr from 'vue-toastr';
 import VueAxios from 'vue-axios'
 import VueSelect from 'vue-select';
+import VModal from 'vue-js-modal'
+
 
 Vue.use(VueRouter);
 Vue.use(Vuelidate);
 Vue.use(VueAxios, axios);
 Vue.use(VueSelect);
 Vue.use(Toastr);
+Vue.use(VModal, {dynamic: true});
 
 
 Vue.filter('capitalize', function (value) {
@@ -30,6 +37,31 @@ Vue.filter('capitalize', function (value) {
     });
 
     return splitString.join(" ");
+});
+
+/**
+ *
+ * @param {String} text
+ * @param {Number} length
+ * @param {String} clamp
+ *
+ */
+Vue.filter('truncate', function (text, length, clamp) {
+    clamp = clamp || '...';
+    length = length || 30;
+
+    if (text.length <= length) return text;
+
+    let tcText = text.slice(0, length - clamp.length);
+    let last = tcText.length - 1;
+
+    while (last > 0 && tcText[last] !== ' ' && tcText[last] !== clamp[0]) last -= 1;
+
+    last = last || length - clamp.length;
+
+    tcText = tcText.slice(0, last);
+
+    return tcText + clamp;
 });
 
 axios.defaults.baseURL = "/api";
@@ -53,8 +85,10 @@ const router = new VueRouter({
         {path: '/login', name: 'login', component: Login, meta: {auth: false}},
         {path: '/register', name: 'register', component: Register, meta: {auth: false}},
         {path: '/dashboard', name: 'dashboard', component: Dashboard, meta: {auth: true}},
-        {path: '/user/profile', name: 'userProfile', component: UserProfile, meta: {auth: true}},
+        {path: '/user/profile', name: 'userProfile', component: EditProfile, meta: {auth: true}},
+        {path: '/user/match/:id', name: 'userSingleMatch', component: SingleMatch, meta: {auth: true}},
         {path: '/user/account', name: 'userDetails', component: AccountSettings, meta: {auth: true}},
+        {path: '/user/matches', name: 'userMatches', component: MutualMatches, meta: {auth: true}},
         {path: "*", name: 'page404', component: PageNotFound}
 
     ]
@@ -84,15 +118,21 @@ Vue.use(require('@websanova/vue-auth'), {
 
 Vue.component('app', require('./components/App.vue'));
 Vue.component('v-select', VueSelect);
+Vue.component('v-image', Image);
+Vue.component('v-match-profile', MatchProfile);
 
 App.router = Vue.router;
+
+//Eventbus
+export const eventBus = new Vue({});
 
 const app = new Vue({
     el: '#app',
     router,
-    mounted(){
+    mounted() {
         this.$toastr.defaultProgressBar = false;
         this.$toastr.defaultPosition = 'toast-bottom-center'
     }
 
 });
+

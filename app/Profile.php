@@ -4,10 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
-{
+class Profile extends Model {
     protected $fillable = [
-        'image_location',
+        'imageLocation',
         'bio',
         'country_id',
         'steamid',
@@ -19,19 +18,29 @@ class Profile extends Model
         'discord',
         'epicName',
         'nintendoNetworkId',
-        'user_id'
+        'user_id',
     ];
 
-    public function country(){
+    public function getImageLocation($value){
+        if(!$value){
+            return '/images/profile_placeholder.bmp';
+        }
+    }
+
+    public function country() {
         return $this->belongsTo('App\Country');
     }
 
-    public function user(){
+    public function user() {
         return $this->belongsTo('App\User');
     }
 
-    public function games(){
+    public function games() {
         return $this->belongsToMany('App\Game');
+    }
+
+    public function possibleMatches() {
+        return $this->hasmany('App\Match')->whereRejected(0);
     }
 
 }

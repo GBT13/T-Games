@@ -14,6 +14,7 @@ $factory->define(App\Profile::class, function (Faker $faker) {
         'discord' => $faker->userName,
         'epicName' => $faker->userName,
         'nintendoNetworkId'=>$faker->userName,
-        'user_id' => 2
+        'user_id' => 2,
+        'imageLocation' => $faker->imageUrl()
     ];
 });

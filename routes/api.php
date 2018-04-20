@@ -22,6 +22,8 @@ Route::post('auth/login', 'AuthController@login');
 Route::get('auth/user/emailduplicate', 'AuthController@checkEmailExists');
 
 
+
+
 Route::group(['middleware' => 'jwt.auth'], function () {
 //    Login Routes
     Route::get('auth/user', 'AuthController@user');
@@ -34,9 +36,16 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('games/profile/{id}', 'GameController@getGamesByProfile');
 
 //    Account management Routes
-    Route::get('user/{id}/profile', 'ProfileController@getProfileByUser');
+    Route::get('user/{id}/profile/withgames', 'ProfileController@getProfileAndGamesByUser');
+    Route::get('user/{id}/match/withgames', 'ProfileController@getProfileAndGamesByMutualMatch');
     Route::patch('user/updateprofile', 'ProfileController@updateProfile');
     Route::patch('user/updateaccount', 'UserController@updateAccountSettings');
+
+//    Match Routes
+    Route::patch('matches/{partnerId}/reject', 'MatchController@rejectMatch');
+    Route::patch('matches/{partnerId}/accept', 'MatchController@acceptMatch');
+    Route::get('matches/mutual', 'MatchController@getAllMutualMatches');
+    Route::get('matches/find/{id}', 'MatchController@findMatches');
 
 });
 
