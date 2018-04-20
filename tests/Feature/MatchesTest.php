@@ -12,7 +12,7 @@ class MatchesTest extends TestCase {
 
     public function testMatches() {
         $token = JWTAuth::fromUser(User::find(1));
-        $response = $this->withHeaders(['Authorization' => 'Bearer ' . $token])->get('api/matches/find/1');
+        $response = $this->withHeaders(['Authorization' => 'Bearer ' . $token])->get('api/matches/find/');
         $response->assertStatus(200);
         $response->assertJsonStructure([
             'matches' => ['*' => ['id', 'imageLocation',
@@ -34,7 +34,7 @@ class MatchesTest extends TestCase {
     }
 
     public function testMatchesAuth() {
-        $response = $this->get('api/matches/find/1');
+        $response = $this->get('api/matches/find/');
         $response->assertStatus(400);
     }
 

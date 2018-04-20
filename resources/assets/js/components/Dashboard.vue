@@ -43,7 +43,7 @@
             }
         },
         beforeCreate() {
-            axios.get('/matches/find/' + this.$auth.user().id).then(response => {
+            axios.get('/matches/find/').then(response => {
                 this.possibleMatchList = response.data.matches;
 
             }).catch(error => {
