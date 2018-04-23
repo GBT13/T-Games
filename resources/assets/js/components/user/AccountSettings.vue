@@ -5,26 +5,9 @@
                 capitalize}}</h3>
         </div>
         <div class="row">
-            <!--<div class="col-lg-2" style="padding: 0">-->
-                <!--<div class="card sticky-top">-->
-                    <!--<div class="card-body">-->
-                        <!--<h5 class="card-title">{{$auth.user().firstname | capitalize}}'s Account Settings</h5>-->
-                        <!--<p class="card-text">This is your Account Settings page. You'll find all of the same data you've entered when registering your account.-->
-                            <!--You're able to modify every field to make changes to your account at your own discretion.-->
-                            <!--</p>-->
-                    <!--</div>-->
-                    <!--<ul class="list-group list-group-flush">-->
-                        <!--<li class="list-group-item"><a href="#accountDetails">Account details</a></li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <div class="col-lg-2">
-
-            </div>
 
             <!--Bio and Pictures form-->
-            <div class="col-lg-8">
+            <div class="col-lg-8 mx-auto">
                 <form autocomplete="off" @submit.prevent="updateAccount" method="post" class="card-body">
                     <div id="accountDetails"></div>
                     <h2>You can make changes to your account details here</h2>
@@ -136,10 +119,6 @@
                     </div>
 
                 </form>
-            </div>
-
-            <div class="col-lg-2">
-
             </div>
 
         </div>

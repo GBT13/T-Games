@@ -11,7 +11,7 @@
                     <ul class="list-group card-body" style="padding-right: 0">
                         <li class="list-group-item list-header"><h3>Matches</h3></li>
                         <li @click="selectMatch(mutualMatch)" class="list-group-item list-group-item-action match-items"
-                            v-for="mutualMatch in mutualMatches"
+                            v-for="mutualMatch in mutualMatches" :key="mutualMatch.id"
                             :class="{active : selectedProfile.id === mutualMatch.id}">
                             <i v-if="selectedProfile===mutualMatch" class="fas fa-caret-right" style="margin-left: -1em;"></i>
                             {{mutualMatch.user.firstname | capitalize | truncate(20)}}
@@ -25,8 +25,8 @@
                 </div>
             </div>
 
-            <div class="row align-items-center" v-else>
-                <div class="col text-center align-self-center">
+            <div class="row align-items-center vert-align-with-header" v-else>
+                <div class="col text-center">
                     <h1>No matches (yet) ;)</h1>
                 </div>
             </div>
@@ -70,6 +70,11 @@
 </script>
 
 <style scoped>
+    .card-header {
+        border-radius: 0;
+        background: linear-gradient(to bottom right, #f05f40, #ff7d4f);
+    }
+
     .list-header {
         background-color: #f05f40;
         color: white;

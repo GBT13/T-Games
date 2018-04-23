@@ -7,11 +7,9 @@
 
         <div class="row">
 
-            <div class="col-lg-2"></div>
-
-            <div class="col-lg-8">
+            <div class="col-lg-8 mx-auto">
                 <div class="row justify-content-center">
-                    <h2>Your possible matches</h2>
+                    <h2 v-if="possibleMatchList && possibleMatchList.length > 0">Your possible matches</h2>
                 </div>
                 <div class="row justify-content-center">
 
@@ -19,14 +17,24 @@
                     <div class="col-lg-4 col-md-6" style="padding: 10px 10px 10px 10px "
                          v-for="match in possibleMatchList" :key="match.id">
                         <v-matchcard :match="match"></v-matchcard>
-                        <button @click="showModal(match)">Show Modal</button>
+                    </div>
 
+                    <!--No Matches Element-->
+                    <div class="col-lg-12">
+                        <div v-if="possibleMatchList && possibleMatchList.length < 1"
+                             class="row align-items-center vert-align-with-header">
+                            <div class="col text-center">
+                                <h2>We haven't been able to find any matches for you (yet) ;) Sorry!</h2>
+                                <p>Make sure to add every game you play to your profile to increase the chances of
+                                    finding a match!</p>
+                                <p> If you've already added all of the games you play to your profile, just come back in
+                                    a few days! Who knows how many awesome new people you might encounter!</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="col-lg-2"></div>
 
         <modals-container class="transparent"></modals-container>
 
@@ -43,11 +51,11 @@
     export default {
         data() {
             return {
-                possibleMatchList: [],
+                possibleMatchList: null,
             }
         },
         beforeCreate() {
-            axios.get('/matches/find/' + this.$auth.user().id).then(response => {
+            axios.get('/matches/find/').then(response => {
                 this.possibleMatchList = response.data.matches;
 
             }).catch(error => {
@@ -63,7 +71,6 @@
             });
             eventBus.$on('viewProfile', (data) => {
                 this.$router.push({name: 'userSingleMatch', params: {id: data.id}});
-                console.log('should switch page');
             })
         },
         methods: {
@@ -78,6 +85,7 @@
                     }
                 }).catch(error => {
                     this.$toastr.e('Something went wrong with accepting this match');
+                    this.cascadeErrorToChild();
                 })
 
             },
@@ -88,6 +96,7 @@
                     })), 1);
                 }).catch(error => {
                     this.$toastr.e('Something went wrong with rejecting this match');
+                    this.cascadeErrorToChild();
                 })
             },
             showModal(match) {
@@ -105,10 +114,11 @@
                         scrollable: true,
                         name: 'MutualMatchModal',
                         classes: ['mutualModal']
-
-
                     }
                 );
+            },
+            cascadeErrorToChild() {
+                eventBus.$emit('matchStatusEditError');
             }
         },
         components: {

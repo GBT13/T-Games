@@ -25,6 +25,9 @@ class Profile extends Model {
         if(!$value){
             return '/images/profile_placeholder.bmp';
         }
+        else {
+            return $value;
+        }
     }
 
     public function country() {

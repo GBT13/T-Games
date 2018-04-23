@@ -23,10 +23,7 @@
             </div>
         </div>
 
-        <div class="row btn-row col-lg-12 col-sm-12 col-12 transparent" style="padding-top: 1.5em;">
-            <button class="btn btn-xl btn-light col-lg-6 col-sm-6 col-10 btn-action mx-auto">Chat</button>
-        </div>
-        <div class="row btn-row col-lg-12 col-sm-12 col-12 transparent">
+        <div class="row btn-row col-lg-12 col-sm-12 col-12 transparent" style="padding-top: 5em;">
             <button v-if="match.user.gender==='MALE'"
                     class="btn btn-xl btn-light col-lg-6 col-sm-6 col-10 btn-action mx-auto"
                     @click="viewProfile">View his Profile
@@ -68,10 +65,6 @@
 </script>
 
 <style scoped>
-    .rounded-circle {
-        /*border: solid 1px black;*/
-    }
-
     .profile-image {
         height: 270px !important;
         width: 270px !important;
@@ -87,7 +80,6 @@
             height: 130px !important;
             width: 130px !important;
             object-fit: cover !important;
-
         }
     }
 
@@ -97,20 +89,11 @@
 
     .btn-row {
         padding-bottom: 1.5em;
-        /*background-color: #f05f40;*/
         background-color: #212529;
-        /*background-color: #eaeaea;*/
-        /*background-color: #FF7A5D;*/
-        /*background-color: #F89136;*/
-
     }
 
     .btn-light {
         color: #f05f40;
-    }
-
-    .blur {
-        filter: blur(1em);
     }
 
     .transparent {

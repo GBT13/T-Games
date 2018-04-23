@@ -46,7 +46,7 @@
             Games you matched on:
         </div>
         <ul class="list-group">
-            <li class="list-group-item" v-for="game in match.matched_games.slice(0, 5)">
+            <li class="list-group-item" v-for="game in match.matched_games.slice(0, 5)" :key="game.id">
                 {{game.name}}
             </li>
         </ul>
@@ -55,7 +55,6 @@
 
 <script>
     import {eventBus} from "../../app";
-    //TODO: Check if there is a way to re-enable buttons when a server error occurs in the parent component
     export default {
         data() {
             return {
@@ -83,6 +82,10 @@
             //Used to enable bootstrap style tooltips on the page when the content has loaded in from the server
             $(function () {
                 $('[data-toggle="tooltip"]').tooltip()
+            });
+
+            eventBus.$on('matchStatusEditError', () => {
+                this.pending = false;
             })
         }
     }

@@ -21,7 +21,4 @@ class GameController extends Controller
         return Game::where('name', 'LIKE', '%' . $request->query('name'). '%')->get();
     }
 
-    public function getGamesByProfile($id){
-        return User::findOrFail($id)->profile()->first()->games()->get();
-    }
 }

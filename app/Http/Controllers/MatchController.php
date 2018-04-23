@@ -33,9 +33,9 @@ class MatchController extends Controller {
         }
     }
 
-    public function findMatches($id) {
+    public function findMatches() {
         $ownProfile = Auth::user()->profile()->first();
-        $otherProfiles = Profile::whereKeyNot($id)->get();
+        $otherProfiles = Profile::whereKeyNot($ownProfile->id)->get(['id', 'imageLocation', 'bio', 'user_id']);
         $foundMatches = ['matches' => []];
 
 //        Loop through all possible partnerProfiles
@@ -65,9 +65,7 @@ class MatchController extends Controller {
 
     public function getAllMutualMatches() {
         $mutualMatchProfiles = [];
-        //TODO Make sure this uses the auth user before production
         $acceptedMatches = Match::whereProfileId(Auth::user()->profile()->first()->id)->whereAccepted(1)->get();
-//        $acceptedMatches = Match::whereProfileId(1)->whereAccepted(1)->get();
 
         foreach ($acceptedMatches as $acceptedMatch) {
             if ($this->getPairedMatch($acceptedMatch['partner_profile_id'], $acceptedMatch['profile_id'])->whereAccepted(1)->first()) {

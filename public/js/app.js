@@ -46040,6 +46040,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     methods: {
@@ -46097,6 +46101,20 @@ var render = function() {
                     [
                       _c("i", { staticClass: "fas fa-fire" }),
                       _vm._v("\n                Dashboard\n            ")
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.$auth.check()
+                ? _c(
+                    "router-link",
+                    {
+                      staticClass: "navbar-text nav-link",
+                      attrs: { to: "/user/matches", "active-class": "active" }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-address-book" }),
+                      _vm._v("\n                Mutual Matches\n            ")
                     ]
                   )
                 : _vm._e()
@@ -46538,103 +46556,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "home"
@@ -46654,8 +46575,6 @@ var render = function() {
     _vm._m(1),
     _vm._v(" "),
     _vm._m(2),
-    _vm._v(" "),
-    _vm._m(3),
     _vm._v(" "),
     !_vm.$auth.check()
       ? _c("section", { staticClass: "bg-dark text-white" }, [
@@ -46701,7 +46620,7 @@ var render = function() {
           )
         ]),
     _vm._v(" "),
-    _vm._m(4)
+    _vm._m(3)
   ])
 }
 var staticRenderFns = [
@@ -46863,208 +46782,6 @@ var staticRenderFns = [
                 _vm._v("You have to make your websites with love these days!")
               ])
             ])
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "p-0", attrs: { id: "portfolio" } }, [
-      _c("div", { staticClass: "container-fluid p-0" }, [
-        _c("div", { staticClass: "row no-gutters popup-gallery" }, [
-          _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
-            _c(
-              "a",
-              {
-                staticClass: "portfolio-box",
-                attrs: { href: "/images/portfolio/fullsize/1.jpg" }
-              },
-              [
-                _c("img", {
-                  staticClass: "img-fluid",
-                  attrs: { src: "/images/portfolio/thumbnails/1.jpg", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "portfolio-box-caption" }, [
-                  _c("div", { staticClass: "portfolio-box-caption-content" }, [
-                    _c("div", { staticClass: "project-category text-faded" }, [
-                      _vm._v(
-                        "\n                                    Category\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "project-name" }, [
-                      _vm._v(
-                        "\n                                    Project Name\n                                "
-                      )
-                    ])
-                  ])
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
-            _c(
-              "a",
-              {
-                staticClass: "portfolio-box",
-                attrs: { href: "/images/portfolio/fullsize/2.jpg" }
-              },
-              [
-                _c("img", {
-                  staticClass: "img-fluid",
-                  attrs: { src: "/images/portfolio/thumbnails/2.jpg", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "portfolio-box-caption" }, [
-                  _c("div", { staticClass: "portfolio-box-caption-content" }, [
-                    _c("div", { staticClass: "project-category text-faded" }, [
-                      _vm._v(
-                        "\n                                    Category\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "project-name" }, [
-                      _vm._v(
-                        "\n                                    Project Name\n                                "
-                      )
-                    ])
-                  ])
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
-            _c(
-              "a",
-              {
-                staticClass: "portfolio-box",
-                attrs: { href: "/images/portfolio/fullsize/3.jpg" }
-              },
-              [
-                _c("img", {
-                  staticClass: "img-fluid",
-                  attrs: { src: "/images/portfolio/thumbnails/3.jpg", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "portfolio-box-caption" }, [
-                  _c("div", { staticClass: "portfolio-box-caption-content" }, [
-                    _c("div", { staticClass: "project-category text-faded" }, [
-                      _vm._v(
-                        "\n                                    Category\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "project-name" }, [
-                      _vm._v(
-                        "\n                                    Project Name\n                                "
-                      )
-                    ])
-                  ])
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
-            _c(
-              "a",
-              {
-                staticClass: "portfolio-box",
-                attrs: { href: "/images/portfolio/fullsize/4.jpg" }
-              },
-              [
-                _c("img", {
-                  staticClass: "img-fluid",
-                  attrs: { src: "/images/portfolio/thumbnails/4.jpg", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "portfolio-box-caption" }, [
-                  _c("div", { staticClass: "portfolio-box-caption-content" }, [
-                    _c("div", { staticClass: "project-category text-faded" }, [
-                      _vm._v(
-                        "\n                                    Category\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "project-name" }, [
-                      _vm._v(
-                        "\n                                    Project Name\n                                "
-                      )
-                    ])
-                  ])
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
-            _c(
-              "a",
-              {
-                staticClass: "portfolio-box",
-                attrs: { href: "/images/portfolio/fullsize/5.jpg" }
-              },
-              [
-                _c("img", {
-                  staticClass: "img-fluid",
-                  attrs: { src: "/images/portfolio/thumbnails/5.jpg", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "portfolio-box-caption" }, [
-                  _c("div", { staticClass: "portfolio-box-caption-content" }, [
-                    _c("div", { staticClass: "project-category text-faded" }, [
-                      _vm._v(
-                        "\n                                    Category\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "project-name" }, [
-                      _vm._v(
-                        "\n                                    Project Name\n                                "
-                      )
-                    ])
-                  ])
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
-            _c(
-              "a",
-              {
-                staticClass: "portfolio-box",
-                attrs: { href: "/images/portfolio/fullsize/6.jpg" }
-              },
-              [
-                _c("img", {
-                  staticClass: "img-fluid",
-                  attrs: { src: "/images/portfolio/thumbnails/6.jpg", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "portfolio-box-caption" }, [
-                  _c("div", { staticClass: "portfolio-box-caption-content" }, [
-                    _c("div", { staticClass: "project-category text-faded" }, [
-                      _vm._v(
-                        "\n                                    Category\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "project-name" }, [
-                      _vm._v(
-                        "\n                                    Project Name\n                                "
-                      )
-                    ])
-                  ])
-                ])
-              ]
-            )
           ])
         ])
       ])
@@ -48146,11 +47863,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 
@@ -48495,7 +48207,7 @@ var render = function() {
                       !_vm.$v.password.maxLength && _vm.$v.password.$dirty
                         ? _c("p", [
                             _vm._v(
-                              "Your password may not contain more\n                            than\n                            100 characters"
+                              "Your password may not contain more\n                            than 100 characters"
                             )
                           ])
                         : _vm._e()
@@ -48542,7 +48254,7 @@ var render = function() {
                       _vm.$v.confirmedPassword.$dirty
                         ? _c("p", [
                             _vm._v(
-                              "This field must not\n                            be\n                            empty"
+                              "This field must not\n                            be empty"
                             )
                           ])
                         : _vm._e(),
@@ -48560,7 +48272,7 @@ var render = function() {
                       _vm.$v.confirmedPassword.$dirty
                         ? _c("p", [
                             _vm._v(
-                              "Your password must contain\n                            at\n                            least 6 characters"
+                              "Your password must\n                            contain at least 6 characters"
                             )
                           ])
                         : _vm._e(),
@@ -48569,7 +48281,7 @@ var render = function() {
                       _vm.$v.confirmedPassword.$dirty
                         ? _c("p", [
                             _vm._v(
-                              "Your password may not\n                            contain\n                            more than 100 characters"
+                              "Your password may\n                            not contain more than 100 characters"
                             )
                           ])
                         : _vm._e()
@@ -48697,7 +48409,11 @@ var render = function() {
                             disabled: _vm.$v.$invalid || _vm.pending
                           }
                         },
-                        [_vm._v("Register")]
+                        [
+                          _vm._v(
+                            "\n                                Register\n                            "
+                          )
+                        ]
                       )
                     ])
                   ])
@@ -48706,33 +48422,7 @@ var render = function() {
             ])
           : _vm._e()
       ])
-    ]),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-danger",
-        on: {
-          click: function($event) {
-            _vm.success = !_vm.success
-          }
-        }
-      },
-      [_vm._v("Toggle Success")]
-    ),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-danger",
-        on: {
-          click: function($event) {
-            _vm.pending = !_vm.pending
-          }
-        }
-      },
-      [_vm._v("Toggle pending")]
-    )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -48907,6 +48597,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -48916,13 +48614,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            possibleMatchList: []
+            possibleMatchList: null
         };
     },
     beforeCreate: function beforeCreate() {
         var _this = this;
 
-        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/matches/find/' + this.$auth.user().id).then(function (response) {
+        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/matches/find/').then(function (response) {
             _this.possibleMatchList = response.data.matches;
         }).catch(function (error) {
             _this.$toastr.e('Something went wrong with finding matches for you');
@@ -48939,7 +48637,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
         __WEBPACK_IMPORTED_MODULE_1__app__["eventBus"].$on('viewProfile', function (data) {
             _this2.$router.push({ name: 'userSingleMatch', params: { id: data.id } });
-            console.log('should switch page');
         });
     },
 
@@ -48957,6 +48654,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             }).catch(function (error) {
                 _this3.$toastr.e('Something went wrong with accepting this match');
+                _this3.cascadeErrorToChild();
             });
         },
         rejectMatch: function rejectMatch(match) {
@@ -48968,6 +48666,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 })), 1);
             }).catch(function (error) {
                 _this4.$toastr.e('Something went wrong with rejecting this match');
+                _this4.cascadeErrorToChild();
             });
         },
         showModal: function showModal(match) {
@@ -48983,8 +48682,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 scrollable: true,
                 name: 'MutualMatchModal',
                 classes: ['mutualModal']
-
             });
+        },
+        cascadeErrorToChild: function cascadeErrorToChild() {
+            __WEBPACK_IMPORTED_MODULE_1__app__["eventBus"].$emit('matchStatusEditError');
         }
     },
     components: {
@@ -50029,7 +49730,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 
-//TODO: Check if there is a way to re-enable buttons when a server error occurs in the parent component
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
@@ -50055,9 +49755,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     created: function created() {
+        var _this = this;
+
         //Used to enable bootstrap style tooltips on the page when the content has loaded in from the server
         $(function () {
             $('[data-toggle="tooltip"]').tooltip();
+        });
+
+        __WEBPACK_IMPORTED_MODULE_0__app__["eventBus"].$on('matchStatusEditError', function () {
+            _this.pending = false;
         });
     }
 });
@@ -50164,7 +49870,7 @@ var render = function() {
       "ul",
       { staticClass: "list-group" },
       _vm._l(_vm.match.matched_games.slice(0, 5), function(game) {
-        return _c("li", { staticClass: "list-group-item" }, [
+        return _c("li", { key: game.id, staticClass: "list-group-item" }, [
           _vm._v("\n            " + _vm._s(game.name) + "\n        ")
         ])
       })
@@ -50267,7 +49973,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.rounded-circle[data-v-6b17fd68] {\n    /*border: solid 1px black;*/\n}\n.profile-image[data-v-6b17fd68] {\n    height: 270px !important;\n    width: 270px !important;\n    -o-object-fit: cover !important;\n       object-fit: cover !important;\n}\n.profile-image-container[data-v-6b17fd68] {\n    padding: 1em .5em 1em .5em;\n}\n@media (max-width: 575px) {\n.profile-image[data-v-6b17fd68] {\n        height: 130px !important;\n        width: 130px !important;\n        -o-object-fit: cover !important;\n           object-fit: cover !important;\n}\n}\n.row[data-v-6b17fd68] {\n    margin-left: 0;\n}\n.btn-row[data-v-6b17fd68] {\n    padding-bottom: 1.5em;\n    /*background-color: #f05f40;*/\n    background-color: #212529;\n    /*background-color: #eaeaea;*/\n    /*background-color: #FF7A5D;*/\n    /*background-color: #F89136;*/\n}\n.btn-light[data-v-6b17fd68] {\n    color: #f05f40;\n}\n.blur[data-v-6b17fd68] {\n    -webkit-filter: blur(1em);\n            filter: blur(1em);\n}\n.transparent[data-v-6b17fd68] {\n    background-color: rgba(25, 25, 25, 0.88);\n}\n.solid[data-v-6b17fd68] {\n    opacity: 1 !important;\n}\n\n", ""]);
+exports.push([module.i, "\n.profile-image[data-v-6b17fd68] {\n    height: 270px !important;\n    width: 270px !important;\n    -o-object-fit: cover !important;\n       object-fit: cover !important;\n}\n.profile-image-container[data-v-6b17fd68] {\n    padding: 1em .5em 1em .5em;\n}\n@media (max-width: 575px) {\n.profile-image[data-v-6b17fd68] {\n        height: 130px !important;\n        width: 130px !important;\n        -o-object-fit: cover !important;\n           object-fit: cover !important;\n}\n}\n.row[data-v-6b17fd68] {\n    margin-left: 0;\n}\n.btn-row[data-v-6b17fd68] {\n    padding-bottom: 1.5em;\n    background-color: #212529;\n}\n.btn-light[data-v-6b17fd68] {\n    color: #f05f40;\n}\n.transparent[data-v-6b17fd68] {\n    background-color: rgba(25, 25, 25, 0.88);\n}\n.solid[data-v-6b17fd68] {\n    opacity: 1 !important;\n}\n\n", ""]);
 
 // exports
 
@@ -50279,9 +49985,6 @@ exports.push([module.i, "\n.rounded-circle[data-v-6b17fd68] {\n    /*border: sol
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app__ = __webpack_require__(7);
-//
-//
-//
 //
 //
 //
@@ -50412,11 +50115,12 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _vm._m(1),
-    _vm._v(" "),
     _c(
       "div",
-      { staticClass: "row btn-row col-lg-12 col-sm-12 col-12 transparent" },
+      {
+        staticClass: "row btn-row col-lg-12 col-sm-12 col-12 transparent",
+        staticStyle: { "padding-top": "5em" }
+      },
       [
         _vm.match.user.gender === "MALE"
           ? _c(
@@ -50474,28 +50178,6 @@ var staticRenderFns = [
       },
       [_c("h1", { staticClass: "solid" }, [_vm._v("It's a match!")])]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "row btn-row col-lg-12 col-sm-12 col-12 transparent",
-        staticStyle: { "padding-top": "1.5em" }
-      },
-      [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-xl btn-light col-lg-6 col-sm-6 col-10 btn-action mx-auto"
-          },
-          [_vm._v("Chat")]
-        )
-      ]
-    )
   }
 ]
 render._withStripped = true
@@ -50532,45 +50214,47 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-2" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-8" }, [
-          _vm._m(0),
+        _c("div", { staticClass: "col-lg-8 mx-auto" }, [
+          _c("div", { staticClass: "row justify-content-center" }, [
+            _vm.possibleMatchList && _vm.possibleMatchList.length > 0
+              ? _c("h2", [_vm._v("Your possible matches")])
+              : _vm._e()
+          ]),
           _vm._v(" "),
           _c(
             "div",
             { staticClass: "row justify-content-center" },
-            _vm._l(_vm.possibleMatchList, function(match) {
-              return _c(
-                "div",
-                {
-                  key: match.id,
-                  staticClass: "col-lg-4 col-md-6",
-                  staticStyle: { padding: "10px 10px 10px 10px" }
-                },
-                [
-                  _c("v-matchcard", { attrs: { match: match } }),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          _vm.showModal(match)
-                        }
-                      }
-                    },
-                    [_vm._v("Show Modal")]
-                  )
-                ],
-                1
-              )
-            })
+            [
+              _vm._l(_vm.possibleMatchList, function(match) {
+                return _c(
+                  "div",
+                  {
+                    key: match.id,
+                    staticClass: "col-lg-4 col-md-6",
+                    staticStyle: { padding: "10px 10px 10px 10px" }
+                  },
+                  [_c("v-matchcard", { attrs: { match: match } })],
+                  1
+                )
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-12" }, [
+                _vm.possibleMatchList && _vm.possibleMatchList.length < 1
+                  ? _c(
+                      "div",
+                      {
+                        staticClass:
+                          "row align-items-center vert-align-with-header"
+                      },
+                      [_vm._m(0)]
+                    )
+                  : _vm._e()
+              ])
+            ],
+            2
           )
         ])
       ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-2" }),
       _vm._v(" "),
       _c("modals-container", { staticClass: "transparent" })
     ],
@@ -50582,8 +50266,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row justify-content-center" }, [
-      _c("h2", [_vm._v("Your possible matches")])
+    return _c("div", { staticClass: "col text-center" }, [
+      _c("h2", [
+        _vm._v(
+          "We haven't been able to find any matches for you (yet) ;) Sorry!"
+        )
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "Make sure to add every game you play to your profile to increase the chances of\n                                finding a match!"
+        )
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          " If you've already added all of the games you play to your profile, just come back in\n                                a few days! Who knows how many awesome new people you might encounter!"
+        )
+      ])
     ])
   }
 ]
@@ -50903,14 +50603,6 @@ var _this2 = this;
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -50928,7 +50620,7 @@ var _this2 = this;
             epicName: '',
             nintendoNetworkId: '',
             bio: '',
-            profileGameList: [],
+            profileGameList: null,
             allGamesList: [],
             selectedGame: '',
             selectedFile: null,
@@ -51109,9 +50801,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-2" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-8" }, [
+      _c("div", { staticClass: "col-lg-8 mx-auto" }, [
         _c(
           "form",
           {
@@ -51485,98 +51175,109 @@ var render = function() {
             _vm._v(" "),
             _c("hr"),
             _vm._v(" "),
-            _c("div", { attrs: { id: "playedGames" } }, [
-              _c("h2", [_vm._v("Add the games you want to play with people!")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c(
-                  "div",
-                  { staticClass: "col-lg-10 col-sm-10" },
-                  [
-                    _c("v-select", {
-                      attrs: {
-                        label: "name",
-                        options: _vm.allGamesList,
-                        placeholder: "Search for a game"
-                      },
-                      on: { search: _vm.searchGames },
-                      model: {
-                        value: _vm.selectedGame,
-                        callback: function($$v) {
-                          _vm.selectedGame = $$v
-                        },
-                        expression: "selectedGame"
-                      }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-lg-2 col-sm-2" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-orange",
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.addSelectedGame($event)
-                        }
-                      }
-                    },
-                    [_vm._v("Add")]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("br"),
-              _c("br"),
-              _c("br"),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _vm.profileGameList.length > 0
-                  ? _c("div", { staticClass: "col-lg-12" }, [
-                      _c("h3", [_vm._v("Your currently selected games")]),
-                      _vm._v(" "),
-                      _c(
-                        "ul",
-                        { staticClass: "list-group" },
-                        _vm._l(_vm.profileGameList, function(game) {
-                          return _c("li", { staticClass: "list-group-item" }, [
-                            _vm._v(
-                              _vm._s(game.name) +
-                                "\n                                    "
-                            ),
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-danger float-right",
-                                on: {
-                                  click: function($event) {
-                                    $event.preventDefault()
-                                    _vm.removeGame(game)
-                                  }
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                        Remove\n                                    "
-                                )
-                              ]
-                            )
-                          ])
+            _vm.profileGameList
+              ? _c("div", { attrs: { id: "playedGames" } }, [
+                  _c("h2", [
+                    _vm._v("Add the games you want to play with people!")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-10 col-sm-10" },
+                      [
+                        _c("v-select", {
+                          attrs: {
+                            label: "name",
+                            options: _vm.allGamesList,
+                            placeholder: "Search for a game"
+                          },
+                          on: { search: _vm.searchGames },
+                          model: {
+                            value: _vm.selectedGame,
+                            callback: function($$v) {
+                              _vm.selectedGame = $$v
+                            },
+                            expression: "selectedGame"
+                          }
                         })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-lg-2 col-sm-2" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-orange",
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.addSelectedGame($event)
+                            }
+                          }
+                        },
+                        [_vm._v("Add")]
                       )
                     ])
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row justify-content-center" }, [
-                _vm.profileGameList.length <= 0
-                  ? _c("div", { staticClass: "col-auto" }, [_vm._m(9)])
-                  : _vm._e()
-              ])
-            ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _c("br"),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _vm.profileGameList.length > 0
+                      ? _c("div", { staticClass: "col-lg-12" }, [
+                          _c("h3", [_vm._v("Your currently selected games")]),
+                          _vm._v(" "),
+                          _c(
+                            "ul",
+                            { staticClass: "list-group" },
+                            _vm._l(_vm.profileGameList, function(game) {
+                              return _c(
+                                "li",
+                                {
+                                  key: game.id,
+                                  staticClass: "list-group-item"
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(game.name) +
+                                      "\n                                    "
+                                  ),
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-danger float-right",
+                                      on: {
+                                        click: function($event) {
+                                          $event.preventDefault()
+                                          _vm.removeGame(game)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                        Remove\n                                    "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            })
+                          )
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row justify-content-center" }, [
+                    _vm.profileGameList.length <= 0
+                      ? _c("div", { staticClass: "col-auto" }, [_vm._m(9)])
+                      : _vm._e()
+                  ])
+                ])
+              : _vm._e(),
             _vm._v(" "),
             _c(
               "div",
@@ -51596,9 +51297,7 @@ var render = function() {
             )
           ]
         )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-2" })
+      ])
     ])
   ])
 }
@@ -51949,7 +51648,7 @@ var render = function() {
               "tbody",
               _vm._l(_vm.nameList, function(name) {
                 return name.name
-                  ? _c("tr", [
+                  ? _c("tr", { key: name.platform }, [
                       _c("th", { attrs: { scope: "row" } }, [
                         _c("i", { class: name.fa }),
                         _vm._v(" " + _vm._s(name.platform))
@@ -51984,7 +51683,10 @@ var render = function() {
           _vm._l(_vm.responseData.games, function(game) {
             return _c(
               "div",
-              { staticClass: "card-body card col-lg-auto col-md-auto" },
+              {
+                key: game.id,
+                staticClass: "card-body card col-lg-auto col-md-auto"
+              },
               [
                 _vm._v(
                   "\n                    " +
@@ -52108,7 +51810,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.list-header[data-v-1c5916b6] {\n    background-color: #f05f40;\n    color: white;\n    margin-bottom: 0;\n}\n.match-items[data-v-1c5916b6] {\n    overflow: hidden;\n    cursor: pointer;\n}\n.active[data-v-1c5916b6] {\n    background-color: white;\n    color: black;\n    border: 1px solid darkgray;\n}\n", ""]);
+exports.push([module.i, "\n.card-header[data-v-1c5916b6] {\n    border-radius: 0;\n    background: -webkit-gradient(linear, left top, right bottom, from(#f05f40), to(#ff7d4f));\n    background: linear-gradient(to bottom right, #f05f40, #ff7d4f);\n}\n.list-header[data-v-1c5916b6] {\n    background-color: #f05f40;\n    color: white;\n    margin-bottom: 0;\n}\n.match-items[data-v-1c5916b6] {\n    overflow: hidden;\n    cursor: pointer;\n}\n.active[data-v-1c5916b6] {\n    background-color: white;\n    color: black;\n    border: 1px solid darkgray;\n}\n", ""]);
 
 // exports
 
@@ -52222,6 +51924,7 @@ var render = function() {
                         return _c(
                           "li",
                           {
+                            key: mutualMatch.id,
                             staticClass:
                               "list-group-item list-group-item-action match-items",
                             class: {
@@ -52282,7 +51985,13 @@ var render = function() {
                   1
                 )
               ])
-            : _c("div", { staticClass: "row align-items-center" }, [_vm._m(2)])
+            : _c(
+                "div",
+                {
+                  staticClass: "row align-items-center vert-align-with-header"
+                },
+                [_vm._m(2)]
+              )
         ])
       : _vm._e()
   ])
@@ -52310,7 +52019,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col text-center align-self-center" }, [
+    return _c("div", { staticClass: "col text-center" }, [
       _c("h1", [_vm._v("No matches (yet) ;)")])
     ])
   }
@@ -52478,28 +52187,30 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container-fluid" }, [
-    _c("div", { staticClass: "row card-header justify-content-center" }, [
-      _c("h3", [
-        _vm._v(
-          _vm._s(
-            _vm._f("capitalize")(_vm.user.firstname + " " + _vm.user.lastname)
-          )
+  return _vm.responseData
+    ? _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row card-header justify-content-center" }, [
+          _c("h3", [
+            _vm._v(
+              _vm._s(
+                _vm._f("capitalize")(
+                  _vm.user.firstname + " " + _vm.user.lastname
+                )
+              )
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col-lg-8 mx-auto" },
+          [
+            _c("v-match-profile", { attrs: { responseData: _vm.responseData } })
+          ],
+          1
         )
       ])
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "col-lg-8 mx-auto" },
-      [
-        _vm.responseData
-          ? _c("v-match-profile", { attrs: { responseData: _vm.responseData } })
-          : _vm._e()
-      ],
-      1
-    )
-  ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -52737,27 +52448,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -52863,9 +52553,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-2" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-8" }, [
+      _c("div", { staticClass: "col-lg-8 mx-auto" }, [
         _c(
           "form",
           {
@@ -53265,9 +52953,7 @@ var render = function() {
             ])
           ]
         )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-2" })
+      ])
     ])
   ])
 }

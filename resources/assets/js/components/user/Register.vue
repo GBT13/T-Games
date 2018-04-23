@@ -79,8 +79,7 @@
                             <p v-if="!$v.password.minLength && $v.password.$dirty">Your password must contain at least 6
                                 characters</p>
                             <p v-if="!$v.password.maxLength && $v.password.$dirty">Your password may not contain more
-                                than
-                                100 characters</p>
+                                than 100 characters</p>
                         </div>
 
                         <div class="form-group input" :class="{invalid: $v.confirmedPassword.$error}">
@@ -92,16 +91,13 @@
                                     v-model="confirmedPassword"
                                     @blur="$v.confirmedPassword.$touch()">
                             <p v-if="!$v.confirmedPassword.required && $v.confirmedPassword.$dirty">This field must not
-                                be
-                                empty</p>
+                                be empty</p>
                             <p v-if="!$v.confirmedPassword.sameAs && $v.confirmedPassword.$dirty">The passwords do not
                                 match</p>
-                            <p v-if="!$v.confirmedPassword.minLength && $v.confirmedPassword.$dirty">Your password must contain
-                                at
-                                least 6 characters</p>
-                            <p v-if="!$v.confirmedPassword.maxLength && $v.confirmedPassword.$dirty">Your password may not
-                                contain
-                                more than 100 characters</p>
+                            <p v-if="!$v.confirmedPassword.minLength && $v.confirmedPassword.$dirty">Your password must
+                                contain at least 6 characters</p>
+                            <p v-if="!$v.confirmedPassword.maxLength && $v.confirmedPassword.$dirty">Your password may
+                                not contain more than 100 characters</p>
 
                         </div>
 
@@ -130,16 +126,15 @@
 
                         <div class="row">
                             <div class="col text-center">
-                                <button type="submit" class="btn btn-orange" :disabled="$v.$invalid || pending">Register</button>
+                                <button type="submit" class="btn btn-orange" :disabled="$v.$invalid || pending">
+                                    Register
+                                </button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        <!--TODO: Remove this buttons before production-->
-        <button class="btn btn-danger" @click="success = !success">Toggle Success</button>
-        <button class="btn btn-danger" @click="pending = !pending">Toggle pending</button>
     </div>
 </template>
 
