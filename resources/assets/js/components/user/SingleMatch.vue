@@ -1,11 +1,11 @@
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid" v-if="responseData">
         <div class="row card-header justify-content-center">
             <h3>{{user.firstname + ' ' +user.lastname | capitalize }}</h3>
         </div>
 
         <div class="col-lg-8 mx-auto">
-            <v-match-profile v-if="responseData" :responseData="responseData"></v-match-profile>
+            <v-match-profile :responseData="responseData"></v-match-profile>
         </div>
     </div>
 </template>

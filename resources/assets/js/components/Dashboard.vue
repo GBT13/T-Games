@@ -17,7 +17,6 @@
                     <div class="col-lg-4 col-md-6" style="padding: 10px 10px 10px 10px "
                          v-for="match in possibleMatchList" :key="match.id">
                         <v-matchcard :match="match"></v-matchcard>
-                        <button @click="showModal(match)">Show Modal</button>
                     </div>
 
                     <!--No Matches Element-->
@@ -27,12 +26,9 @@
                             <div class="col text-center">
                                 <h2>We haven't been able to find any matches for you (yet) ;) Sorry!</h2>
                                 <p>Make sure to add every game you play to your profile to increase the chances of
-                                    finding a
-                                    match!</p>
+                                    finding a match!</p>
                                 <p> If you've already added all of the games you play to your profile, just come back in
-                                    a
-                                    few
-                                    days! Who knows how many awesome new people you might encounter!</p>
+                                    a few days! Who knows how many awesome new people you might encounter!</p>
                             </div>
                         </div>
                     </div>
