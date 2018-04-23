@@ -55,7 +55,6 @@
 
 <script>
     import {eventBus} from "../../app";
-    //TODO: Check if there is a way to re-enable buttons when a server error occurs in the parent component
     export default {
         data() {
             return {

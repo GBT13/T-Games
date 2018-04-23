@@ -46556,103 +46556,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "home"
@@ -46672,8 +46575,6 @@ var render = function() {
     _vm._m(1),
     _vm._v(" "),
     _vm._m(2),
-    _vm._v(" "),
-    _vm._m(3),
     _vm._v(" "),
     !_vm.$auth.check()
       ? _c("section", { staticClass: "bg-dark text-white" }, [
@@ -46719,7 +46620,7 @@ var render = function() {
           )
         ]),
     _vm._v(" "),
-    _vm._m(4)
+    _vm._m(3)
   ])
 }
 var staticRenderFns = [
@@ -46881,208 +46782,6 @@ var staticRenderFns = [
                 _vm._v("You have to make your websites with love these days!")
               ])
             ])
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "p-0", attrs: { id: "portfolio" } }, [
-      _c("div", { staticClass: "container-fluid p-0" }, [
-        _c("div", { staticClass: "row no-gutters popup-gallery" }, [
-          _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
-            _c(
-              "a",
-              {
-                staticClass: "portfolio-box",
-                attrs: { href: "/images/portfolio/fullsize/1.jpg" }
-              },
-              [
-                _c("img", {
-                  staticClass: "img-fluid",
-                  attrs: { src: "/images/portfolio/thumbnails/1.jpg", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "portfolio-box-caption" }, [
-                  _c("div", { staticClass: "portfolio-box-caption-content" }, [
-                    _c("div", { staticClass: "project-category text-faded" }, [
-                      _vm._v(
-                        "\n                                    Category\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "project-name" }, [
-                      _vm._v(
-                        "\n                                    Project Name\n                                "
-                      )
-                    ])
-                  ])
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
-            _c(
-              "a",
-              {
-                staticClass: "portfolio-box",
-                attrs: { href: "/images/portfolio/fullsize/2.jpg" }
-              },
-              [
-                _c("img", {
-                  staticClass: "img-fluid",
-                  attrs: { src: "/images/portfolio/thumbnails/2.jpg", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "portfolio-box-caption" }, [
-                  _c("div", { staticClass: "portfolio-box-caption-content" }, [
-                    _c("div", { staticClass: "project-category text-faded" }, [
-                      _vm._v(
-                        "\n                                    Category\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "project-name" }, [
-                      _vm._v(
-                        "\n                                    Project Name\n                                "
-                      )
-                    ])
-                  ])
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
-            _c(
-              "a",
-              {
-                staticClass: "portfolio-box",
-                attrs: { href: "/images/portfolio/fullsize/3.jpg" }
-              },
-              [
-                _c("img", {
-                  staticClass: "img-fluid",
-                  attrs: { src: "/images/portfolio/thumbnails/3.jpg", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "portfolio-box-caption" }, [
-                  _c("div", { staticClass: "portfolio-box-caption-content" }, [
-                    _c("div", { staticClass: "project-category text-faded" }, [
-                      _vm._v(
-                        "\n                                    Category\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "project-name" }, [
-                      _vm._v(
-                        "\n                                    Project Name\n                                "
-                      )
-                    ])
-                  ])
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
-            _c(
-              "a",
-              {
-                staticClass: "portfolio-box",
-                attrs: { href: "/images/portfolio/fullsize/4.jpg" }
-              },
-              [
-                _c("img", {
-                  staticClass: "img-fluid",
-                  attrs: { src: "/images/portfolio/thumbnails/4.jpg", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "portfolio-box-caption" }, [
-                  _c("div", { staticClass: "portfolio-box-caption-content" }, [
-                    _c("div", { staticClass: "project-category text-faded" }, [
-                      _vm._v(
-                        "\n                                    Category\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "project-name" }, [
-                      _vm._v(
-                        "\n                                    Project Name\n                                "
-                      )
-                    ])
-                  ])
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
-            _c(
-              "a",
-              {
-                staticClass: "portfolio-box",
-                attrs: { href: "/images/portfolio/fullsize/5.jpg" }
-              },
-              [
-                _c("img", {
-                  staticClass: "img-fluid",
-                  attrs: { src: "/images/portfolio/thumbnails/5.jpg", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "portfolio-box-caption" }, [
-                  _c("div", { staticClass: "portfolio-box-caption-content" }, [
-                    _c("div", { staticClass: "project-category text-faded" }, [
-                      _vm._v(
-                        "\n                                    Category\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "project-name" }, [
-                      _vm._v(
-                        "\n                                    Project Name\n                                "
-                      )
-                    ])
-                  ])
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-lg-4 col-sm-6" }, [
-            _c(
-              "a",
-              {
-                staticClass: "portfolio-box",
-                attrs: { href: "/images/portfolio/fullsize/6.jpg" }
-              },
-              [
-                _c("img", {
-                  staticClass: "img-fluid",
-                  attrs: { src: "/images/portfolio/thumbnails/6.jpg", alt: "" }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "portfolio-box-caption" }, [
-                  _c("div", { staticClass: "portfolio-box-caption-content" }, [
-                    _c("div", { staticClass: "project-category text-faded" }, [
-                      _vm._v(
-                        "\n                                    Category\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "project-name" }, [
-                      _vm._v(
-                        "\n                                    Project Name\n                                "
-                      )
-                    ])
-                  ])
-                ])
-              ]
-            )
           ])
         ])
       ])
@@ -48921,6 +48620,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -48930,7 +48645,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            possibleMatchList: []
+            possibleMatchList: null
         };
     },
     beforeCreate: function beforeCreate() {
@@ -50046,7 +49761,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 
-//TODO: Check if there is a way to re-enable buttons when a server error occurs in the parent component
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
@@ -50556,37 +50270,57 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-lg-8 mx-auto" }, [
-          _vm._m(0),
+          _c("div", { staticClass: "row justify-content-center" }, [
+            _vm.possibleMatchList && _vm.possibleMatchList.length > 0
+              ? _c("h2", [_vm._v("Your possible matches")])
+              : _vm._e()
+          ]),
           _vm._v(" "),
           _c(
             "div",
             { staticClass: "row justify-content-center" },
-            _vm._l(_vm.possibleMatchList, function(match) {
-              return _c(
-                "div",
-                {
-                  key: match.id,
-                  staticClass: "col-lg-4 col-md-6",
-                  staticStyle: { padding: "10px 10px 10px 10px" }
-                },
-                [
-                  _c("v-matchcard", { attrs: { match: match } }),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          _vm.showModal(match)
+            [
+              _vm._l(_vm.possibleMatchList, function(match) {
+                return _c(
+                  "div",
+                  {
+                    key: match.id,
+                    staticClass: "col-lg-4 col-md-6",
+                    staticStyle: { padding: "10px 10px 10px 10px" }
+                  },
+                  [
+                    _c("v-matchcard", { attrs: { match: match } }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        on: {
+                          click: function($event) {
+                            _vm.showModal(match)
+                          }
                         }
-                      }
-                    },
-                    [_vm._v("Show Modal")]
-                  )
-                ],
-                1
-              )
-            })
+                      },
+                      [_vm._v("Show Modal")]
+                    )
+                  ],
+                  1
+                )
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-12" }, [
+                _vm.possibleMatchList && _vm.possibleMatchList.length < 1
+                  ? _c(
+                      "div",
+                      {
+                        staticClass:
+                          "row align-items-center vert-align-with-header"
+                      },
+                      [_vm._m(0)]
+                    )
+                  : _vm._e()
+              ])
+            ],
+            2
           )
         ])
       ]),
@@ -50601,8 +50335,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row justify-content-center" }, [
-      _c("h2", [_vm._v("Your possible matches")])
+    return _c("div", { staticClass: "col text-center" }, [
+      _c("h2", [
+        _vm._v(
+          "We haven't been able to find any matches for you (yet) ;) Sorry!"
+        )
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "Make sure to add every game you play to your profile to increase the chances of\n                                finding a\n                                match!"
+        )
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          " If you've already added all of the games you play to your profile, just come back in\n                                a\n                                few\n                                days! Who knows how many awesome new people you might encounter!"
+        )
+      ])
     ])
   }
 ]

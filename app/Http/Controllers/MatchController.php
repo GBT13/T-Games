@@ -35,7 +35,7 @@ class MatchController extends Controller {
 
     public function findMatches() {
         $ownProfile = Auth::user()->profile()->first();
-        $otherProfiles = Profile::whereKeyNot($ownProfile->id)->get();
+        $otherProfiles = Profile::whereKeyNot($ownProfile->id)->get(['id', 'imageLocation', 'bio', 'user_id']);
         $foundMatches = ['matches' => []];
 
 //        Loop through all possible partnerProfiles

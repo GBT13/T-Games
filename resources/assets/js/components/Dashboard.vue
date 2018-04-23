@@ -9,7 +9,7 @@
 
             <div class="col-lg-8 mx-auto">
                 <div class="row justify-content-center">
-                    <h2>Your possible matches</h2>
+                    <h2 v-if="possibleMatchList && possibleMatchList.length > 0">Your possible matches</h2>
                 </div>
                 <div class="row justify-content-center">
 
@@ -18,7 +18,23 @@
                          v-for="match in possibleMatchList" :key="match.id">
                         <v-matchcard :match="match"></v-matchcard>
                         <button @click="showModal(match)">Show Modal</button>
+                    </div>
 
+                    <!--No Matches Element-->
+                    <div class="col-lg-12">
+                        <div v-if="possibleMatchList && possibleMatchList.length < 1"
+                             class="row align-items-center vert-align-with-header">
+                            <div class="col text-center">
+                                <h2>We haven't been able to find any matches for you (yet) ;) Sorry!</h2>
+                                <p>Make sure to add every game you play to your profile to increase the chances of
+                                    finding a
+                                    match!</p>
+                                <p> If you've already added all of the games you play to your profile, just come back in
+                                    a
+                                    few
+                                    days! Who knows how many awesome new people you might encounter!</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -39,7 +55,7 @@
     export default {
         data() {
             return {
-                possibleMatchList: [],
+                possibleMatchList: null,
             }
         },
         beforeCreate() {
@@ -105,7 +121,7 @@
                     }
                 );
             },
-            cascadeErrorToChild(){
+            cascadeErrorToChild() {
                 eventBus.$emit('matchStatusEditError');
             }
         },
