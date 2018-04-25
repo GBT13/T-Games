@@ -51654,10 +51654,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {
         unmatch: function unmatch(match) {
-            confirm('Are you sure you want to unmatch ' + match.user.firstname + ' ?');
-
-            __WEBPACK_IMPORTED_MODULE_0__app__["eventBus"].$emit('undoMatch', match);
-            this.pending = true;
+            if (confirm('Are you sure you want to unmatch ' + match.user.firstname + ' ?')) {
+                __WEBPACK_IMPORTED_MODULE_0__app__["eventBus"].$emit('undoMatch', match);
+                this.pending = true;
+            }
         }
     }
 });

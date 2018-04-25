@@ -105,10 +105,10 @@
         },
         methods: {
             unmatch(match) {
-                confirm('Are you sure you want to unmatch ' + match.user.firstname + ' ?');
-
-                eventBus.$emit('undoMatch', match);
-                this.pending = true;
+                if (confirm('Are you sure you want to unmatch ' + match.user.firstname + ' ?')) {
+                    eventBus.$emit('undoMatch', match);
+                    this.pending = true;
+                }
             }
         }
     }
