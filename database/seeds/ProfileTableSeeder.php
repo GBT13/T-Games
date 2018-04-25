@@ -24,7 +24,7 @@ class ProfileTableSeeder extends Seeder {
         ]);
 
         Profile::create([
-            'bio' => '',
+            'bio' => 'Nunc tempus scelerisque egestas. Fusce mollis eros vitae urna luctus maximus. Suspendisse euismod tristique finibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec nec elementum tellus. Duis accumsan nulla lacus, sit amet finibus nunc eleifend at. Nullam et condimentum nibh. Vestibulum imperdiet augue vitae risus dignissim, et mattis lectus viverra. Pellentesque id ipsum vitae odio ultricies rhoncus nec ac diam.',
             'imageLocation' => '/images/sj.bmp',
             'steamid' => 'https://steamcommunity.com/id/blackwid0w',
             'psnName' => 'Sc4rLett',
@@ -81,9 +81,9 @@ class ProfileTableSeeder extends Seeder {
 
 //        SJ's Games
         Profile::find(2)->games()->attach([
-           Game::whereName('Factorio')->first()->id,
-           Game::whereName('Stellaris')->first()->id,
-           Game::whereName('Killing Floor 2')->first()->id,
+            Game::whereName('Factorio')->first()->id,
+            Game::whereName('Stellaris')->first()->id,
+            Game::whereName('Killing Floor 2')->first()->id,
         ]);
 
 //        Martijn's Games

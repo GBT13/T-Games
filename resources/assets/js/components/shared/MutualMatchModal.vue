@@ -97,7 +97,7 @@
     }
 
     .transparent {
-        background-color: rgba(25, 25, 25, 0.88);
+        background-color: rgba(25, 25, 25, 0.88) !important;
     }
 
     .solid {

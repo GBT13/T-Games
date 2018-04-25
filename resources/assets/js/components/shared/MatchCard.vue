@@ -38,7 +38,7 @@
 
         <div class="card-body">
             <div class="card-text">
-                {{match.bio | truncate(300)}}
+                {{match.bio ? match.bio : match.user.firstname + ' hasn\'t entered a bio' | truncate(300)}}
             </div>
         </div>
 
@@ -55,6 +55,7 @@
 
 <script>
     import {eventBus} from "../../app";
+
     export default {
         data() {
             return {

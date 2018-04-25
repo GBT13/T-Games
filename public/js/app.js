@@ -49730,6 +49730,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
@@ -49856,7 +49857,14 @@ var render = function() {
       _c("div", { staticClass: "card-text" }, [
         _vm._v(
           "\n            " +
-            _vm._s(_vm._f("truncate")(_vm.match.bio, 300)) +
+            _vm._s(
+              _vm._f("truncate")(
+                _vm.match.bio
+                  ? _vm.match.bio
+                  : _vm.match.user.firstname + " hasn't entered a bio",
+                300
+              )
+            ) +
             "\n        "
         )
       ])
@@ -49973,7 +49981,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.profile-image[data-v-6b17fd68] {\n    height: 270px !important;\n    width: 270px !important;\n    -o-object-fit: cover !important;\n       object-fit: cover !important;\n}\n.profile-image-container[data-v-6b17fd68] {\n    padding: 1em .5em 1em .5em;\n}\n@media (max-width: 575px) {\n.profile-image[data-v-6b17fd68] {\n        height: 130px !important;\n        width: 130px !important;\n        -o-object-fit: cover !important;\n           object-fit: cover !important;\n}\n}\n.row[data-v-6b17fd68] {\n    margin-left: 0;\n}\n.btn-row[data-v-6b17fd68] {\n    padding-bottom: 1.5em;\n    background-color: #212529;\n}\n.btn-light[data-v-6b17fd68] {\n    color: #f05f40;\n}\n.transparent[data-v-6b17fd68] {\n    background-color: rgba(25, 25, 25, 0.88);\n}\n.solid[data-v-6b17fd68] {\n    opacity: 1 !important;\n}\n\n", ""]);
+exports.push([module.i, "\n.profile-image[data-v-6b17fd68] {\n    height: 270px !important;\n    width: 270px !important;\n    -o-object-fit: cover !important;\n       object-fit: cover !important;\n}\n.profile-image-container[data-v-6b17fd68] {\n    padding: 1em .5em 1em .5em;\n}\n@media (max-width: 575px) {\n.profile-image[data-v-6b17fd68] {\n        height: 130px !important;\n        width: 130px !important;\n        -o-object-fit: cover !important;\n           object-fit: cover !important;\n}\n}\n.row[data-v-6b17fd68] {\n    margin-left: 0;\n}\n.btn-row[data-v-6b17fd68] {\n    padding-bottom: 1.5em;\n    background-color: #212529;\n}\n.btn-light[data-v-6b17fd68] {\n    color: #f05f40;\n}\n.transparent[data-v-6b17fd68] {\n    background-color: rgba(25, 25, 25, 0.88) !important;\n}\n.solid[data-v-6b17fd68] {\n    opacity: 1 !important;\n}\n\n", ""]);
 
 // exports
 
@@ -51508,7 +51516,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -51519,6 +51527,10 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
 //
 //
 //
@@ -51629,39 +51641,56 @@ var render = function() {
           : _vm._e(),
         _vm._v(" "),
         _c("p", { staticStyle: { "margin-top": "-5px" } }, [
-          _vm._v(_vm._s(_vm.responseData.bio))
+          _vm._v(
+            _vm._s(
+              _vm.responseData.bio
+                ? _vm.responseData.bio
+                : _vm.responseData.user.firstname + " hasn't entered a bio"
+            )
+          )
         ])
       ])
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row card-body" }, [
-      _c("div", { staticClass: "col-lg-12" }, [
-        _c("h2", [_vm._v("Gamertags")]),
-        _vm._v(" "),
-        _c(
-          "table",
-          { staticClass: "table table-bordered table-responsive-sm" },
-          [
-            _vm._m(0),
+      !_vm.nameList.every(function(name) {
+        return name.name === null
+      })
+        ? _c("div", { staticClass: "col-lg-12" }, [
+            _c("h2", [_vm._v("Gamertags")]),
             _vm._v(" "),
             _c(
-              "tbody",
-              _vm._l(_vm.nameList, function(name) {
-                return name.name
-                  ? _c("tr", { key: name.platform }, [
-                      _c("th", { attrs: { scope: "row" } }, [
-                        _c("i", { class: name.fa }),
-                        _vm._v(" " + _vm._s(name.platform))
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(name.name))])
-                    ])
-                  : _vm._e()
-              })
+              "table",
+              { staticClass: "table table-bordered table-responsive-sm" },
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  _vm._l(_vm.nameList, function(name) {
+                    return name.name
+                      ? _c("tr", { key: name.platform }, [
+                          _c("th", { attrs: { scope: "row" } }, [
+                            _c("i", { class: name.fa }),
+                            _vm._v(" " + _vm._s(name.platform))
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(name.name))])
+                        ])
+                      : _vm._e()
+                  })
+                )
+              ]
             )
-          ]
-        )
-      ])
+          ])
+        : _c("div", { staticClass: "col-lg-12" }, [
+            _c("h2", [
+              _vm._v(
+                _vm._s(_vm.responseData.user.firstname) +
+                  " hasn't entered any Gamertags"
+              )
+            ])
+          ])
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row card-body" }, [

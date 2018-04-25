@@ -8,12 +8,12 @@
             <div class="col-lg-8">
                 <h3 v-if="responseData.user.gender==='MALE'">His Bio</h3>
                 <h3 v-if="responseData.user.gender==='FEMALE'">Her Bio</h3>
-                <p style="margin-top: -5px;">{{responseData.bio}}</p>
+                <p style="margin-top: -5px;">{{responseData.bio ? responseData.bio : responseData.user.firstname + ' hasn\'t entered a bio'}}</p>
             </div>
         </div>
 
         <div class="row card-body">
-            <div class="col-lg-12">
+            <div v-if="!nameList.every((name)=>{return name.name === null})" class="col-lg-12">
                 <h2>Gamertags</h2>
                 <table class="table table-bordered table-responsive-sm">
                     <thead>
@@ -29,6 +29,10 @@
                     </tr>
                     </tbody>
                 </table>
+            </div>
+
+            <div v-else class="col-lg-12">
+                <h2>{{responseData.user.firstname}} hasn't entered any Gamertags</h2>
             </div>
         </div>
 

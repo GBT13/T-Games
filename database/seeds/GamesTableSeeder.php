@@ -31,37 +31,12 @@ class GamesTableSeeder extends Seeder {
         }
 
         Game::create([
-            'name'=>'World of Warcraft',
-            'developer'=>'Blizzard Entertainment',
-        ]);
-
-        Game::create([
-            'name'=>'Starcraft 2',
-            'developer'=>'Blizzard Entertainment',
-        ]);
-
-        Game::create([
-            'name'=>'Starcraft',
-            'developer'=>'Blizzard Entertainment',
-        ]);
-
-        Game::create([
             'name'=>'Overwatch',
             'developer'=>'Blizzard Entertainment',
         ]);
 
         Game::create([
             'name'=>'Hearthstone',
-            'developer'=>'Blizzard Entertainment',
-        ]);
-
-        Game::create([
-            'name'=>'Diablo 3',
-            'developer'=>'Blizzard Entertainment',
-        ]);
-
-        Game::create([
-            'name'=>'Heroes of the Storm',
             'developer'=>'Blizzard Entertainment',
         ]);
 
@@ -91,16 +66,6 @@ class GamesTableSeeder extends Seeder {
         ]);
 
         Game::create([
-            'name'=>'Overwatch',
-            'developer'=>'Blizzard Entertainment',
-        ]);
-
-        Game::create([
-            'name'=>'Hearthstone',
-            'developer'=>'Blizzard Entertainment',
-        ]);
-
-        Game::create([
             'name'=>'Diablo 3',
             'developer'=>'Blizzard Entertainment',
         ]);
@@ -108,11 +73,6 @@ class GamesTableSeeder extends Seeder {
         Game::create([
             'name'=>'Heroes of the Storm',
             'developer'=>'Blizzard Entertainment',
-        ]);
-
-        Game::create([
-            'name'=>'League of Legends',
-            'developer'=>'Riot Games',
         ]);
 
         Game::create([
