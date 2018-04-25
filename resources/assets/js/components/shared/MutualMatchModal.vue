@@ -45,6 +45,7 @@
 
 <script>
     import {eventBus} from "../../app";
+
     export default {
         data() {
             return {
@@ -56,7 +57,7 @@
             ownProfile: null
         },
         methods: {
-            viewProfile(){
+            viewProfile() {
                 this.$emit('close');
                 eventBus.$emit('viewProfile', this.match)
             }

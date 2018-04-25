@@ -13,7 +13,8 @@
                         <li @click="selectMatch(mutualMatch)" class="list-group-item list-group-item-action match-items"
                             v-for="mutualMatch in mutualMatches" :key="mutualMatch.id"
                             :class="{active : selectedProfile.id === mutualMatch.id}">
-                            <i v-if="selectedProfile===mutualMatch" class="fas fa-caret-right" style="margin-left: -1em;"></i>
+                            <i v-if="selectedProfile===mutualMatch" class="fas fa-caret-right"
+                               style="margin-left: -1em;"></i>
                             {{mutualMatch.user.firstname | capitalize | truncate(20)}}
                             {{mutualMatch.user.lastname | capitalize | truncate(20)}}
                         </li>
@@ -38,6 +39,7 @@
 
 <script>
     import axios from 'axios';
+    import {eventBus} from "../../app";
 
     export default {
         data() {
@@ -51,6 +53,25 @@
             selectMatch(match) {
                 this.selectedMatch = true;
                 this.selectedProfile = match;
+            },
+            unmatch(match) {
+                axios.patch('/matches/' + match.id + '/reject').then(response => {
+                    this.mutualMatches.splice(this.mutualMatches.indexOf(this.mutualMatches.find((element) => {
+                        return element.id === match.id;
+                    })), 1);
+
+                    if (this.mutualMatches.length > 0) {
+                        this.selectMatch(this.mutualMatches[0]);
+                    }
+                    eventBus.$emit('matchStatusEditSuccess');
+                    this.$toastr.s('Successfully unmatched');
+                }).catch(error => {
+                    this.$toastr.e('Something went wrong with unmatching');
+                    this.cascadeErrorToChild();
+                })
+            },
+            cascadeErrorToChild() {
+                eventBus.$emit('matchStatusEditError');
             }
         },
         beforeCreate() {
@@ -65,7 +86,14 @@
                 // this.$router.push({name: 'dashboard'});
                 this.$toastr.e('Something went wrong with fetching your mutual matches');
             });
+
+            eventBus.$on('undoMatch', (data) => {
+                this.unmatch(data);
+            });
         },
+        destroyed() {
+            eventBus.$off('undoMatch');
+        }
     }
 </script>
 

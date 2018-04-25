@@ -11,6 +11,7 @@
 </template>
 
 <script>
+    import {eventBus} from '../../app';
     import axios from 'axios';
 
     export default {
@@ -33,6 +34,10 @@
                     this.$router.push({name: 'dashboard'});
                     this.$toastr.e('This person has not accepted the match yet ;)');
                 }
+                else if (error.response.data.error === 'rejected.error') {
+                    this.$router.push({name: 'dashboard'});
+                    this.$toastr.e('This match has been rejected')
+                }
                 else if (error.response.data.error === 'notfound.error') {
                     this.$router.push({name: 'dashboard'});
                     this.$toastr.e('You don\'t have a match with this person!');
@@ -43,7 +48,28 @@
                 }
 
             });
+
+            eventBus.$on('undoMatch', (data) => {
+                this.unmatch(data);
+            });
         },
+        destroyed() {
+            eventBus.$off('undoMatch');
+        },
+        methods: {
+            unmatch(match) {
+                axios.patch('/matches/' + match.id + '/reject').then(response => {
+                    this.$router.push({name: 'dashboard'});
+                    this.$toastr.s('Successfully unmatched');
+                }).catch(error => {
+                    this.$toastr.e('Something went wrong with unmatching');
+                    this.cascadeErrorToChild();
+                })
+            }
+        },
+        cascadeErrorToChild() {
+            eventBus.$emit('matchStatusEditError');
+        }
     }
 </script>
 

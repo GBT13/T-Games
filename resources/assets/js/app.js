@@ -26,6 +26,7 @@ Vue.use(VueAxios, axios);
 Vue.use(VueSelect);
 Vue.use(Toastr);
 Vue.use(VModal, {dynamic: true});
+Vue.use(VModal, {dialog: true});
 
 
 Vue.filter('capitalize', function (value) {

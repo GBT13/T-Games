@@ -32,19 +32,27 @@ class ProfileController extends Controller {
 
         if ($ownMatch && $partnerMatch) {
             if ($ownMatch['accepted'] === 1 && $partnerMatch['accepted'] === 1) {
-                return $matchProfile;
+                if ($ownMatch['rejected'] != 1 && $partnerMatch['rejected'] != 1) {
+                    return $matchProfile;
+                } else {
+                    return response([
+                        'status' => 'error',
+                        'error' => 'rejected.error',
+                        'msg' => 'Match rejected'
+                    ], 500);
+                }
             } else {
                 return response([
-                    'status'=>'error',
-                    'error'=>'notaccepted.error',
-                    'msg'=>'Match not mutually accepted'
+                    'status' => 'error',
+                    'error' => 'notaccepted.error',
+                    'msg' => 'Match not mutually accepted'
                 ], 500);
             }
         } else {
             return response([
-                'status'=>'error',
-                    'error'=>'notfound.error',
-                'msg'=>'No match found'
+                'status' => 'error',
+                'error' => 'notfound.error',
+                'msg' => 'No match found'
             ], 500);
         }
     }

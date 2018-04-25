@@ -857,39 +857,6 @@ module.exports = {
 
 /***/ }),
 /* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(75);
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -924,7 +891,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_shared_Image_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__components_shared_Image_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_vuelidate__ = __webpack_require__(140);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_vuelidate___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_vuelidate__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_axios__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_vue_toastr__ = __webpack_require__(142);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_vue_toastr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16_vue_toastr__);
@@ -961,6 +928,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_17_vue
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_18_vue_select___default.a);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_16_vue_toastr___default.a);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_19_vue_js_modal___default.a, { dynamic: true });
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_19_vue_js_modal___default.a, { dialog: true });
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.filter('capitalize', function (value) {
     if (!value) return '';
@@ -1055,6 +1023,39 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
         this.$toastr.defaultPosition = 'toast-bottom-center';
     }
 });
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(75);
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
 
 /***/ }),
 /* 8 */
@@ -12229,7 +12230,7 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(24).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(24).setImmediate))
 
 /***/ }),
 /* 11 */
@@ -29940,7 +29941,7 @@ module.exports = Cancel;
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(108)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(108)(module)))
 
 /***/ }),
 /* 20 */
@@ -32469,7 +32470,7 @@ Popper.Defaults = Defaults;
 /* harmony default export */ __webpack_exports__["default"] = (Popper);
 //# sourceMappingURL=popper.js.map
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(7)))
 
 /***/ }),
 /* 21 */
@@ -42909,7 +42910,7 @@ module.exports = (function () {
 /* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(7);
+__webpack_require__(5);
 module.exports = __webpack_require__(159);
 
 
@@ -42978,7 +42979,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
                          (typeof global !== "undefined" && global.clearImmediate) ||
                          (this && this.clearImmediate);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
 /* 25 */
@@ -43171,7 +43172,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(11)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(11)))
 
 /***/ }),
 /* 26 */
@@ -48571,9 +48572,9 @@ exports.push([module.i, "\n.card-header[data-v-78b73b2d] {\n    border-radius: 0
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_MatchCard__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_MatchCard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__shared_MatchCard__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_MutualMatchModal_vue__ = __webpack_require__(98);
@@ -49694,7 +49695,7 @@ exports.push([module.i, "\n.btn-transparent[data-v-2213fbf5] {\n    background-c
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app__ = __webpack_require__(5);
 //
 //
 //
@@ -50017,7 +50018,7 @@ exports.push([module.i, "\n.profile-image[data-v-6b17fd68] {\n    height: 270px 
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app__ = __webpack_require__(5);
 //
 //
 //
@@ -50063,6 +50064,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -50426,7 +50428,7 @@ exports.push([module.i, "\nimg.preview[data-v-008089e5] {\n    max-height: 300px
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash__);
@@ -51541,7 +51543,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -51552,6 +51554,16 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app__ = __webpack_require__(5);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -51606,8 +51618,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            pending: false
+        };
+    },
+
     props: ['responseData'],
+    beforeCreate: function beforeCreate() {
+        var _this = this;
+
+        __WEBPACK_IMPORTED_MODULE_0__app__["eventBus"].$on('matchStatusEditError', function () {
+            _this.pending = false;
+        });
+        __WEBPACK_IMPORTED_MODULE_0__app__["eventBus"].$on('matchStatusEditSuccess', function () {
+            _this.pending = false;
+        });
+    },
+    destroyed: function destroyed() {
+        __WEBPACK_IMPORTED_MODULE_0__app__["eventBus"].$off('matchStatusEditError');
+        __WEBPACK_IMPORTED_MODULE_0__app__["eventBus"].$off('matchStatusEditSuccess');
+    },
+
     computed: {
         nameList: function nameList() {
             return [{ platform: 'Steam', name: this.responseData.steamid, fa: 'fab fa-steam' }, { platform: 'PSN', name: this.responseData.psnName, fa: 'fab fa-playstation' }, { platform: 'Xbox Gamertag', name: this.responseData.xboxGamertag, fa: 'fab fa-xbox' }, { platform: 'Discord', name: this.responseData.discord, fa: 'fab fa-discord' }, { platform: 'Epic Game Launcher', name: this.responseData.epicName, fa: 'fas fa-desktop' }, {
@@ -51615,6 +51650,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 name: this.responseData.nintendoNetworkId,
                 fa: 'fab fa-nintendo-switch'
             }, { platform: 'EA Origin', name: this.responseData.originName, fa: 'fas fa-trash-alt' }, { platform: 'Uplay', name: this.responseData.uplayName, fa: 'fas fa-desktop' }, { platform: 'Battle.net', name: this.responseData.battletag, fa: 'fas fa-desktop' }];
+        }
+    },
+    methods: {
+        unmatch: function unmatch(match) {
+            confirm('Are you sure you want to unmatch ' + match.user.firstname + ' ?');
+
+            __WEBPACK_IMPORTED_MODULE_0__app__["eventBus"].$emit('undoMatch', match);
+            this.pending = true;
         }
     }
 });
@@ -51752,6 +51795,23 @@ var render = function() {
           })
         )
       ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger",
+          staticStyle: { "margin-bottom": "2em" },
+          attrs: { disabled: _vm.pending },
+          on: {
+            click: function($event) {
+              _vm.unmatch(_vm.responseData)
+            }
+          }
+        },
+        [_vm._v("PERMANENTLY\n            Unmatch\n        ")]
+      )
     ])
   ])
 }
@@ -51875,8 +51935,9 @@ exports.push([module.i, "\n.card-header[data-v-1c5916b6] {\n    border-radius: 0
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app__ = __webpack_require__(5);
 //
 //
 //
@@ -51915,6 +51976,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
 
 
 
@@ -51931,21 +51994,49 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         selectMatch: function selectMatch(match) {
             this.selectedMatch = true;
             this.selectedProfile = match;
+        },
+        unmatch: function unmatch(match) {
+            var _this = this;
+
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('/matches/' + match.id + '/reject').then(function (response) {
+                _this.mutualMatches.splice(_this.mutualMatches.indexOf(_this.mutualMatches.find(function (element) {
+                    return element.id === match.id;
+                })), 1);
+
+                if (_this.mutualMatches.length > 0) {
+                    _this.selectMatch(_this.mutualMatches[0]);
+                }
+                __WEBPACK_IMPORTED_MODULE_1__app__["eventBus"].$emit('matchStatusEditSuccess');
+                _this.$toastr.s('Successfully unmatched');
+            }).catch(function (error) {
+                _this.$toastr.e('Something went wrong with unmatching');
+                _this.cascadeErrorToChild();
+            });
+        },
+        cascadeErrorToChild: function cascadeErrorToChild() {
+            __WEBPACK_IMPORTED_MODULE_1__app__["eventBus"].$emit('matchStatusEditError');
         }
     },
     beforeCreate: function beforeCreate() {
-        var _this = this;
+        var _this2 = this;
 
         __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/matches/mutual').then(function (response) {
-            _this.mutualMatches = response.data;
+            _this2.mutualMatches = response.data;
 
-            if (_this.mutualMatches.length > 0) {
-                _this.selectMatch(_this.mutualMatches[0]);
+            if (_this2.mutualMatches.length > 0) {
+                _this2.selectMatch(_this2.mutualMatches[0]);
             }
         }).catch(function (error) {
             // this.$router.push({name: 'dashboard'});
-            _this.$toastr.e('Something went wrong with fetching your mutual matches');
+            _this2.$toastr.e('Something went wrong with fetching your mutual matches');
         });
+
+        __WEBPACK_IMPORTED_MODULE_1__app__["eventBus"].$on('undoMatch', function (data) {
+            _this2.unmatch(data);
+        });
+    },
+    destroyed: function destroyed() {
+        __WEBPACK_IMPORTED_MODULE_1__app__["eventBus"].$off('undoMatch');
     }
 });
 
@@ -52173,7 +52264,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -52184,8 +52275,9 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
 //
 //
 //
@@ -52198,6 +52290,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 
@@ -52213,7 +52306,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var _this = this;
 
         var id = this.$route.params.id;
-        __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/user/' + id + '/match/withgames').then(function (response) {
+        __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/user/' + id + '/match/withgames').then(function (response) {
             _this.user = response.data.user;
             _this.responseData = response.data;
         }).catch(function (error) {
@@ -52222,6 +52315,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (error.response.data.error === 'notaccepted.error') {
                 _this.$router.push({ name: 'dashboard' });
                 _this.$toastr.e('This person has not accepted the match yet ;)');
+            } else if (error.response.data.error === 'rejected.error') {
+                _this.$router.push({ name: 'dashboard' });
+                _this.$toastr.e('This match has been rejected');
             } else if (error.response.data.error === 'notfound.error') {
                 _this.$router.push({ name: 'dashboard' });
                 _this.$toastr.e('You don\'t have a match with this person!');
@@ -52230,6 +52326,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.$toastr.e('Something went wrong with fetching this profile');
             }
         });
+
+        __WEBPACK_IMPORTED_MODULE_0__app__["eventBus"].$on('undoMatch', function (data) {
+            _this.unmatch(data);
+        });
+    },
+    destroyed: function destroyed() {
+        __WEBPACK_IMPORTED_MODULE_0__app__["eventBus"].$off('undoMatch');
+    },
+
+    methods: {
+        unmatch: function unmatch(match) {
+            var _this2 = this;
+
+            __WEBPACK_IMPORTED_MODULE_1_axios___default.a.patch('/matches/' + match.id + '/reject').then(function (response) {
+                _this2.$router.push({ name: 'dashboard' });
+                _this2.$toastr.s('Successfully unmatched');
+            }).catch(function (error) {
+                _this2.$toastr.e('Something went wrong with unmatching');
+                _this2.cascadeErrorToChild();
+            });
+        }
+    },
+    cascadeErrorToChild: function cascadeErrorToChild() {
+        __WEBPACK_IMPORTED_MODULE_0__app__["eventBus"].$emit('matchStatusEditError');
     }
 });
 
@@ -55043,7 +55163,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(5);
+window.axios = __webpack_require__(6);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 

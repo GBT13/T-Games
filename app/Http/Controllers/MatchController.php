@@ -65,10 +65,10 @@ class MatchController extends Controller {
 
     public function getAllMutualMatches() {
         $mutualMatchProfiles = [];
-        $acceptedMatches = Match::whereProfileId(Auth::user()->profile()->first()->id)->whereAccepted(1)->get();
+        $acceptedMatches = Match::whereProfileId(Auth::user()->profile()->first()->id)->whereAccepted(1)->whereRejected(0)->get();
 
         foreach ($acceptedMatches as $acceptedMatch) {
-            if ($this->getPairedMatch($acceptedMatch['partner_profile_id'], $acceptedMatch['profile_id'])->whereAccepted(1)->first()) {
+            if ($this->getPairedMatch($acceptedMatch['partner_profile_id'], $acceptedMatch['profile_id'])->whereAccepted(1)->whereRejected(0)->first()) {
                 array_push($mutualMatchProfiles, (Profile::whereId($acceptedMatch['partner_profile_id'])->with(['user', 'games'])->first()));
             }
         }

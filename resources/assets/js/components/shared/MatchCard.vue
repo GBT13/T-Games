@@ -89,7 +89,7 @@
                 this.pending = false;
             })
         },
-        destroyed(){
+        destroyed() {
             eventBus.$off('matchStatusEditError')
         }
     }
