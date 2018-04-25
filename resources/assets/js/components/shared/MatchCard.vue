@@ -88,6 +88,9 @@
             eventBus.$on('matchStatusEditError', () => {
                 this.pending = false;
             })
+        },
+        destroyed(){
+            eventBus.$off('matchStatusEditError')
         }
     }
 </script>

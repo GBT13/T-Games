@@ -73,6 +73,11 @@
                 this.$router.push({name: 'userSingleMatch', params: {id: data.id}});
             })
         },
+        destroyed(){
+          eventBus.$off('matchAccepted');
+          eventBus.$off('matchRejected');
+          eventBus.$off('viewProfile');
+        },
         methods: {
             acceptMatch(match) {
                 axios.patch('/matches/' + match.id + '/accept').then(response => {
