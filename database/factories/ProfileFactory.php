@@ -15,6 +15,6 @@ $factory->define(App\Profile::class, function (Faker $faker) {
         'epicName' => $faker->userName,
         'nintendoNetworkId'=>$faker->userName,
         'user_id' => 2,
-        'imageLocation' => $faker->imageUrl()
+        'imageLocation' => 'https://picsum.photos/640/480/?random=' . random_int(0, 100)
     ];
 });
