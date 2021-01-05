@@ -11,7 +11,7 @@
         "tests": "vendor\\bin\\phpunit"
     },
     "devDependencies": {
-        "axios": "^0.18.1",
+        "axios": "^0.21.1",
         "bootstrap": "^4.4.1",
         "cross-env": "^5.2.1",
         "laravel-mix": "^5.0.4",
